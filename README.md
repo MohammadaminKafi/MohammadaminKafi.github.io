@@ -1,114 +1,114 @@
-# Mohammadamin Kafi — Resume Site (Astro + Tailwind + React)
+# Mohammadamin Kafi — Resume Website
 
-This is an **Astro + Tailwind + React islands** resume/site that loads content from JSON files and supports inline pages, timelines, search/filter, dark mode, and a gallery.
+A modern, interactive resume built with **Astro**, **React**, and **Tailwind CSS**.  
+Features inline pages, dark/light theme toggle, timelines, skill trees, search & filter, and JSON-driven data for easy updates.
 
----
-
-## 1) Prerequisites
-- **Option A (no Docker):** Install Node.js (LTS recommended).
-- **Option B (Docker, recommended for easy local run):** Install Docker Desktop or Docker Engine + docker compose.
+🚀 **Live Site**: [https://mohammadaminkafi.github.io](https://mohammadaminkafi.github.io)
 
 ---
 
-## 2) Run Locally
+## ✨ Features
 
-### A) Using Node (classic)
+- **Personalized Hero** section with photo, name, title, and contact links
+- **Dark/Light Theme** toggle (dark by default)
+- **Gallery** page with Home/Gallery switch
+- **Aurora Background** effect in both themes
+- **Professional Summary** with quick resume download
+- **Inline Pages**:
+  - Education (timeline)
+  - Job Experience (timeline)
+  - Teaching Experience (assistants & instructors, searchable & filterable)
+  - Projects (searchable & filterable by tags)
+  - Skills (soft, hard, programming languages, multi-level dropdowns)
+  - Languages (proficiency bars)
+  - Awards & Achievements
+  - Research Interests
+- Data stored in separate `.json` files for easy editing
+- Fully responsive design
+
+---
+
+## 📂 Project Structure
+
+```
+
+.
+├── public/               # Static assets (images, resume.pdf)
+├── src/
+│   ├── components/       # React & Astro UI components
+│   ├── data/             # JSON files for each resume section
+│   ├── layouts/          # Base layout files
+│   ├── pages/            # Main & gallery pages
+│   └── styles/           # Global styles
+├── astro.config.mjs      # Astro configuration
+├── docker-compose.yml    # Local dev with Docker
+├── Dockerfile            # Container setup
+├── tailwind.config.cjs   # Tailwind config
+└── README.md
+
+````
+
+---
+
+## 🛠 Local Development
+
+### **Option 1: Node.js**
 ```bash
 npm install
 npm run dev
-# open http://localhost:4321
-```
+````
 
-### B) Using Docker (hot reload)
-```bash
-# First time or after changes to dependencies
-docker compose up --build web
-# open http://localhost:4321
-```
-- Your working directory is mounted into the container, so edits trigger live reload.
-- If port 4321 is busy, change it in `astro.config.mjs` and in `docker-compose.yml`.
-
-### C) Production-like static server (Docker)
-Build and serve the optimized static site with Nginx:
-```bash
-docker compose up --build prod
-# open http://localhost:8080
-```
-
-> CLI alternative (without compose):
-```bash
-# Dev
-docker build -t astro-resume:dev --target dev .
-docker run --rm -it -p 4321:4321 -v "$PWD":/app -v /app/node_modules astro-resume:dev
-
-# Prod
-docker build -t astro-resume:prod --target prod .
-docker run --rm -p 8080:80 astro-resume:prod
-```
+Site will be available at:
+[http://localhost:4321](http://localhost:4321)
 
 ---
 
-## 3) Edit Your Content
-Update the JSON files in `src/data/`:
-- `personal.json` (name, emails, links, summary, photo path, resume path)
-- `education.json` (timeline items)
-- `jobs.json` (timeline items; details collapsed by default)
-- `teaching.json` (searchable + filterable; 5 notable shown)
-- `projects.json` (searchable + filterable by tag/time; 5 notable shown)
-- `skills.json` (soft + nested hard skills with progress bars)
-- `languages.json` (1–5 proficiency)
-- `awards.json`, `research.json` (optional)
-- `gallery.json` (images for the Gallery page)
+### **Option 2: Docker**
 
-Place your assets:
-- Profile photo → `public/images/profile.jpg`
-- Resume PDF → `public/resume.pdf`
+```bash
+docker compose up --build
+```
+
+Visit: [http://localhost:4321](http://localhost:4321)
 
 ---
 
-## 4) Dark Mode
-Dark is default. Use the top-right toggle to switch. Preference is saved in `localStorage`.
+## 🚢 Deployment to GitHub Pages
+
+1. Create a public repository named:
+
+   ```
+   mohammadaminkafi.github.io
+   ```
+2. Commit and push your project:
+
+   ```bash
+   git init
+   git branch -M main
+   git remote add origin git@github.com:mohammadaminkafi/mohammadaminkafi.github.io.git
+   git add .
+   git commit -m "Initial commit"
+   git push -u origin main
+   ```
+3. Add `.github/workflows/deploy.yml` (GitHub Actions workflow) to build & deploy Astro site.
+4. In **Settings → Pages**, set source to **GitHub Actions**.
+5. Push to `main`. Your site will be live at:
+   **[https://mohammadaminkafi.github.io](https://mohammadaminkafi.github.io)**
 
 ---
 
-## 5) Build & Preview (without Docker)
-```bash
-npm run build
-npm run preview
-# open http://localhost:4321 (Astro preview will print the exact URL)
-```
+## 🗂 Editing Content
 
----
+All main content is in `src/data/`:
 
-## 6) Deploy (later)
-When ready for GitHub Pages or any static host, use `npm run build` to generate `dist/`. The included `prod` Docker target shows how to serve it via Nginx.
-```
-```bash
-npm install
-npm run dev
-```
-Now open http://localhost:4321 in your browser.
+* `personal.json` — Name, title, summary, contact info
+* `education.json` — Timeline of degrees
+* `jobs.json` — Work experience
+* `teaching.json` — Assistantships & instructing experience
+* `projects.json` — Projects with tags & filters
+* `skills-soft.json`, `skills-hard.json`, `skills-languages.json` — Skills & proficiency
+* `languages.json` — Language proficiency
+* `awards.json` — Awards & achievements
+* `research.json` — Research interests
 
-## 3) Edit Your Content
-Update the JSON files in `src/data/`:
-- `personal.json` (name, emails, links, summary, photo path, resume path)
-- `education.json` (timeline items)
-- `jobs.json` (timeline items; details are collapsed by default, click to open)
-- `teaching.json` (searchable + filterable; 5 notable shown, rest toggle)
-- `projects.json` (searchable + filterable by tag/time; 5 notable shown)
-- `skills.json` (soft + nested hard skills with progress bars)
-- `languages.json` (1–5 proficiency)
-- `awards.json`, `research.json` (optional)
-- `gallery.json` (images for the Gallery page)
-
-## 4) Dark Mode
-Dark is default. Use the top-right toggle to switch. Preference is saved in `localStorage`.
-
-## 5) Build (optional)
-```bash
-npm run build
-npm run preview
-```
-
-## 6) Deploy to GitHub Pages (later)
-When you're ready, we can add a simple GitHub Action. For now, local is enough.
+Update the JSON, restart the dev server, and changes will appear.
