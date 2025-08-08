@@ -1,0 +1,10 @@
+[
+    { "name": "Python", "level": 90 },
+    { "name": "C/C++", "level": 70 },
+    { "name": "C#", "level": 80 },
+    { "name": "Rust", "level": 60 },
+    { "name": "MATLAB", "level": 70 },
+    { "name": "JavaScript", "level": 50 },
+    { "name": "Bash", "level": 80 },
+    { "name": "Verilog", "level": 80 }
+]

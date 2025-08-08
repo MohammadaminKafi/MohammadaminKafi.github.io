@@ -1,0 +1,143 @@
+{
+  "summary": "Engineer with full-spectrum expertise in AI, embedded systems, IoT, systems programming, and cybersecurity, bridging software and hardware for practical, high-impact solutions.",
+  "sets": [
+    {
+      "name": "Artificial Intelligence",
+      "subskills": [
+        {
+          "name": "Machine Learning & Deep Learning",
+          "level": 90,
+          "subskills": [
+            { "name": "PyTorch", "level": 90 },
+            { "name": "TensorFlow", "level": 50 },
+            { "name": "Scikit-Learn", "level": 50 },
+            { "name": "Transfer Learning", "level": 85 }
+          ]
+        },
+        {
+          "name": "Large Language Models & Agents",
+          "level": 90,
+          "subskills": [
+            { "name": "Fine-tuning (Full/LoRA/Adapters)", "level": 90 },
+            { "name": "Prompt Engineering", "level": 80 },
+            { "name": "RAG", "level": 85 },
+            { "name": "VDB (chroma, weaviate, milvus)", "level": 80 },
+            { "name": "LangChain & Langgraph", "level": 80 },
+            { "name": "Langsmith", "level": 100 },
+            { "name": "DSPy", "level": 90 },
+            { "name": "Transformers", "level": 70 }
+          ]
+        },
+        {
+          "name": "Computer Vision",
+          "level": 90,
+          "subskills": [
+            { "name": "OpenCV", "level": 90 },
+            { "name": "pillow", "level": 80 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Embedded Systems & IoT",
+      "subskills": [
+        {
+          "name": "MCUs & Embedded Platforms",
+          "level": 90,
+          "subskills": [
+            { "name": "ESP32", "level": 100 },
+            { "name": "STM32", "level": 90 },
+            { "name": "FreeRTOS", "level": 80 },
+            { "name": "Peripheral Drivers (I2C/SPI/UART)", "level": 90 },
+            { "name": "OTA Updates", "level": 100 }
+          ]
+        },
+        {
+          "name": "FPGA & Digital Design",
+          "level": 75,
+          "subskills": [
+            { "name": "Verilog", "level": 90 },
+            { "name": "HLS", "level": 70 }
+          ]
+        },
+        {
+          "name": "Connectivity",
+          "level": 75,
+          "subskills": [
+            { "name": "MQTT", "level": 80 },
+            { "name": "LoRa", "level": 80 },
+            { "name": "BLE/Wi-Fi", "level": 78 },
+            { "name": "TCP/IP Networking", "level": 75 }
+          ]
+        },
+        {
+          "name": "IoT Systems",
+          "level": 70,
+          "subskills": [
+            { "name": "IoT Protocol Integration", "level": 80 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Systems & Software Development",
+      "subskills": [
+        {
+          "name": "Web Systems",
+          "level": 85,
+          "subskills": [
+            { "name": "Django", "level": 80 },
+            { "name": "React", "level": 40 },
+            { "name": "Docker", "level": 100 },
+            { "name": "Docker Compose", "level": 100 },
+            { "name": "Docker Swarm", "level": 50 },
+            { "name": "Server Hardening", "level": 60 }
+          ]
+        },
+        {
+          "name": "Software Engineering Practices",
+          "level": 85,
+          "subskills": [
+            { "name": "Git", "level": 70 },
+            { "name": "CI/CD", "level": 70 },
+            { "name": "Github Actions", "level": 60 },
+            { "name": "Gitlab Ci/CD", "level": 40 },
+            { "name": "Agile Development", "level": 100 }
+          ]
+        },
+        {
+          "name": "Operating Systems & Low-Level Dev",
+          "level": 70,
+          "subskills": [
+            { "name": "Linux System Programming", "level": 80 },
+            { "name": "Process & Thread Management", "level": 80 },
+            { "name": "Scheduling & Syscalls", "level": 80 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cybersecurity",
+      "subskills": [
+        {
+          "name": "Cryptography",
+          "level": 70,
+          "subskills": [
+            { "name": "Symmetric & Asymmetric Encryption", "level": 100 },
+            { "name": "Hashing & Digital Signatures", "level": 100 },
+            { "name": "Key Exchange Protocols", "level": 100 }
+          ]
+        },
+        {
+          "name": "Network Security",
+          "level": 70,
+          "subskills": [
+            { "name": "TLS/SSL", "level": 70 },
+            { "name": "Firewall & Access Control", "level": 70 },
+            { "name": "Secure Socket Programming", "level": 70 }
+          ]
+        }
+      ]
+    }
+  ]
+}

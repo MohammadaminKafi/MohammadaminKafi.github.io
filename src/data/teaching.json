@@ -1,0 +1,213 @@
+{
+  "items": [
+    {
+      "course": "Basics of Programming (TA)",
+      "university": "Isfahan University of Technology (IUT)",
+      "supervisor": "Dr. Khosravifard",
+      "time": "Spring 2023",
+      "semester": "Spring",
+      "year": 2023,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Computer Architecture (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Khorsandi",
+      "time": "Spring 2024",
+      "semester": "Spring",
+      "year": 2024,
+      "category": "assistant",
+      "description": "",
+      "notable": true
+    },
+    {
+      "course": "Computer Architecture (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Khorsandi",
+      "time": "Fall 2023",
+      "semester": "Fall",
+      "year": 2023,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Algorithm Design (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Maleki",
+      "time": "Spring 2024",
+      "semester": "Spring",
+      "year": 2024,
+      "category": "assistant",
+      "description": "",
+      "notable": true
+    },
+    {
+      "course": "Discrete Mathematics (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Maleki",
+      "time": "Spring 2024",
+      "semester": "Spring",
+      "year": 2024,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Computer Architecture (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Karimi Afshar",
+      "time": "Spring 2024",
+      "semester": "Spring",
+      "year": 2024,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Computer Networks Laboratory (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Fanian",
+      "time": "Spring 2024",
+      "semester": "Spring",
+      "year": 2024,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Computer Networks Laboratory (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Fanian",
+      "time": "Spring 2025",
+      "semester": "Spring",
+      "year": 2025,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Operating Systems (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Zali",
+      "time": "Fall 2024",
+      "semester": "Fall",
+      "year": 2024,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Artificial Intelligence (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Falsafain",
+      "time": "Fall 2024",
+      "semester": "Fall",
+      "year": 2024,
+      "category": "assistant",
+      "description": "",
+      "notable": true
+    },
+    {
+      "course": "Theory of Languages and Automatons (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Khalili",
+      "time": "Fall 2024",
+      "semester": "Fall",
+      "year": 2024,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Computational Intelligence (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Hosseini",
+      "time": "Spring 2025",
+      "semester": "Spring",
+      "year": 2025,
+      "category": "assistant",
+      "description": "",
+      "notable": true
+    },
+    {
+      "course": "Microprocessors (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Khorsandi",
+      "time": "Spring 2025",
+      "semester": "Spring",
+      "year": 2025,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Game Theory (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Narimani",
+      "time": "Spring 2025",
+      "semester": "Spring",
+      "year": 2025,
+      "category": "assistant",
+      "description": "",
+      "notable": true
+    },
+    {
+      "course": "Database Laboratory (TA)",
+      "university": "IUT",
+      "supervisor": "Dr. Basiri",
+      "time": "Spring 2025",
+      "semester": "Spring",
+      "year": 2025,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Instructor of Computer Vision",
+      "university": "IUT",
+      "supervisor": "",
+      "time": "2025",
+      "semester": "",
+      "year": 2025,
+      "category": "instructor",
+      "description": "During IUT's CESSA TechStack Event",
+      "notable": true
+    },
+    {
+      "course": "Instructor of Deep Learning",
+      "university": "IUT",
+      "supervisor": "",
+      "time": "2024",
+      "semester": "",
+      "year": 2024,
+      "category": "instructor",
+      "description": "During IUT's CESSA TechStack Event",
+      "notable": true
+    },
+    {
+      "course": "Instructor",
+      "university": "Rasta’s Summer School",
+      "supervisor": "",
+      "time": "2024",
+      "semester": "",
+      "year": 2024,
+      "category": "instructor",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Instructor",
+      "university": "Rasta’s Summer School",
+      "supervisor": "",
+      "time": "2022",
+      "semester": "",
+      "year": 2022,
+      "category": "instructor",
+      "description": "",
+      "notable": false
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "items": [
+    {
+      "topic": "IP102 Pest Classification with CLIP and Qwen",
+      "time": "",
+      "tags": ["Computer Vision", "Deep Learning", "VLM"],
+      "description": "Implemented zero-shot and fine-tuned pest classification using CLIP and Qwen-2.5-VL on the IP102 dataset. Developed modular training and evaluation pipelines with custom loss functions and automated reporting of classification metrics and confusion matrices.",
+      "github": "https://github.com/MohammadaminKafi/ip102-classification-vlm",
+      "notable": true,
+      "year": ""
+    },
+    {
+      "topic": "Text-to-SQL Agent with Multi-Agent Planning",
+      "time": "",
+      "tags": ["NLP", "RAG", "Docker"],
+      "description": "Built a high-performance Text2SQL agent combining RAG, ReAct-style planning, and multi-agent coordination to convert natural language into executable SQL.",
+      "github": "https://github.com/MohammadaminKafi/text2sql-agent",
+      "notable": true,
+      "year": ""
+    },
+    {
+      "topic": "LLM-Assisted Review Paper Writing Pipeline",
+      "time": "",
+      "tags": ["LLM", "Django"],
+      "description": "Building a semi-automated system for generating review papers using Django, Ollama, and LLMs. The pipeline handles research aggregation, draft generation, and refinement.",
+      "github": "https://github.com/MohammadaminKafi/slra",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Domain-Specific NLP and LLM Fine-Tuning for RAG Pipelines",
+      "time": "",
+      "tags": ["NLP", "LLM", "RAG"],
+      "description": "Developed NLP pipelines with Named Entity Recognition (NER), and implemented various LLM fine-tuning techniques (full fine-tuning, soft prompting, adapters, and LoRA) to improve performance on domain-specific retrieval-augmented generation tasks.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "LLM Fine-Tuning for Domain Adaptation",
+      "time": "",
+      "tags": ["LLM", "Fine-Tuning", "NLP"],
+      "description": "Implemented multiple LLM fine-tuning strategies including full fine-tuning, soft prompting, adapters, and LoRA. Evaluated each method’s effectiveness on custom NLP tasks for domain-specific applications.",
+      "github": "https://github.com/MohammadaminKafi/nlp4fun/tree/master/fine_tuning",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "RAG Pipeline for Domain-Specific QA",
+      "time": "",
+      "tags": ["RAG", "NLP", "LLM"],
+      "description": "Designed and deployed end-to-end RAG pipelines incorporating Named Entity Recognition (NER) and semantic search to enhance information retrieval for question-answering systems in specialized domains.",
+      "github": "https://github.com/MohammadaminKafi/nlp4fun/tree/master/rag",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Web-Based Storehouse Management System for I4 Lab",
+      "time": "",
+      "tags": ["Full-Stack", "Django", "React", "Docker"],
+      "description": "Developed a full-stack web application using Django (backend) and React (frontend), with Docker-based deployment, to manage inventory and logistics for I4 Lab.",
+      "github": "https://github.com/MohammadaminKafi/i4lab-storehouse",
+      "notable": true,
+      "year": ""
+    },
+    {
+      "topic": "Real-Time Colonoscopy Image Segmentation for Edge Devices",
+      "time": "",
+      "tags": ["Computer Vision", "Deep Learning", "Real-Time"],
+      "description": "Designed deep CNN models for real-time segmentation of colonoscopic images optimized to run on hardware-constrained platforms. Focused on accuracy and efficiency.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Color Image Quantization using Swarm Intelligence Algorithms",
+      "time": "",
+      "tags": ["Image Processing", "Swarm Intelligence"],
+      "description": "Created a color image quantization tool using Artificial Bee Colony (ABC) and a newly proposed Spider Monkey Optimization (SMO) algorithm, integrating K-means for improved results.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "A New Method for Content-Aware Image Retargeting",
+      "time": "",
+      "tags": ["Image Processing"],
+      "description": "Developed a content-aware image retargeting algorithm combining seam carving and scaling to resize images while preserving key content using an energy map.",
+      "github": "https://github.com/MohammadaminKafi/cair-sc",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Image Processing on Drones to Detect Plant Pests",
+      "time": "",
+      "tags": ["Computer Vision", "OpenCV"],
+      "description": "Utilizing Python's OpenCV library, developed a project to maneuver drones over plants in a house garden to detect pests.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Complex Matrix Multiplication on FPGA",
+      "time": "",
+      "tags": ["FPGA", "HLS", "Real-Time"],
+      "description": "Developed hardware using High-Level Synthesis (HLS) to multiply large matrices with complex elements on a Xilinx Zybo board.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Hardware Implementation of HOG Feature Extraction on FPGA",
+      "time": "",
+      "tags": ["FPGA", "Computer Vision", "Real-Time"],
+      "description": "Based on a research paper, designed hardware to extract Histogram of Oriented Gradients (HOG) features on a Xilinx Zybo board.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Genetic Algorithm for Optimizing Parameters of a Deep ANN",
+      "time": "",
+      "tags": ["Genetic Algorithm", "Deep Learning"],
+      "description": "Used a genetic algorithm to optimize the weights and biases of a deep Artificial Neural Network (ANN).",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Over-the-Air Update for STM32 Microcontrollers",
+      "time": "",
+      "tags": ["Embedded Systems", "STM32", "IoT"],
+      "description": "Developed a framework that enables dual-booting and firmware updates over the air for STM32 microcontrollers.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "Farm Maintenance System",
+      "time": "",
+      "tags": ["IoT", "Raspberry Pi", "ESP8266"],
+      "description": "Developed an IoT project to remotely maintain a dairy farm's animals, involving Raspberry Pi boards and ESP8266 modules.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    },
+    {
+      "topic": "AI Bot for Ultimate Tic-Tac-Toe game",
+      "time": "",
+      "tags": ["Game Theory", "AI"],
+      "description": "Developed an AI bot employing the Minimax algorithm with Alpha-Beta pruning for Ultimate Tic-Tac-Toe as the final project for a Game Theory course.",
+      "github": "https://github.com/MohammadaminKafi/ultimate-tic-tac-toe",
+      "notable": true,
+      "year": ""
+    },
+    {
+      "topic": "Simple CPU on FPGA",
+      "time": "",
+      "tags": ["FPGA", "CPU Design", "Verilog"],
+      "description": "Wrote Verilog code for a simple CPU and implemented it on a Xilinx Spartan-6 board.",
+      "github": "",
+      "notable": false,
+      "year": ""
+    }
+  ]
+}

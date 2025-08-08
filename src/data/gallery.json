@@ -1,0 +1,6 @@
+{
+  "items": [
+    { "src": "/images/sample1.jpg", "caption": "Conference poster", "alt": "Poster" },
+    { "src": "/images/sample2.jpg", "caption": "Robotics lab", "alt": "Lab" }
+  ]
+}

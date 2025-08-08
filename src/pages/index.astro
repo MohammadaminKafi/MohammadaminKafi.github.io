@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Divider from "../components/Divider.astro";
+import InlinePages from "../components/InlinePages.jsx";
+import ContactGrid from "../components/ContactGrid.jsx";
+
+import personal from "../data/personal.json";
+import education from "../data/education.json";
+import jobs from "../data/jobs.json";
+import teaching from "../data/teaching.json";
+import projects from "../data/projects.json";
+import softSkills from "../data/skills-soft.json";
+import hardSkills from "../data/skills-hard.json";
+import progLangs from "../data/skills-languages.json";
+import languages from "../data/languages.json";
+import awards from "../data/awards.json";
+import research from "../data/research.json";
+---
+<Layout title="Resume — Mohammadamin Kafi">
+  <section class="grid md:grid-cols-[200px,1fr] gap-6 items-center">
+    <img src={personal.photo||'/images/profile.jpg'} alt="Profile" class="w-48 h-48 object-cover rounded-2xl border border-black/10 dark:border-white/10"/>
+    <div>
+      <h1 class="text-3xl font-bold tracking-tight">{personal.name}</h1>
+      <p class="text-lg text-zinc-600 dark:text-zinc-400">{personal.title}</p>
+
+      <!-- Step 2: Use compact contact chips with logos -->
+      <div class="mt-4">
+        <ContactGrid client:load personal={personal} />
+      </div>
+    </div>
+  </section>
+
+  <Divider />
+
+  <section class="card p-6">
+    <h2 class="text-xl font-semibold mb-2">Professional Summary</h2>
+    <p class="text-zinc-700 dark:text-zinc-300 whitespace-pre-wrap">{personal.summary}</p>
+
+    <!-- Step 2: Move Download Resume button here and style as primary -->
+    <div class="mt-4 flex items-center gap-3">
+      <a
+        class="btn bg-brand-600 text-white border-brand-600 hover:bg-brand-700"
+        href={personal.resume || '/resume.pdf'}
+        download
+      > Download Resume </a>
+    </div>
+  </section>
+
+  <Divider />
+
+  <InlinePages
+    client:load
+    education={education}
+    jobs={jobs}
+    teaching={teaching}
+    projects={projects}
+    skills={{ soft: softSkills, hard: hardSkills, languages: progLangs }}
+    languages={languages}
+    awards={awards}
+    research={research}
+  />
+</Layout>

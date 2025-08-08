@@ -1,0 +1,35 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Astro build output
+dist/
+.astro/
+
+# Local env files
+.env
+.env.*.local
+
+# Editor/OS junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Docker
+docker-compose.override.yml
+*.pid
+*.seed
+*.log
+
+# Temporary
+tmp/
+temp/
+.cache/

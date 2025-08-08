@@ -1,0 +1,21 @@
+services:
+  web:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
+    command: npm run dev
+
+  prod:
+    build:
+      context: .
+      target: prod
+    ports:
+      - "8080:80"

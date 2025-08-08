@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "title": "Artificial Intelligence Engineer",
+      "company": "Pishro Hooshmand Sepahan",
+      "time": "Jan 2025 – Jun 2025",
+      "description": "I worked part-time at PHS Company, an industrial automation firm, as a member of the Artificial Intelligence R&D team. Contributed to the development of AI-based systems for predictive maintenance and fault diagnosis in industrial pipelines and machinery. Designed and implemented machine learning models to improve system reliability and early error detection in complex industrial environments."
+    },
+    {
+      "title": "Embedded Systems Engineer",
+      "company": "Kian Pardaz ICT",
+      "time": "May 2023 – Sep 2024",
+      "description": "I worked as an Embedded Systems Engineer at Kian Pardaz ICT, a company specializing in research and development of industrial products, including metal 3D printers. My role involved developing and optimizing embedded hardware and software solutions for industrial automation."
+    },
+    {
+      "title": "Image Processing in Robotics",
+      "company": "Advanced Robotics and Mechatronics Laboratory, IUT",
+      "time": "Jan 2022 – Aug 2022",
+      "description": "During my first year at Isfahan University of Technology (IUT), I worked in the Advanced Robotics and Mechatronics Laboratory at the Mechanical Engineering Department. My primary focus was on applying image processing techniques to robotic systems, contributing to projects that required real-time object detection and feature extraction for robotic automation."
+    }
+  ]
+}
