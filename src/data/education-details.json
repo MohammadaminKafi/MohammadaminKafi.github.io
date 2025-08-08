@@ -1,0 +1,123 @@
+[
+    {
+    "slug": "iut-bsc-ce",
+    "header": {
+        "title": "Bachelor of Science in Computer Engineering",
+        "org": "Isfahan University of Technology (IUT)",
+        "period": "Sep 2021 – Present",
+        "degree": "B.Sc.",
+        "minor": "Intelligent Systems",
+        "gpaOverall": 18.06
+    },
+    "sections": [
+        {
+        "type": "summary",
+        "content": "Ranked in the top 5% of my class while mastering computer engineering with a minor in Intelligent Systems. Beyond coursework, I actively built and nurtured a collaborative student community—continuously learning from peers, sharing knowledge, and mentoring others. This ongoing cycle of learning and teaching has created a stable, growth-oriented environment that fosters both technical excellence and long-term collective development."
+        },
+        {
+        "type": "semesters",
+        "items": [
+            {
+            "term": "Spring 2025",
+            "courses": [
+                { "course": "Fundamentals of Machine Learning", "units": 3, "professor": "", "score": null },
+                { "course": "Fundamentals of Robotics", "units": 3, "professor": "", "score": null },
+                { "course": "Large Language Models", "units": 3, "professor": "", "score": null },
+                { "course": "FPGA Lab", "units": 1, "professor": "", "score": null }
+            ]
+            },
+            {
+            "term": "Fall 2024",
+            "courses": [
+                { "course": "Cryptography", "units": 3, "professor": "", "score": 16.25 },
+                { "course": "Computational Intelligence Lab", "units": 1, "professor": "", "score": 19.5 },
+                { "course": "Embedded Systems", "units": 3, "professor": "", "score": 20 },
+                { "course": "Database I", "units": 3, "professor": "", "score": 20 },
+                { "course": "Database Lab", "units": 1, "professor": "", "score": 20 }
+            ]
+            },
+            {
+            "term": "Spring 2024",
+            "courses": [
+                { "course": "Signals and Systems", "units": 3, "professor": "", "score": 19.3 },
+                { "course": "Computational Intelligence", "units": 3, "professor": "", "score": 17.75 },
+                { "course": "Internet of Things", "units": 3, "professor": "", "score": 16.7 },
+                { "course": "Computer Vision", "units": 3, "professor": "", "score": 20 },
+                { "course": "Microprocessor Lab", "units": 1, "professor": "", "score": 18.3 },
+                { "course": "Scientific Presentation", "units": 2, "professor": "", "score": 19.6 }
+            ]
+            },
+            {
+            "term": "Fall 2023",
+            "courses": [
+                { "course": "Game Theory", "units": 3, "professor": "", "score": 20 },
+                { "course": "Microprocessors", "units": 3, "professor": "", "score": 20 },
+                { "course": "Operating Systems Lab", "units": 1, "professor": "", "score": 18.82 },
+                { "course": "Operating Systems", "units": 3, "professor": "", "score": 19.1 },
+                { "course": "Theory of Languages and Automatons", "units": 3, "professor": "", "score": 20 },
+                { "course": "Artificial Intelligence", "units": 3, "professor": "", "score": 18.5 },
+                { "course": "Technical English for CE", "units": 2, "professor": "", "score": 18 }
+            ]
+            },
+            {
+            "term": "Spring 2023",
+            "courses": [
+                { "course": "Digital Systems Lab I", "units": 1, "professor": "", "score": 17.9 },
+                { "course": "Computer Architecture", "units": 3, "professor": "", "score": 20 },
+                { "course": "Algorithm Design", "units": 3, "professor": "", "score": 18 },
+                { "course": "Computer Networks", "units": 3, "professor": "", "score": 19.3 },
+                { "course": "Computer Networks Lab", "units": 1, "professor": "", "score": 20 },
+                { "course": "Mathematics for Engineering", "units": 3, "professor": "", "score": 18.2 }
+            ]
+            },
+            {
+            "term": "Fall 2022",
+            "courses": [
+                { "course": "Discrete Mathematics", "units": 3, "professor": "", "score": 16.4 },
+                { "course": "Digital Systems Design I", "units": 3, "professor": "", "score": 18.7 },
+                { "course": "Advanced Programming", "units": 4, "professor": "", "score": 17.84 },
+                { "course": "Data Structures", "units": 3, "professor": "", "score": 16.25 },
+                { "course": "Probability and Statistics", "units": 3, "professor": "", "score": 15.15 }
+            ]
+            },
+            {
+            "term": "Spring 2022",
+            "courses": [
+                { "course": "Basics of Programming", "units": 3, "professor": "", "score": 18 },
+                { "course": "Calculus II", "units": 3, "professor": "", "score": 17.5 },
+                { "course": "Differential Equations", "units": 3, "professor": "", "score": 19 },
+                { "course": "Physics I Lab", "units": 1, "professor": "", "score": 18.08 },
+                { "course": "Physics II", "units": 3, "professor": "", "score": 15.7 },
+                { "course": "Electricity and Magnetism Lab", "units": 1, "professor": "", "score": 15.3 }
+            ]
+            },
+            {
+            "term": "Fall 2021",
+            "courses": [
+                { "course": "Engineering Drawing", "units": 2, "professor": "", "score": 18.18 },
+                { "course": "Calculus I", "units": 3, "professor": "", "score": 20 },
+                { "course": "Physics I", "units": 3, "professor": "", "score": 17.75 },
+                { "course": "General Chemistry", "units": 3, "professor": "", "score": 17.4 },
+                { "course": "Technical English", "units": 3, "professor": "", "score": 17 }
+            ]
+            }
+        ]
+        }
+    ]
+    }
+,
+  {
+    "slug": "nodet-hs",
+    "header": {
+      "title": "High School Diploma",
+      "org": "Ezhei 2 High School (NODET)",
+      "period": "Sep 2018 – Sep 2021"
+    },
+    "sections": [
+      {
+        "type": "summary",
+        "content": "Attended Ezhei 2 High School, part of Iran’s prestigious NODET system for exceptionally talented students, with a minor in Mathematics and Physics. Thrived in a rigorous, high-performance environment that nurtured my passion for innovation, robotics, and programming."
+      }
+    ]
+  }
+]
