@@ -18,12 +18,17 @@
         "type": "semesters",
         "items": [
             {
+            "term": "Fall 2025",
+            "courses": [
+            ]
+            },
+            {
             "term": "Spring 2025",
             "courses": [
-                { "course": "Fundamentals of Machine Learning", "units": 3, "professor": "Dr. Safayani", "score": null },
-                { "course": "Fundamentals of Robotics", "units": 3, "professor": "Dr. Palhang", "score": null },
+                { "course": "Fundamentals of Machine Learning", "units": 3, "professor": "Dr. Safayani", "score": 18.7 },
+                { "course": "Fundamentals of Robotics", "units": 3, "professor": "Dr. Palhang", "score": 11.7 },
                 { "course": "Large Language Models", "units": 3, "professor": "Dr. Amiri", "score": null },
-                { "course": "FPGA Lab", "units": 1, "professor": "Dr. Yazdian", "score": null }
+                { "course": "FPGA Lab", "units": 1, "professor": "Dr. Yazdian", "score": 18 }
             ]
             },
             {
