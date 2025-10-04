@@ -20,6 +20,9 @@
             {
             "term": "Fall 2025",
             "courses": [
+                { "course": "Linear Algebra", "units": 3, "professor": "Dr. Izadi", "score": null },
+                { "course": "Advanced Computer Architecture", "units": 3, "professor": "Dr. Khorsandi", "score": null },
+                { "course": "Electrical and Electronics Circuits", "units": 3, "professor": "Dr. Taban", "score": null }
             ]
             },
             {
@@ -27,7 +30,7 @@
             "courses": [
                 { "course": "Fundamentals of Machine Learning", "units": 3, "professor": "Dr. Safayani", "score": 18.7 },
                 { "course": "Fundamentals of Robotics", "units": 3, "professor": "Dr. Palhang", "score": 11.7 },
-                { "course": "Large Language Models", "units": 3, "professor": "Dr. Amiri", "score": null },
+                { "course": "Large Language Models", "units": 3, "professor": "Dr. Amiri", "score": 14.7 },
                 { "course": "FPGA Lab", "units": 1, "professor": "Dr. Yazdian", "score": 18 }
             ]
             },
