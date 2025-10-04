@@ -19,7 +19,8 @@ html { scroll-behavior: smooth; }
 html:not(.dark) body {
   /* gentle, milky off-white with a faint green tint */
   background:
-    radial-gradient(1200px 800px at 15% -10%, rgba(34,197,94,0.06), transparent 60%),
+    radial-gradient(1200px 800px at 15% -10%, rgba(34,197,94,0.08), transparent 65%),
+    radial-gradient(800px 600px at 85% 100%, rgba(16,185,129,0.06), transparent 70%),
     linear-gradient(180deg, #fafaf7 0%, #f6f7f9 100%);
   background-color: #f8faf8; /* fallback */
   background-attachment: fixed;
@@ -28,33 +29,90 @@ html:not(.dark) body {
 .dark body {
   /* subtle green haze over deep gray */
   background:
-    radial-gradient(1200px 800px at 85% -10%, rgba(34,197,94,0.08), transparent 60%),
+    radial-gradient(1200px 800px at 85% -10%, rgba(34,197,94,0.12), transparent 65%),
+    radial-gradient(800px 600px at 15% 100%, rgba(16,185,129,0.08), transparent 70%),
     #0a0a0b;
   background-attachment: fixed;
 }
 
 .aurora {
   position: fixed;
-  inset: -15%;                 /* avoid blur clipping on edges */
+  inset: -30%;                 /* larger area for smooth movement */
   pointer-events: none;
-  z-index: 1;                  /* below content, above body background */
+  z-index: -1;                 
   background:
-    radial-gradient(40% 60% at 20% 30%, rgba(34,197,94,0.30), transparent 60%),
-    radial-gradient(35% 55% at 80% 20%, rgba(16,185,129,0.25), transparent 60%),
-    radial-gradient(50% 70% at 60% 80%, rgba(20,184,166,0.22), transparent 60%);
-  filter: blur(90px) saturate(120%);
-  opacity: .45;
-  will-change: transform, opacity;
-  animation: auroraMove 12s ease-in-out infinite alternate; /* was 22s */
+    radial-gradient(45% 65% at 30% 40%, rgba(34,197,94,0.4), rgba(34,197,94,0.15) 50%, transparent 70%),
+    radial-gradient(55% 75% at 70% 30%, rgba(16,185,129,0.35), rgba(16,185,129,0.12) 45%, transparent 75%),
+    radial-gradient(65% 55% at 50% 70%, rgba(20,184,166,0.3), rgba(20,184,166,0.1) 40%, transparent 70%);
+  filter: blur(70px) saturate(120%);
+  opacity: 0.7;
+  will-change: transform;
+  animation: auroraSmoothMove 35s ease-in-out infinite;
 }
 
 /* keep it slightly softer in light mode so the page stays milky */
-html:not(.dark) .aurora { opacity: .38; }
+html:not(.dark) .aurora { 
+  opacity: 0.6;
+  filter: blur(80px) saturate(110%);
+}
 
-@keyframes auroraMove {
-  0%   { transform: translateY(0) translateX(0); }
-  50%  { transform: translateY(-24px) translateX(14px); }
-  100% { transform: translateY(14px) translateX(-12px); }
+/* Secondary aurora for more depth */
+.aurora::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 70% at 60% 20%, rgba(52,211,153,0.35), rgba(52,211,153,0.12) 45%, transparent 75%),
+    radial-gradient(50% 80% at 25% 60%, rgba(34,197,94,0.3), rgba(34,197,94,0.1) 40%, transparent 75%);
+  filter: blur(90px) saturate(130%);
+  opacity: 0.5;
+  animation: auroraSmoothMove2 45s ease-in-out infinite;
+}
+
+html:not(.dark) .aurora::before {
+  opacity: 0.4;
+}
+
+@keyframes auroraSmoothMove {
+  0%   { 
+    transform: translateX(-50%) translateY(-50%) rotate(0deg) scale(0.8); 
+  }
+  25%  { 
+    transform: translateX(-15%) translateY(10%) rotate(5deg) scale(1.1); 
+  }
+  50%  { 
+    transform: translateX(20%) translateY(-25%) rotate(-3deg) scale(0.9); 
+  }
+  75%  { 
+    transform: translateX(45%) translateY(25%) rotate(8deg) scale(1.2); 
+  }
+  100% { 
+    transform: translateX(70%) translateY(-45%) rotate(0deg) scale(0.7); 
+  }
+}
+
+@keyframes auroraSmoothMove2 {
+  0%   { 
+    transform: translateX(60%) translateY(50%) rotate(0deg) scale(1.0); 
+  }
+  25%  { 
+    transform: translateX(25%) translateY(15%) rotate(-8deg) scale(0.85); 
+  }
+  50%  { 
+    transform: translateX(-10%) translateY(-20%) rotate(6deg) scale(1.15); 
+  }
+  75%  { 
+    transform: translateX(-35%) translateY(30%) rotate(-4deg) scale(0.95); 
+  }
+  100% { 
+    transform: translateX(-60%) translateY(-40%) rotate(0deg) scale(1.1); 
+  }
+}
+
+@keyframes auroraFloat {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-40px) scale(1.08); }
+  100% { transform: translateY(0) scale(1); }
 }
 
 
