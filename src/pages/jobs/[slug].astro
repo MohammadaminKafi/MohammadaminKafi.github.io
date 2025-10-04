@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import details from "../../data/jobs-details.json";
+import SkillsTree from "../../components/SkillsTree.jsx";
+
+export async function getStaticPaths() {
+  const items = Array.isArray(details) ? details : (details.items || []);
+  return items.map((d) => ({ params: { slug: d.slug }, props: { detail: d } }));
+}
+
+const { detail } = Astro.props;
+if (!detail) {
+  throw new Error("Job detail not found");
+}
+
+const header = detail.header || {};
+const sections = detail.sections || [];
+---
+
+<Layout title={`Job Experience — ${header.title || detail.title || 'Detail'}`}>
+  <nav class="mb-4">
+    <a href="/" class="btn">← Back to Home</a>
+  </nav>
+
+  <!-- Header card -->
+  <section class="card p-6 space-y-2">
+    <h1 class="text-2xl font-semibold">{header.title}</h1>
+    <div class="flex flex-wrap items-center gap-2 text-zinc-600 dark:text-zinc-400">
+      <span class="font-medium">{header.company}</span>
+      {header.location && <>
+        <span>•</span>
+        <span>{header.location}</span>
+      </>}
+    </div>
+    <div class="flex flex-wrap items-center gap-2 text-zinc-600 dark:text-zinc-400">
+      <span>{header.period}</span>
+      {header.type && <>
+        <span>•</span>
+        <span class="px-2 py-1 rounded-md text-xs bg-zinc-100 dark:bg-zinc-800">{header.type}</span>
+      </>}
+    </div>
+  </section>
+
+  <!-- Dynamic sections -->
+  {sections.map((sec) => (
+    <>
+      {sec.type === 'summary' && (
+        <section class="card p-6 mt-6 space-y-3">
+          <h2 class="text-xl font-semibold">Overview</h2>
+          <p class="text-zinc-700 dark:text-zinc-300 whitespace-pre-wrap">{sec.content}</p>
+        </section>
+      )}
+
+      {sec.type === 'responsibilities' && sec.items?.length > 0 && (
+        <section class="card p-6 mt-6 space-y-3">
+          <h2 class="text-xl font-semibold">Key Responsibilities</h2>
+          <ul class="space-y-2">
+            {sec.items.map((responsibility) => (
+              <li class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-500 mt-2 flex-shrink-0"></div>
+                <span class="text-zinc-700 dark:text-zinc-300">{responsibility}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {sec.type === 'skills-tree' && sec.skillsets?.length > 0 && (
+        <section class="card p-8 mt-6 space-y-5">
+          <div class="space-y-2">
+            <h2 class="text-xl font-semibold">{sec.title || 'Skills & Technologies'}</h2>
+            {sec.description && (
+              <p class="text-zinc-600 dark:text-zinc-400 text-sm">{sec.description}</p>
+            )}
+          </div>
+          <SkillsTree client:load skillsets={sec.skillsets} />
+        </section>
+      )}
+
+      {sec.type === 'achievements' && sec.items?.length > 0 && (
+        <section class="card p-6 mt-6 space-y-3">
+          <h2 class="text-xl font-semibold">Key Achievements</h2>
+          <ul class="grid gap-3">
+            {sec.items.map((achievement) => (
+              <li class="flex items-start gap-3 p-3 rounded-lg bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800">
+                <div class="w-5 h-5 rounded-full bg-green-500 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <span class="text-zinc-700 dark:text-zinc-300 font-medium">{achievement}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {sec.type === 'projects' && sec.items?.length > 0 && (
+        <section class="card p-6 mt-6 space-y-3">
+          <h2 class="text-xl font-semibold">Notable Projects</h2>
+          <div class="grid gap-4">
+            {sec.items.map((project) => (
+              <div class="rounded-lg border border-black/10 dark:border-white/10 p-4">
+                <div class="font-medium mb-2">{project.title}</div>
+                <div class="text-sm text-zinc-600 dark:text-zinc-400 mb-2">{project.description}</div>
+                {project.technologies && (
+                  <div class="flex flex-wrap gap-1">
+                    {project.technologies.map((tech) => (
+                      <span class="px-2 py-1 rounded text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  ))}
+</Layout>

@@ -1,0 +1,394 @@
+{
+  "items": [
+    {
+      "slug": "ai-agent-developer-iut",
+      "header": {
+        "title": "AI Agent Developer & Workflow Automation Engineer",
+        "company": "IUT AI Center",
+        "period": "July 2025 – Present",
+        "location": "Isfahan University of Technology",
+        "type": "Full-time"
+      },
+      "sections": [
+        {
+          "type": "summary",
+          "content": "Designing, implementing, and deploying intelligent AI agents to automate complex workflows across research and administrative processes. Building multi-agent coordination systems, integrating LLM-powered reasoning with data retrieval pipelines, and optimizing task orchestration for speed, accuracy, and scalability. Leveraging cutting-edge frameworks to bridge natural language understanding with actionable execution in real-world applications."
+        },
+        {
+          "type": "responsibilities",
+          "items": [
+            "Design and implement intelligent AI agents for workflow automation",
+            "Build multi-agent coordination systems for complex task orchestration",
+            "Integrate LLM-powered reasoning with data retrieval pipelines",
+            "Optimize AI systems for speed, accuracy, and scalability",
+            "Bridge natural language understanding with actionable execution",
+            "Deploy AI solutions in real-world research and administrative environments"
+          ]
+        },
+        {
+          "type": "skills-tree",
+          "title": "Skills & Technologies Learned",
+          "skillsets": [
+            {
+              "name": "AI Agent Development",
+              "description": "Core competency in building autonomous AI systems",
+              "skills": [
+                {
+                  "name": "Multi-Agent Systems",
+                  "description": "Coordinating multiple AI agents for complex task execution",
+                  "subskills": [
+                    { "name": "Agent Communication Protocols", "description": "Implementing standardized communication between agents" },
+                    { "name": "Task Distribution", "description": "Efficiently distributing workload across agent networks" },
+                    { "name": "Consensus Mechanisms", "description": "Ensuring agreement in distributed agent decisions" }
+                  ]
+                },
+                {
+                  "name": "LLM Integration",
+                  "description": "Leveraging large language models for intelligent reasoning",
+                  "subskills": [
+                    { "name": "Prompt Engineering", "description": "Optimizing prompts for consistent AI responses" },
+                    { "name": "Context Management", "description": "Managing conversation context in long-running processes" },
+                    { "name": "Fine-tuning", "description": "Adapting pre-trained models for domain-specific tasks" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Workflow Automation",
+              "description": "Automating complex business and research processes",
+              "skills": [
+                {
+                  "name": "Process Orchestration",
+                  "description": "Managing end-to-end workflow execution",
+                  "subskills": [
+                    { "name": "Pipeline Design", "description": "Creating efficient data and task processing pipelines" },
+                    { "name": "Error Handling", "description": "Implementing robust failure recovery mechanisms" },
+                    { "name": "Monitoring & Logging", "description": "Tracking system performance and debugging issues" }
+                  ]
+                },
+                {
+                  "name": "API Integration",
+                  "description": "Connecting diverse systems and services",
+                  "subskills": [
+                    { "name": "REST API Development", "description": "Building and consuming RESTful web services" },
+                    { "name": "GraphQL", "description": "Implementing flexible data query interfaces" },
+                    { "name": "Webhook Systems", "description": "Creating event-driven communication systems" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Data Processing",
+              "description": "Handling and processing large volumes of research data",
+              "skills": [
+                {
+                  "name": "Data Retrieval",
+                  "description": "Efficient extraction and preprocessing of data",
+                  "subskills": [
+                    { "name": "Database Optimization", "description": "Optimizing query performance for large datasets" },
+                    { "name": "Caching Strategies", "description": "Implementing intelligent data caching for faster access" },
+                    { "name": "Data Validation", "description": "Ensuring data quality and consistency" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "achievements",
+          "items": [
+            "Reduced manual workflow processing time by 75% through AI automation",
+            "Successfully deployed 15+ AI agents in production environment",
+            "Achieved 95% accuracy in natural language task interpretation",
+            "Implemented fault-tolerant multi-agent coordination system"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ai-engineer-phs",
+      "header": {
+        "title": "Artificial Intelligence Engineer",
+        "company": "Pishro Hooshmand Sepahan",
+        "period": "Jan 2025 – Jun 2025",
+        "location": "Isfahan, Iran",
+        "type": "Part-time"
+      },
+      "sections": [
+        {
+          "type": "summary",
+          "content": "Worked part-time at PHS Company, an industrial automation firm, as a member of the Artificial Intelligence R&D team. Contributed to the development of AI-based systems for predictive maintenance and fault diagnosis in industrial pipelines and machinery. Designed and implemented machine learning models to improve system reliability and early error detection in complex industrial environments."
+        },
+        {
+          "type": "responsibilities",
+          "items": [
+            "Develop AI-based predictive maintenance systems",
+            "Design fault diagnosis algorithms for industrial machinery",
+            "Implement machine learning models for early error detection",
+            "Optimize system reliability through data-driven insights",
+            "Collaborate with R&D team on innovative AI solutions"
+          ]
+        },
+        {
+          "type": "skills-tree",
+          "title": "Skills & Technologies Learned",
+          "skillsets": [
+            {
+              "name": "Predictive Maintenance",
+              "description": "AI-driven maintenance scheduling and fault prediction",
+              "skills": [
+                {
+                  "name": "Time Series Analysis",
+                  "description": "Analyzing sensor data patterns for predictive insights",
+                  "subskills": [
+                    { "name": "LSTM Networks", "description": "Long Short-Term Memory networks for sequence prediction" },
+                    { "name": "ARIMA Modeling", "description": "Statistical time series forecasting methods" },
+                    { "name": "Anomaly Detection", "description": "Identifying unusual patterns in sensor readings" }
+                  ]
+                },
+                {
+                  "name": "Fault Diagnosis",
+                  "description": "Automated detection and classification of system failures",
+                  "subskills": [
+                    { "name": "Signal Processing", "description": "Preprocessing noisy industrial sensor data" },
+                    { "name": "Feature Engineering", "description": "Extracting meaningful features from raw sensor data" },
+                    { "name": "Classification Models", "description": "Categorizing different types of equipment failures" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Industrial IoT",
+              "description": "Internet of Things systems for industrial environments",
+              "skills": [
+                {
+                  "name": "Sensor Integration",
+                  "description": "Connecting and managing industrial sensor networks",
+                  "subskills": [
+                    { "name": "MQTT Protocol", "description": "Lightweight messaging for IoT device communication" },
+                    { "name": "Edge Computing", "description": "Processing data close to sensor sources" },
+                    { "name": "Data Acquisition", "description": "Real-time collection of industrial sensor data" }
+                  ]
+                },
+                {
+                  "name": "Industrial Protocols",
+                  "description": "Communication standards for industrial automation",
+                  "subskills": [
+                    { "name": "Modbus", "description": "Serial communication protocol for industrial devices" },
+                    { "name": "OPC UA", "description": "Machine-to-machine communication for industrial automation" },
+                    { "name": "Profinet", "description": "Ethernet-based fieldbus for industrial automation" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Machine Learning",
+              "description": "Applied ML techniques for industrial applications",
+              "skills": [
+                {
+                  "name": "Supervised Learning",
+                  "description": "Training models on labeled industrial data",
+                  "subskills": [
+                    { "name": "Random Forest", "description": "Ensemble method for robust predictions" },
+                    { "name": "Support Vector Machines", "description": "Classification for complex industrial patterns" },
+                    { "name": "Gradient Boosting", "description": "Iterative improvement of prediction accuracy" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "embedded-engineer-kian-pardaz",
+      "header": {
+        "title": "Embedded Systems Engineer",
+        "company": "Kian Pardaz ICT",
+        "period": "May 2023 – Sep 2024",
+        "location": "Isfahan, Iran",
+        "type": "Full-time"
+      },
+      "sections": [
+        {
+          "type": "summary",
+          "content": "Worked as an Embedded Systems Engineer at Kian Pardaz ICT, a company specializing in research and development of industrial products, including metal 3D printers. My role involved developing and optimizing embedded hardware and software solutions for industrial automation."
+        },
+        {
+          "type": "responsibilities",
+          "items": [
+            "Develop embedded software for metal 3D printing systems",
+            "Design and optimize hardware-software interfaces",
+            "Implement real-time control systems for industrial automation",
+            "Debug and troubleshoot embedded system issues",
+            "Collaborate on R&D projects for innovative industrial products"
+          ]
+        },
+        {
+          "type": "skills-tree",
+          "title": "Skills & Technologies Learned",
+          "skillsets": [
+            {
+              "name": "Embedded Programming",
+              "description": "Low-level programming for microcontroller systems",
+              "skills": [
+                {
+                  "name": "Real-Time Systems",
+                  "description": "Developing time-critical embedded applications",
+                  "subskills": [
+                    { "name": "RTOS", "description": "Real-Time Operating Systems for deterministic behavior" },
+                    { "name": "Interrupt Handling", "description": "Managing hardware interrupts efficiently" },
+                    { "name": "Task Scheduling", "description": "Prioritizing and scheduling concurrent tasks" }
+                  ]
+                },
+                {
+                  "name": "Hardware Interfaces",
+                  "description": "Programming hardware communication protocols",
+                  "subskills": [
+                    { "name": "SPI/I2C", "description": "Serial communication protocols for peripherals" },
+                    { "name": "UART", "description": "Universal Asynchronous Receiver-Transmitter communication" },
+                    { "name": "GPIO Control", "description": "General Purpose Input/Output pin management" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "3D Printing Systems",
+              "description": "Specialized knowledge in additive manufacturing control",
+              "skills": [
+                {
+                  "name": "Motion Control",
+                  "description": "Precise control of 3D printer movement systems",
+                  "subskills": [
+                    { "name": "Stepper Motors", "description": "Controlling precise positioning motors" },
+                    { "name": "G-code Processing", "description": "Interpreting and executing 3D printing commands" },
+                    { "name": "Path Planning", "description": "Optimizing print head movement trajectories" }
+                  ]
+                },
+                {
+                  "name": "Thermal Management",
+                  "description": "Temperature control for metal 3D printing",
+                  "subskills": [
+                    { "name": "PID Control", "description": "Proportional-Integral-Derivative temperature regulation" },
+                    { "name": "Thermal Sensors", "description": "Reading and calibrating temperature sensors" },
+                    { "name": "Heat Zones", "description": "Managing multiple heating zones simultaneously" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Industrial Automation",
+              "description": "Automation systems for manufacturing processes",
+              "skills": [
+                {
+                  "name": "Control Systems",
+                  "description": "Automated control of industrial processes",
+                  "subskills": [
+                    { "name": "PLC Programming", "description": "Programmable Logic Controller automation" },
+                    { "name": "HMI Development", "description": "Human-Machine Interface design" },
+                    { "name": "Safety Systems", "description": "Implementing industrial safety protocols" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "image-processing-robotics-iut",
+      "header": {
+        "title": "Image Processing in Robotics",
+        "company": "Advanced Robotics and Mechatronics Laboratory, IUT",
+        "period": "Jan 2022 – Aug 2022",
+        "location": "Isfahan University of Technology",
+        "type": "Research Position"
+      },
+      "sections": [
+        {
+          "type": "summary",
+          "content": "During my first year at Isfahan University of Technology (IUT), I worked in the Advanced Robotics and Mechatronics Laboratory at the Mechanical Engineering Department. My primary focus was on applying image processing techniques to robotic systems, contributing to projects that required real-time object detection and feature extraction for robotic automation."
+        },
+        {
+          "type": "responsibilities",
+          "items": [
+            "Develop image processing algorithms for robotic vision systems",
+            "Implement real-time object detection and tracking",
+            "Design feature extraction methods for robotic automation",
+            "Optimize computer vision algorithms for real-time performance",
+            "Collaborate on research projects in robotics and mechatronics"
+          ]
+        },
+        {
+          "type": "skills-tree",
+          "title": "Skills & Technologies Learned",
+          "skillsets": [
+            {
+              "name": "Computer Vision",
+              "description": "Image processing and analysis for robotic applications",
+              "skills": [
+                {
+                  "name": "Object Detection",
+                  "description": "Identifying and locating objects in images",
+                  "subskills": [
+                    { "name": "OpenCV", "description": "Comprehensive computer vision library" },
+                    { "name": "Contour Analysis", "description": "Shape detection and boundary analysis" },
+                    { "name": "Feature Matching", "description": "Identifying distinctive image features" }
+                  ]
+                },
+                {
+                  "name": "Image Preprocessing",
+                  "description": "Enhancing image quality for better analysis",
+                  "subskills": [
+                    { "name": "Noise Reduction", "description": "Filtering unwanted image distortions" },
+                    { "name": "Edge Detection", "description": "Identifying object boundaries and edges" },
+                    { "name": "Morphological Operations", "description": "Shape-based image processing techniques" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Robotics Integration",
+              "description": "Connecting vision systems with robotic control",
+              "skills": [
+                {
+                  "name": "Robot Vision",
+                  "description": "Integrating cameras with robotic systems",
+                  "subskills": [
+                    { "name": "Camera Calibration", "description": "Correcting lens distortion and perspective" },
+                    { "name": "Stereo Vision", "description": "3D depth perception using multiple cameras" },
+                    { "name": "Visual Servoing", "description": "Using vision feedback for robot control" }
+                  ]
+                },
+                {
+                  "name": "Real-Time Processing",
+                  "description": "Optimizing algorithms for real-time robotic applications",
+                  "subskills": [
+                    { "name": "Algorithm Optimization", "description": "Improving computational efficiency" },
+                    { "name": "Parallel Processing", "description": "Utilizing multiple CPU cores for faster processing" },
+                    { "name": "Memory Management", "description": "Efficient handling of image data in memory" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Research Methods",
+              "description": "Academic research and experimental methodologies",
+              "skills": [
+                {
+                  "name": "Experimental Design",
+                  "description": "Planning and conducting robotics experiments",
+                  "subskills": [
+                    { "name": "Data Collection", "description": "Systematic gathering of experimental data" },
+                    { "name": "Statistical Analysis", "description": "Analyzing experimental results" },
+                    { "name": "Documentation", "description": "Recording and presenting research findings" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
