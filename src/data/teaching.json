@@ -166,6 +166,39 @@
       "notable": false
     },
     {
+      "course": "Embedded Systems (TA)",
+      "university": "Isfahan University of Technology (IUT)",
+      "supervisor": "Dr. Khorsandi",
+      "time": "Fall 2025",
+      "semester": "Fall",
+      "year": 2025,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Machine Learning (TA)",
+      "university": "Isfahan University of Technology (IUT)",
+      "supervisor": "Dr. Safayani",
+      "time": "Fall 2025",
+      "semester": "Fall",
+      "year": 2025,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
+      "course": "Microprocessors (TA)",
+      "university": "Isfahan University of Technology (IUT)",
+      "supervisor": "Dr. Karimi Afshar",
+      "time": "Fall 2025",
+      "semester": "Fall",
+      "year": 2025,
+      "category": "assistant",
+      "description": "",
+      "notable": false
+    },
+    {
       "course": "Instructor of Computer Vision",
       "university": "IUT",
       "supervisor": "",
