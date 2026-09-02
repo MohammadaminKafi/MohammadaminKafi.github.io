@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "id": "current",
+      "label": "Current resume",
+      "file": "/Resume_MohammadaminKafi.pdf",
+      "published": "2025-08-01",
+      "notes": "The latest public version of my resume.",
+      "current": true
+    }
+  ]
+}

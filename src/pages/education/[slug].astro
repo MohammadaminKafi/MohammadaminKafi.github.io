@@ -1,90 +1,37 @@
 ---
+import EducationDetail from "../../components/EducationDetail";
+import { content } from "../../content/data";
 import Layout from "../../layouts/Layout.astro";
-import details from "../../data/education-details.json";
 
-// islands / renderers
-import SemestersAccordion from "../../components/edu/SemestersAccordion.jsx";
-
-export async function getStaticPaths() {
-  const items = Array.isArray(details) ? details : (details.items || []);
-  return items.map((d) => ({ params: { slug: d.slug }, props: { detail: d } }));
+export function getStaticPaths() {
+  return content.education.map((education) => ({
+    params: { slug: education.slug },
+    props: { education },
+  }));
 }
 
-const { detail } = Astro.props;
-if (!detail) {
-  throw new Error("Education detail not found");
-}
-
-const header = detail.header || {};
-const sections = detail.sections || [];
+const { education } = Astro.props;
 ---
 
-<Layout title={`Education — ${header.title || detail.title || 'Detail'}`}>
-  <nav class="mb-4">
-    <a href="/" class="btn">← Back to Home</a>
-  </nav>
-
-  <!-- Header card -->
-  <section class="card p-6 space-y-2">
-    <h1 class="text-2xl font-semibold">{header.title}</h1>
-    <div class="text-zinc-600 dark:text-zinc-400">{header.org}</div>
-    <div class="text-zinc-600 dark:text-zinc-400">{header.period}</div>
-    <div class="text-sm text-zinc-500">
-      {header.degree && <>Degree: {header.degree} · </>}
-      {header.minor && <>Minor: {header.minor} · </>}
-      {typeof header.gpaOverall === 'number' && <>GPA: {header.gpaOverall}</>}
+<Layout
+  title={`${education.header.title} — Mohammadamin Kafi`}
+  description={`${education.header.title} at ${education.header.org}: academic context and coursework.`}
+>
+  <a class="back-link" href="/" data-mode-link>← Back to resume</a>
+  <header class="detail-hero">
+    <p class="eyebrow">Education</p>
+    <h1>{education.header.title}</h1>
+    <p class="detail-org">{education.header.org}</p>
+    <div class="detail-meta">
+      <span>{education.header.period}</span>
+      {education.header.degree && <span>{education.header.degree}</span>}
+      {education.header.minor && <span>Minor: {education.header.minor}</span>}
+      {
+        education.header.gpaOverall !== undefined && (
+          <span>GPA: {education.header.gpaOverall}/20</span>
+        )
+      }
     </div>
-  </section>
-
-  <!-- Dynamic sections -->
-  {sections.map((sec) => (
-    <>
-      {sec.type === 'summary' && (
-        <section class="card p-6 mt-6 space-y-3">
-          <h2 class="text-xl font-semibold">Summary</h2>
-          <p class="text-zinc-700 dark:text-zinc-300 whitespace-pre-wrap">{sec.content}</p>
-        </section>
-      )}
-
-      {sec.type === 'semesters' && (
-        <section class="card p-6 mt-6">
-          <div class="flex items-center justify-between mb-3">
-            <h2 class="text-xl font-semibold">Semesters & Courses</h2>
-          </div>
-          <SemestersAccordion client:load items={sec.items} />
-        </section>
-      )}
-
-      {sec.type === 'publications' && sec.items?.length > 0 && (
-        <section class="card p-6 mt-6 space-y-2">
-          <h2 class="text-xl font-semibold">Publications during this period</h2>
-          <ul class="space-y-2">
-            {sec.items.map((p) => (
-              <li class="rounded-lg border border-black/10 dark:border-white/10 p-3">
-                <div class="font-medium">{p.title}</div>
-                <div class="text-sm text-zinc-500">
-                  {p.authors?.join(', ')}{p.venue ? ` — ${p.venue}` : ''}{p.year ? ` (${p.year})` : ''}
-                  {p.link && <> · <a class="text-brand-600 hover:underline" href={p.link} target="_blank" rel="noreferrer">link</a></>}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {sec.type === 'awards' && sec.items?.length > 0 && (
-        <section class="card p-6 mt-6 space-y-2">
-          <h2 class="text-xl font-semibold">Awards & Honors</h2>
-          <ul class="grid sm:grid-cols-2 gap-3">
-            {sec.items.map((a) => (
-              <li class="rounded-lg border border-black/10 dark:border-white/10 p-3">
-                <div class="font-medium">{a.title}</div>
-                <div class="text-sm text-zinc-500">{a.org}{a.year ? ` · ${a.year}` : ''}</div>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-    </>
-  ))}
+  </header>
+  <EducationDetail client:visible education={education} />
 </Layout>

@@ -1,6 +1,31 @@
 {
   "items": [
-    { "src": "/images/sample1.jpg", "caption": "Conference poster", "alt": "Poster" },
-    { "src": "/images/sample2.jpg", "caption": "Robotics lab", "alt": "Lab" }
+    {
+      "id": "balanced-aurora",
+      "src": "/images/gallery/balanced-aurora.webp",
+      "caption": "Balanced mode — forest, emerald, and mint aurora study",
+      "alt": "Abstract layered green and mint aurora ribbons over a dark atmospheric field",
+      "width": 1536,
+      "height": 1024,
+      "generated": true
+    },
+    {
+      "id": "job-aurora",
+      "src": "/images/gallery/job-aurora.webp",
+      "caption": "Job mode — deep blue, teal, and cyan aurora study",
+      "alt": "Abstract cyan and blue aurora ribbons crossing a deep navy atmospheric field",
+      "width": 1536,
+      "height": 1024,
+      "generated": true
+    },
+    {
+      "id": "academic-aurora",
+      "src": "/images/gallery/academic-aurora.webp",
+      "caption": "Academic mode — violet and amber aurora study",
+      "alt": "Abstract violet aurora forms with restrained amber light over a dark atmospheric field",
+      "width": 1536,
+      "height": 1024,
+      "generated": true
+    }
   ]
 }

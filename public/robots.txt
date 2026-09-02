@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohammadaminkafi.github.io/sitemap-index.xml

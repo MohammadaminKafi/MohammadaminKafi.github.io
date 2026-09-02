@@ -1,0 +1,20 @@
+---
+import LivePagesGrid from "../components/LivePagesGrid";
+import { content } from "../content/data";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Live Pages — Mohammadamin Kafi"
+  description="Interactive projects and live web applications built by Mohammadamin Kafi."
+>
+  <header class="page-heading">
+    <p class="eyebrow">Live on the web</p>
+    <h1>Pages built to be used.</h1>
+    <p>
+      Interactive tools, games, and shared resources. Each card links to the
+      live application and the code behind it.
+    </p>
+  </header>
+  <LivePagesGrid pages={content.pages} />
+</Layout>

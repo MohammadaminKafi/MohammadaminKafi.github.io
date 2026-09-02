@@ -1,41 +1,117 @@
 ---
-import ThemeToggle from "../components/ThemeToggle.jsx";
-import "../styles/global.css"; // Tailwind/CSS
-const { title = 'Resume' } = Astro.props;
-const isGallery = Astro.url.pathname.startsWith('/gallery');
+import SiteHeader from "../components/SiteHeader";
+import { content } from "../content/data";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Mohammadamin Kafi — AI & Computer Engineer",
+  description = "Mohammadamin Kafi's resume: AI engineering, intelligent systems, embedded computing, projects, teaching, and academic work.",
+  noindex = false,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(content.personal.photo, Astro.site);
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: content.personal.name,
+  url: Astro.site?.toString(),
+  image: socialImage.toString(),
+  jobTitle: "AI Engineer",
+  sameAs: [content.personal.github, content.personal.linkedin],
+};
 ---
-<html lang="en" class="dark">
+
+<!doctype html>
+<html lang="en" data-theme="dark" data-mode="balanced" class="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#07110d" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary" />
     <title>{title}</title>
-    <script>
-      (function(){
+    <script is:inline>
+      (() => {
         try {
-          const saved = localStorage.getItem('theme');
-          if (saved === 'light') document.documentElement.classList.remove('dark');
-          else document.documentElement.classList.add('dark');
-        } catch (e) {}
+          const validModes = ["balanced", "job", "academic"];
+          const params = new URLSearchParams(location.search);
+          const requested = params.get("mode");
+          const storedMode = localStorage.getItem("resume-mode");
+          const mode = validModes.includes(requested)
+            ? requested
+            : validModes.includes(storedMode)
+              ? storedMode
+              : "balanced";
+          const theme =
+            localStorage.getItem("resume-theme") === "light" ? "light" : "dark";
+          document.documentElement.dataset.mode = mode;
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.classList.toggle("dark", theme === "dark");
+        } catch {
+          document.documentElement.dataset.mode = "balanced";
+          document.documentElement.dataset.theme = "dark";
+        }
       })();
     </script>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
   </head>
-  <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen relative">
-    <div class="aurora" aria-hidden="true"></div>
-
-    <header class="relative z-40 sticky top-0 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-zinc-900/70 border-b border-black/5 dark:border-white/10">
-      <div class="container-pro flex items-center justify-between h-14">
-        <a href="/" class="font-semibold tracking-tight">Mohammadamin Kafi</a>
-        <div class="flex items-center gap-2">
-          <a class="btn" href={isGallery ? '/' : '/gallery'}>{isGallery ? 'Home' : 'Gallery'}</a>
-          <ThemeToggle client:load />
-        </div>
-      </div>
-    </header>
-
-    <main class="relative z-10 container-pro py-8">
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <div class="aurora aurora-one" aria-hidden="true"></div>
+    <div class="aurora aurora-two" aria-hidden="true"></div>
+    <SiteHeader
+      client:load
+      modes={content.modes}
+      pages={content.pages}
+      currentPath={Astro.url.pathname}
+    />
+    <main id="main-content" class="site-main">
       <slot />
     </main>
-    <footer class="relative z-10 container-pro py-10 text-sm text-zinc-500">© {new Date().getFullYear()} Mohammadamin Kafi</footer>
+    <footer class="site-footer">
+      <span>© {new Date().getFullYear()} Mohammadamin Kafi</span>
+      <span>Built as a static, accessible Astro site.</span>
+    </footer>
+    <script is:inline>
+      (() => {
+        const syncModeLinks = () => {
+          const mode = document.documentElement.dataset.mode || "balanced";
+          document.querySelectorAll("a[data-mode-link]").forEach((anchor) => {
+            const original =
+              anchor.getAttribute("data-base-href") ||
+              anchor.getAttribute("href");
+            if (!original) return;
+            anchor.setAttribute("data-base-href", original);
+            const url = new URL(original, location.origin);
+            url.searchParams.set("mode", mode);
+            anchor.setAttribute(
+              "href",
+              `${url.pathname}${url.search}${url.hash}`,
+            );
+          });
+        };
+        syncModeLinks();
+        window.addEventListener("resume:modechange", syncModeLinks);
+      })();
+    </script>
   </body>
 </html>

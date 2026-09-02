@@ -1,11 +1,14 @@
 {
   "items": [
     {
+      "id": "ai-agent-developer-iut",
       "slug": "ai-agent-developer-iut",
       "header": {
         "title": "AI Agent Developer & Workflow Automation Engineer",
         "company": "IUT AI Center",
         "period": "July 2025 – Present",
+        "start": "2025-07",
+        "end": null,
         "location": "Isfahan University of Technology",
         "type": "Full-time"
       },
@@ -37,18 +40,36 @@
                   "name": "Multi-Agent Systems",
                   "description": "Coordinating multiple AI agents for complex task execution",
                   "subskills": [
-                    { "name": "Agent Communication Protocols", "description": "Implementing standardized communication between agents" },
-                    { "name": "Task Distribution", "description": "Efficiently distributing workload across agent networks" },
-                    { "name": "Consensus Mechanisms", "description": "Ensuring agreement in distributed agent decisions" }
+                    {
+                      "name": "Agent Communication Protocols",
+                      "description": "Implementing standardized communication between agents"
+                    },
+                    {
+                      "name": "Task Distribution",
+                      "description": "Efficiently distributing workload across agent networks"
+                    },
+                    {
+                      "name": "Consensus Mechanisms",
+                      "description": "Ensuring agreement in distributed agent decisions"
+                    }
                   ]
                 },
                 {
                   "name": "LLM Integration",
                   "description": "Leveraging large language models for intelligent reasoning",
                   "subskills": [
-                    { "name": "Prompt Engineering", "description": "Optimizing prompts for consistent AI responses" },
-                    { "name": "Context Management", "description": "Managing conversation context in long-running processes" },
-                    { "name": "Fine-tuning", "description": "Adapting pre-trained models for domain-specific tasks" }
+                    {
+                      "name": "Prompt Engineering",
+                      "description": "Optimizing prompts for consistent AI responses"
+                    },
+                    {
+                      "name": "Context Management",
+                      "description": "Managing conversation context in long-running processes"
+                    },
+                    {
+                      "name": "Fine-tuning",
+                      "description": "Adapting pre-trained models for domain-specific tasks"
+                    }
                   ]
                 }
               ]
@@ -61,18 +82,36 @@
                   "name": "Process Orchestration",
                   "description": "Managing end-to-end workflow execution",
                   "subskills": [
-                    { "name": "Pipeline Design", "description": "Creating efficient data and task processing pipelines" },
-                    { "name": "Error Handling", "description": "Implementing robust failure recovery mechanisms" },
-                    { "name": "Monitoring & Logging", "description": "Tracking system performance and debugging issues" }
+                    {
+                      "name": "Pipeline Design",
+                      "description": "Creating efficient data and task processing pipelines"
+                    },
+                    {
+                      "name": "Error Handling",
+                      "description": "Implementing robust failure recovery mechanisms"
+                    },
+                    {
+                      "name": "Monitoring & Logging",
+                      "description": "Tracking system performance and debugging issues"
+                    }
                   ]
                 },
                 {
                   "name": "API Integration",
                   "description": "Connecting diverse systems and services",
                   "subskills": [
-                    { "name": "REST API Development", "description": "Building and consuming RESTful web services" },
-                    { "name": "GraphQL", "description": "Implementing flexible data query interfaces" },
-                    { "name": "Webhook Systems", "description": "Creating event-driven communication systems" }
+                    {
+                      "name": "REST API Development",
+                      "description": "Building and consuming RESTful web services"
+                    },
+                    {
+                      "name": "GraphQL",
+                      "description": "Implementing flexible data query interfaces"
+                    },
+                    {
+                      "name": "Webhook Systems",
+                      "description": "Creating event-driven communication systems"
+                    }
                   ]
                 }
               ]
@@ -85,9 +124,18 @@
                   "name": "Data Retrieval",
                   "description": "Efficient extraction and preprocessing of data",
                   "subskills": [
-                    { "name": "Database Optimization", "description": "Optimizing query performance for large datasets" },
-                    { "name": "Caching Strategies", "description": "Implementing intelligent data caching for faster access" },
-                    { "name": "Data Validation", "description": "Ensuring data quality and consistency" }
+                    {
+                      "name": "Database Optimization",
+                      "description": "Optimizing query performance for large datasets"
+                    },
+                    {
+                      "name": "Caching Strategies",
+                      "description": "Implementing intelligent data caching for faster access"
+                    },
+                    {
+                      "name": "Data Validation",
+                      "description": "Ensuring data quality and consistency"
+                    }
                   ]
                 }
               ]
@@ -106,11 +154,14 @@
       ]
     },
     {
+      "id": "ai-engineer-phs",
       "slug": "ai-engineer-phs",
       "header": {
         "title": "Artificial Intelligence Engineer",
         "company": "Pishro Hooshmand Sepahan",
         "period": "Jan 2025 – Jun 2025",
+        "start": "2025-01",
+        "end": "2025-06",
         "location": "Isfahan, Iran",
         "type": "Part-time"
       },
@@ -141,18 +192,36 @@
                   "name": "Time Series Analysis",
                   "description": "Analyzing sensor data patterns for predictive insights",
                   "subskills": [
-                    { "name": "LSTM Networks", "description": "Long Short-Term Memory networks for sequence prediction" },
-                    { "name": "ARIMA Modeling", "description": "Statistical time series forecasting methods" },
-                    { "name": "Anomaly Detection", "description": "Identifying unusual patterns in sensor readings" }
+                    {
+                      "name": "LSTM Networks",
+                      "description": "Long Short-Term Memory networks for sequence prediction"
+                    },
+                    {
+                      "name": "ARIMA Modeling",
+                      "description": "Statistical time series forecasting methods"
+                    },
+                    {
+                      "name": "Anomaly Detection",
+                      "description": "Identifying unusual patterns in sensor readings"
+                    }
                   ]
                 },
                 {
                   "name": "Fault Diagnosis",
                   "description": "Automated detection and classification of system failures",
                   "subskills": [
-                    { "name": "Signal Processing", "description": "Preprocessing noisy industrial sensor data" },
-                    { "name": "Feature Engineering", "description": "Extracting meaningful features from raw sensor data" },
-                    { "name": "Classification Models", "description": "Categorizing different types of equipment failures" }
+                    {
+                      "name": "Signal Processing",
+                      "description": "Preprocessing noisy industrial sensor data"
+                    },
+                    {
+                      "name": "Feature Engineering",
+                      "description": "Extracting meaningful features from raw sensor data"
+                    },
+                    {
+                      "name": "Classification Models",
+                      "description": "Categorizing different types of equipment failures"
+                    }
                   ]
                 }
               ]
@@ -165,18 +234,36 @@
                   "name": "Sensor Integration",
                   "description": "Connecting and managing industrial sensor networks",
                   "subskills": [
-                    { "name": "MQTT Protocol", "description": "Lightweight messaging for IoT device communication" },
-                    { "name": "Edge Computing", "description": "Processing data close to sensor sources" },
-                    { "name": "Data Acquisition", "description": "Real-time collection of industrial sensor data" }
+                    {
+                      "name": "MQTT Protocol",
+                      "description": "Lightweight messaging for IoT device communication"
+                    },
+                    {
+                      "name": "Edge Computing",
+                      "description": "Processing data close to sensor sources"
+                    },
+                    {
+                      "name": "Data Acquisition",
+                      "description": "Real-time collection of industrial sensor data"
+                    }
                   ]
                 },
                 {
                   "name": "Industrial Protocols",
                   "description": "Communication standards for industrial automation",
                   "subskills": [
-                    { "name": "Modbus", "description": "Serial communication protocol for industrial devices" },
-                    { "name": "OPC UA", "description": "Machine-to-machine communication for industrial automation" },
-                    { "name": "Profinet", "description": "Ethernet-based fieldbus for industrial automation" }
+                    {
+                      "name": "Modbus",
+                      "description": "Serial communication protocol for industrial devices"
+                    },
+                    {
+                      "name": "OPC UA",
+                      "description": "Machine-to-machine communication for industrial automation"
+                    },
+                    {
+                      "name": "Profinet",
+                      "description": "Ethernet-based fieldbus for industrial automation"
+                    }
                   ]
                 }
               ]
@@ -189,9 +276,18 @@
                   "name": "Supervised Learning",
                   "description": "Training models on labeled industrial data",
                   "subskills": [
-                    { "name": "Random Forest", "description": "Ensemble method for robust predictions" },
-                    { "name": "Support Vector Machines", "description": "Classification for complex industrial patterns" },
-                    { "name": "Gradient Boosting", "description": "Iterative improvement of prediction accuracy" }
+                    {
+                      "name": "Random Forest",
+                      "description": "Ensemble method for robust predictions"
+                    },
+                    {
+                      "name": "Support Vector Machines",
+                      "description": "Classification for complex industrial patterns"
+                    },
+                    {
+                      "name": "Gradient Boosting",
+                      "description": "Iterative improvement of prediction accuracy"
+                    }
                   ]
                 }
               ]
@@ -201,11 +297,14 @@
       ]
     },
     {
+      "id": "embedded-engineer-kian-pardaz",
       "slug": "embedded-engineer-kian-pardaz",
       "header": {
         "title": "Embedded Systems Engineer",
         "company": "Kian Pardaz ICT",
         "period": "May 2023 – Sep 2024",
+        "start": "2023-05",
+        "end": "2024-09",
         "location": "Isfahan, Iran",
         "type": "Full-time"
       },
@@ -236,18 +335,36 @@
                   "name": "Real-Time Systems",
                   "description": "Developing time-critical embedded applications",
                   "subskills": [
-                    { "name": "RTOS", "description": "Real-Time Operating Systems for deterministic behavior" },
-                    { "name": "Interrupt Handling", "description": "Managing hardware interrupts efficiently" },
-                    { "name": "Task Scheduling", "description": "Prioritizing and scheduling concurrent tasks" }
+                    {
+                      "name": "RTOS",
+                      "description": "Real-Time Operating Systems for deterministic behavior"
+                    },
+                    {
+                      "name": "Interrupt Handling",
+                      "description": "Managing hardware interrupts efficiently"
+                    },
+                    {
+                      "name": "Task Scheduling",
+                      "description": "Prioritizing and scheduling concurrent tasks"
+                    }
                   ]
                 },
                 {
                   "name": "Hardware Interfaces",
                   "description": "Programming hardware communication protocols",
                   "subskills": [
-                    { "name": "SPI/I2C", "description": "Serial communication protocols for peripherals" },
-                    { "name": "UART", "description": "Universal Asynchronous Receiver-Transmitter communication" },
-                    { "name": "GPIO Control", "description": "General Purpose Input/Output pin management" }
+                    {
+                      "name": "SPI/I2C",
+                      "description": "Serial communication protocols for peripherals"
+                    },
+                    {
+                      "name": "UART",
+                      "description": "Universal Asynchronous Receiver-Transmitter communication"
+                    },
+                    {
+                      "name": "GPIO Control",
+                      "description": "General Purpose Input/Output pin management"
+                    }
                   ]
                 }
               ]
@@ -260,18 +377,36 @@
                   "name": "Motion Control",
                   "description": "Precise control of 3D printer movement systems",
                   "subskills": [
-                    { "name": "Stepper Motors", "description": "Controlling precise positioning motors" },
-                    { "name": "G-code Processing", "description": "Interpreting and executing 3D printing commands" },
-                    { "name": "Path Planning", "description": "Optimizing print head movement trajectories" }
+                    {
+                      "name": "Stepper Motors",
+                      "description": "Controlling precise positioning motors"
+                    },
+                    {
+                      "name": "G-code Processing",
+                      "description": "Interpreting and executing 3D printing commands"
+                    },
+                    {
+                      "name": "Path Planning",
+                      "description": "Optimizing print head movement trajectories"
+                    }
                   ]
                 },
                 {
                   "name": "Thermal Management",
                   "description": "Temperature control for metal 3D printing",
                   "subskills": [
-                    { "name": "PID Control", "description": "Proportional-Integral-Derivative temperature regulation" },
-                    { "name": "Thermal Sensors", "description": "Reading and calibrating temperature sensors" },
-                    { "name": "Heat Zones", "description": "Managing multiple heating zones simultaneously" }
+                    {
+                      "name": "PID Control",
+                      "description": "Proportional-Integral-Derivative temperature regulation"
+                    },
+                    {
+                      "name": "Thermal Sensors",
+                      "description": "Reading and calibrating temperature sensors"
+                    },
+                    {
+                      "name": "Heat Zones",
+                      "description": "Managing multiple heating zones simultaneously"
+                    }
                   ]
                 }
               ]
@@ -284,9 +419,18 @@
                   "name": "Control Systems",
                   "description": "Automated control of industrial processes",
                   "subskills": [
-                    { "name": "PLC Programming", "description": "Programmable Logic Controller automation" },
-                    { "name": "HMI Development", "description": "Human-Machine Interface design" },
-                    { "name": "Safety Systems", "description": "Implementing industrial safety protocols" }
+                    {
+                      "name": "PLC Programming",
+                      "description": "Programmable Logic Controller automation"
+                    },
+                    {
+                      "name": "HMI Development",
+                      "description": "Human-Machine Interface design"
+                    },
+                    {
+                      "name": "Safety Systems",
+                      "description": "Implementing industrial safety protocols"
+                    }
                   ]
                 }
               ]
@@ -296,11 +440,14 @@
       ]
     },
     {
+      "id": "image-processing-robotics-iut",
       "slug": "image-processing-robotics-iut",
       "header": {
         "title": "Image Processing in Robotics",
         "company": "Advanced Robotics and Mechatronics Laboratory, IUT",
         "period": "Jan 2022 – Aug 2022",
+        "start": "2022-01",
+        "end": "2022-08",
         "location": "Isfahan University of Technology",
         "type": "Research Position"
       },
@@ -331,18 +478,36 @@
                   "name": "Object Detection",
                   "description": "Identifying and locating objects in images",
                   "subskills": [
-                    { "name": "OpenCV", "description": "Comprehensive computer vision library" },
-                    { "name": "Contour Analysis", "description": "Shape detection and boundary analysis" },
-                    { "name": "Feature Matching", "description": "Identifying distinctive image features" }
+                    {
+                      "name": "OpenCV",
+                      "description": "Comprehensive computer vision library"
+                    },
+                    {
+                      "name": "Contour Analysis",
+                      "description": "Shape detection and boundary analysis"
+                    },
+                    {
+                      "name": "Feature Matching",
+                      "description": "Identifying distinctive image features"
+                    }
                   ]
                 },
                 {
                   "name": "Image Preprocessing",
                   "description": "Enhancing image quality for better analysis",
                   "subskills": [
-                    { "name": "Noise Reduction", "description": "Filtering unwanted image distortions" },
-                    { "name": "Edge Detection", "description": "Identifying object boundaries and edges" },
-                    { "name": "Morphological Operations", "description": "Shape-based image processing techniques" }
+                    {
+                      "name": "Noise Reduction",
+                      "description": "Filtering unwanted image distortions"
+                    },
+                    {
+                      "name": "Edge Detection",
+                      "description": "Identifying object boundaries and edges"
+                    },
+                    {
+                      "name": "Morphological Operations",
+                      "description": "Shape-based image processing techniques"
+                    }
                   ]
                 }
               ]
@@ -355,18 +520,36 @@
                   "name": "Robot Vision",
                   "description": "Integrating cameras with robotic systems",
                   "subskills": [
-                    { "name": "Camera Calibration", "description": "Correcting lens distortion and perspective" },
-                    { "name": "Stereo Vision", "description": "3D depth perception using multiple cameras" },
-                    { "name": "Visual Servoing", "description": "Using vision feedback for robot control" }
+                    {
+                      "name": "Camera Calibration",
+                      "description": "Correcting lens distortion and perspective"
+                    },
+                    {
+                      "name": "Stereo Vision",
+                      "description": "3D depth perception using multiple cameras"
+                    },
+                    {
+                      "name": "Visual Servoing",
+                      "description": "Using vision feedback for robot control"
+                    }
                   ]
                 },
                 {
                   "name": "Real-Time Processing",
                   "description": "Optimizing algorithms for real-time robotic applications",
                   "subskills": [
-                    { "name": "Algorithm Optimization", "description": "Improving computational efficiency" },
-                    { "name": "Parallel Processing", "description": "Utilizing multiple CPU cores for faster processing" },
-                    { "name": "Memory Management", "description": "Efficient handling of image data in memory" }
+                    {
+                      "name": "Algorithm Optimization",
+                      "description": "Improving computational efficiency"
+                    },
+                    {
+                      "name": "Parallel Processing",
+                      "description": "Utilizing multiple CPU cores for faster processing"
+                    },
+                    {
+                      "name": "Memory Management",
+                      "description": "Efficient handling of image data in memory"
+                    }
                   ]
                 }
               ]
@@ -379,9 +562,18 @@
                   "name": "Experimental Design",
                   "description": "Planning and conducting robotics experiments",
                   "subskills": [
-                    { "name": "Data Collection", "description": "Systematic gathering of experimental data" },
-                    { "name": "Statistical Analysis", "description": "Analyzing experimental results" },
-                    { "name": "Documentation", "description": "Recording and presenting research findings" }
+                    {
+                      "name": "Data Collection",
+                      "description": "Systematic gathering of experimental data"
+                    },
+                    {
+                      "name": "Statistical Analysis",
+                      "description": "Analyzing experimental results"
+                    },
+                    {
+                      "name": "Documentation",
+                      "description": "Recording and presenting research findings"
+                    }
                   ]
                 }
               ]

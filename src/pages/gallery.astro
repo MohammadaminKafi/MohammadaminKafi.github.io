@@ -1,17 +1,37 @@
 ---
+import { content } from "../content/data";
 import Layout from "../layouts/Layout.astro";
-import gallery from "../data/gallery.json";
 ---
-<Layout title="Gallery — Mohammadamin Kafi">
-  <section class="space-y-4">
-    <h1 class="text-2xl font-bold">Gallery</h1>
-    <ul class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {gallery.items?.map((g, i) => (
-        <li class="card overflow-hidden" key={i}>
-          <img src={g.src} alt={g.alt || 'image'} class="w-full h-56 object-cover"/>
-          {g.caption && <div class="p-3 text-sm text-zinc-700 dark:text-zinc-300">{g.caption}</div>}
-        </li>
-      ))}
-    </ul>
-  </section>
+
+<Layout
+  title="Gallery — Mohammadamin Kafi"
+  description="A visual gallery of generated aurora studies for Mohammadamin Kafi's resume website."
+>
+  <header class="page-heading">
+    <p class="eyebrow">Visual studies</p>
+    <h1>Three perspectives, one atmosphere.</h1>
+    <p>
+      Abstract aurora studies for the Balanced, Job, and Academic modes. These
+      are generated decorative works, not documentary photographs.
+    </p>
+  </header>
+  <div class="gallery-grid">
+    {
+      content.gallery.map((item) => (
+        <figure class="gallery-card">
+          <img
+            src={item.src}
+            alt={item.alt}
+            width={item.width}
+            height={item.height}
+            loading="lazy"
+          />
+          <figcaption>
+            <span>{item.caption}</span>
+            {item.generated && <small>Generated artwork</small>}
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
 </Layout>

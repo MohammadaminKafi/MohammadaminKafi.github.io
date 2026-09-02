@@ -1,33 +1,32 @@
 # syntax=docker/dockerfile:1
 
-# Base layer with dependencies installed
-FROM node:20-alpine AS base
+FROM node:22.23.2-alpine AS base
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Install deps first for better Docker layer caching
-COPY package*.json ./
-RUN npm install --loglevel verbose
-
-# Copy the rest of the project
-COPY . .
-
-# Expose dev port
-EXPOSE 4321
-
-# Development target (hot reload)
 FROM base AS dev
-ENV NODE_ENV=development \
-    CHOKIDAR_USEPOLLING=true \
-    WATCHPACK_POLLING=true
-# "-- --host" ensures the dev server binds to 0.0.0.0 inside the container
-CMD ["npm","run","dev"]
+COPY . .
+EXPOSE 4321
+CMD ["npm", "run", "dev"]
 
-# Build target
+FROM base AS test
+COPY . .
+CMD ["npm", "run", "check"]
+
+FROM mcr.microsoft.com/playwright:v1.62.1-noble AS e2e
+WORKDIR /work
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+CMD ["npm", "run", "test:e2e"]
+
 FROM base AS build
+COPY . .
 RUN npm run build
 
-# Production image: serve static files with Nginx
-FROM nginx:alpine AS prod
+FROM nginx:1.29-alpine AS preview
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
-CMD ["nginx","-g","daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
