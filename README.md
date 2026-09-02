@@ -1,6 +1,6 @@
 # Mohammadamin Kafi — Resume Website
 
-A static, responsive resume and portfolio built with Astro, React, HeroUI v3, TypeScript, and Tailwind CSS 4. It supports three shareable profile modes—Balanced, Job, and Academic—plus live-project pages, resume history, gallery artwork, and detailed experience and education routes.
+A static, responsive resume and portfolio built with Astro, React, HeroUI v3, TypeScript, and Tailwind CSS 4. It contains three independent artistic worlds—an Isfahan-inspired garden, a Gothic-inspired professional cathedral, and a speculative knowledge atlas—plus live-project pages, resume history, gallery artwork, and detailed experience and education routes.
 
 ## Run with Docker
 
@@ -33,14 +33,14 @@ With Node 22.23.2 or newer, the equivalent commands are `npm ci`, `npm run dev`,
 - `/jobs/[slug]/` — experience detail
 - `/education/[slug]/` — education and coursework detail
 
-Mode and section state are shareable, for example `/?mode=academic&section=teaching`. The URL takes priority over the saved preference; first-time visits use Balanced and dark mode.
+Mode and section state are shareable, for example `/?mode=academic&section=teaching`. The URL takes priority over the saved preference; first-time visits use the luminous Balanced world. Each mode owns its atmosphere, composition, navigation, type system, and responsive behavior; there is intentionally no global light/dark switch.
 
 ## Content editing
 
 Content lives in `src/data/` and is checked before every build. Invalid URLs, duplicate IDs or slugs, missing files, zero-byte PDFs, and an invalid current-resume count fail with a readable error.
 
 - `personal.json` — identity, contact links, profile image, and baseline summary
-- `modes.json` — mode labels, hero copy, default tab, and tab order
+- `modes.json` — artistic identity, fixed atmosphere, hero copy, default tab, and tab order
 - `jobs-details.json` — the single source for job summaries and detail pages
 - `education-details.json` — the single source for education summaries and details
 - `projects.json`, `teaching.json`, and skill JSON files — resume sections

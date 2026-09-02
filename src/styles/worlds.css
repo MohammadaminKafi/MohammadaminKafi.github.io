@@ -1,0 +1,3267 @@
+@import "@fontsource-variable/cormorant-garamond";
+@import "@fontsource-variable/cinzel";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* Three deliberately independent art directions share data, never composition. */
+:root[data-mode="balanced"] {
+  color-scheme: light;
+  --bg: #f4ead3;
+  --bg-raised: #e8ddc1;
+  --surface: rgba(255, 250, 232, 0.92);
+  --surface-solid: #fbf2dc;
+  --surface-soft: rgba(219, 235, 211, 0.82);
+  --text: #102f38;
+  --muted: #576c67;
+  --line: rgba(17, 106, 114, 0.22);
+  --line-strong: rgba(16, 43, 99, 0.4);
+  --accent: #117b78;
+  --accent-strong: #102b63;
+  --accent-soft: rgba(21, 157, 150, 0.12);
+  --accent-two: #b02857;
+  --glow-one: rgba(21, 157, 150, 0.18);
+  --glow-two: rgba(176, 40, 87, 0.12);
+  --grid: rgba(16, 43, 99, 0.06);
+  --shadow: 0 28px 80px rgba(58, 48, 28, 0.15);
+  --radius: 4px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+:root[data-mode="job"] {
+  color-scheme: dark;
+  --bg: #090711;
+  --bg-raised: #110e1a;
+  --surface: rgba(18, 14, 29, 0.94);
+  --surface-solid: #100d18;
+  --surface-soft: rgba(35, 26, 48, 0.88);
+  --text: #e7dfcd;
+  --muted: #a69daf;
+  --line: rgba(217, 201, 162, 0.2);
+  --line-strong: rgba(217, 201, 162, 0.44);
+  --accent: #59d8f2;
+  --accent-strong: #4d49bd;
+  --accent-soft: rgba(89, 216, 242, 0.11);
+  --accent-two: #c13a67;
+  --glow-one: rgba(85, 214, 255, 0.18);
+  --glow-two: rgba(165, 46, 89, 0.18);
+  --grid: rgba(217, 201, 162, 0.05);
+  --shadow: 0 38px 100px rgba(0, 0, 0, 0.55);
+  --radius: 0;
+  font-family: "Cormorant Garamond Variable", Georgia, serif;
+}
+
+:root[data-mode="academic"] {
+  color-scheme: dark;
+  --bg: #070611;
+  --bg-raised: #0e0c20;
+  --surface: rgba(15, 13, 34, 0.9);
+  --surface-solid: #0d0b1d;
+  --surface-soft: rgba(31, 24, 63, 0.78);
+  --text: #f4f1ff;
+  --muted: #aaa5c2;
+  --line: rgba(120, 246, 209, 0.2);
+  --line-strong: rgba(87, 199, 255, 0.45);
+  --accent: #78f6d1;
+  --accent-strong: #57c7ff;
+  --accent-soft: rgba(120, 246, 209, 0.1);
+  --accent-two: #ff637d;
+  --glow-one: rgba(154, 104, 255, 0.22);
+  --glow-two: rgba(120, 246, 209, 0.15);
+  --grid: rgba(87, 199, 255, 0.07);
+  --shadow: 0 30px 100px rgba(1, 0, 17, 0.55);
+  --radius: 0;
+  font-family: "Space Grotesk Variable", ui-sans-serif, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+}
+
+html[data-mode="balanced"] body {
+  background:
+    linear-gradient(90deg, transparent 49.9%, rgba(16, 43, 99, 0.06) 50%),
+    linear-gradient(#f4ead3, #f7f0dd 56%, #eee1c5);
+  background-size:
+    100% 100%,
+    auto;
+}
+
+html[data-mode="job"] body {
+  background:
+    radial-gradient(
+      circle at 72% 18%,
+      rgba(77, 73, 189, 0.14),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 18% 48%,
+      rgba(193, 58, 103, 0.1),
+      transparent 23%
+    ),
+    linear-gradient(90deg, #08060e, #0d0914 50%, #08060e);
+}
+
+html[data-mode="academic"] body {
+  background:
+    radial-gradient(
+      circle at 78% 14%,
+      rgba(154, 104, 255, 0.17),
+      transparent 31%
+    ),
+    radial-gradient(circle at 9% 64%, rgba(255, 99, 125, 0.1), transparent 26%),
+    #070611;
+}
+
+.world-canvas {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.world-art {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+html[data-mode="balanced"] .world-art-garden,
+html[data-mode="job"] .world-art-cathedral,
+html[data-mode="academic"] .world-art-tomorrow {
+  opacity: 1;
+}
+
+.garden-vault {
+  position: absolute;
+  width: min(52vw, 720px);
+  aspect-ratio: 1;
+  top: -22vw;
+  left: 50%;
+  border-radius: 50%;
+  background:
+    linear-gradient(rgba(244, 234, 211, 0.18), rgba(244, 234, 211, 0.78)),
+    url("/art/isfahan-garden.svg") center / 360px;
+  box-shadow: 0 0 0 1px rgba(16, 43, 99, 0.14);
+  transform: translateX(-50%);
+  opacity: 0.5;
+}
+
+.garden-axis {
+  position: absolute;
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  background: linear-gradient(
+    transparent,
+    rgba(17, 106, 114, 0.28) 18%,
+    rgba(17, 106, 114, 0.1) 74%,
+    transparent
+  );
+}
+
+.garden-rosette {
+  position: absolute;
+  width: 330px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: url("/art/isfahan-garden.svg") center / cover;
+  mix-blend-mode: multiply;
+  opacity: 0.12;
+}
+
+.garden-rosette-one {
+  top: 35vh;
+  left: -170px;
+  transform: rotate(18deg);
+}
+
+.garden-rosette-two {
+  right: -180px;
+  bottom: 4vh;
+  transform: rotate(-22deg);
+}
+
+.cathedral-window {
+  position: absolute;
+  width: min(74vw, 960px);
+  aspect-ratio: 1;
+  top: -150px;
+  left: 50%;
+  background: url("/art/gothic-tracery.svg") center top / contain no-repeat;
+  transform: translateX(-50%);
+  opacity: 0.45;
+}
+
+.cathedral-piers {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent calc(12.5% - 1px),
+    rgba(217, 201, 162, 0.06) calc(12.5% - 1px),
+    rgba(217, 201, 162, 0.06) 12.5%
+  );
+  mask-image: linear-gradient(to bottom, black, transparent 84%);
+}
+
+.cathedral-light {
+  position: absolute;
+  width: 35vw;
+  height: 90vh;
+  top: -10vh;
+  filter: blur(80px);
+  opacity: 0.14;
+  transform: skewX(-16deg);
+}
+
+.cathedral-light-one {
+  left: 8vw;
+  background: #55d6ff;
+}
+
+.cathedral-light-two {
+  right: 4vw;
+  background: #a52e59;
+}
+
+.tomorrow-orbit {
+  position: absolute;
+  width: min(96vw, 1500px);
+  aspect-ratio: 3 / 2;
+  top: -4vw;
+  right: -18vw;
+  background: url("/art/tomorrow-orbit.svg") center / contain no-repeat;
+  opacity: 0.45;
+  animation: orbit-breathe 12s ease-in-out infinite alternate;
+}
+
+.tomorrow-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(87, 199, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 199, 255, 0.07) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: linear-gradient(
+    115deg,
+    transparent 4%,
+    black 48%,
+    transparent 92%
+  );
+  transform: perspective(700px) rotateX(58deg) scale(1.6) translateY(22%);
+  transform-origin: center bottom;
+}
+
+.tomorrow-scan {
+  position: absolute;
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  left: 17%;
+  background: linear-gradient(transparent, #78f6d1, transparent);
+  box-shadow: 0 0 32px #78f6d1;
+  opacity: 0.35;
+  animation: scan-world 11s linear infinite;
+}
+
+@keyframes orbit-breathe {
+  to {
+    transform: translate(-2vw, 2vw) rotate(4deg) scale(1.04);
+  }
+}
+
+@keyframes scan-world {
+  50% {
+    left: 82%;
+  }
+}
+
+/* Target-specific scene changes deliberately obscure the midpoint. */
+.scene-transition {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  pointer-events: none;
+}
+
+.transition-world {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+
+html[data-transitioning="true"] .scene-transition {
+  pointer-events: auto;
+}
+
+html[data-transitioning="true"][data-transition-to="balanced"]
+  .transition-garden,
+html[data-transitioning="true"][data-transition-to="job"] .transition-cathedral,
+html[data-transitioning="true"][data-transition-to="academic"]
+  .transition-tomorrow {
+  display: block;
+}
+
+.transition-garden {
+  background:
+    linear-gradient(rgba(244, 234, 211, 0.76), rgba(244, 234, 211, 0.96)),
+    url("/art/isfahan-garden.svg") center / 260px;
+  clip-path: circle(0 at 50% 50%);
+  animation: garden-aperture 0.9s ease-in-out both;
+}
+
+.transition-garden span {
+  position: absolute;
+  width: 24vmin;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  border: 2px solid #102b63;
+  transform: translate(-50%, -50%) rotate(22.5deg);
+  opacity: 0;
+  animation: garden-star 0.9s ease-in-out both;
+}
+
+.transition-garden span:nth-child(2) {
+  width: 40vmin;
+  border-color: #159d96;
+  animation-delay: 0.04s;
+}
+
+.transition-garden span:nth-child(3) {
+  width: 58vmin;
+  border-color: #b02857;
+  animation-delay: 0.08s;
+}
+
+.transition-cathedral {
+  overflow: hidden;
+}
+
+.transition-cathedral::after {
+  content: "";
+  position: absolute;
+  width: 46vmin;
+  aspect-ratio: 0.74;
+  top: 50%;
+  left: 50%;
+  background: url("/art/gothic-tracery.svg") center / cover;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: cathedral-sigil 0.9s ease-in-out both;
+}
+
+.transition-cathedral span {
+  position: absolute;
+  width: 51%;
+  height: 100%;
+  top: 0;
+  background: #090711;
+  box-shadow: inset 0 0 90px rgba(85, 214, 255, 0.11);
+}
+
+.transition-cathedral span:first-child {
+  left: -51%;
+  border-right: 1px solid #d9c9a2;
+  animation: shutter-left 0.9s ease-in-out both;
+}
+
+.transition-cathedral span:last-child {
+  right: -51%;
+  border-left: 1px solid #d9c9a2;
+  animation: shutter-right 0.9s ease-in-out both;
+}
+
+.transition-tomorrow {
+  overflow: hidden;
+  background: rgba(7, 6, 17, 0);
+  animation: future-field 0.9s steps(1, end) both;
+}
+
+.transition-tomorrow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/art/tomorrow-orbit.svg") center / min(1200px, 120vw)
+    no-repeat;
+  opacity: 0;
+  animation: future-orbit 0.9s ease both;
+}
+
+.transition-tomorrow span {
+  position: absolute;
+  height: 34%;
+  left: -110%;
+  right: 110%;
+  background: linear-gradient(90deg, #070611, #1b1242 70%, #78f6d1);
+  box-shadow: 0 0 38px #78f6d1;
+  animation: future-slice 0.9s cubic-bezier(0.7, 0, 0.3, 1) both;
+}
+
+.transition-tomorrow span:nth-child(2) {
+  top: 33%;
+  animation-delay: 0.04s;
+}
+
+.transition-tomorrow span:nth-child(3) {
+  top: 66%;
+  animation-delay: 0.08s;
+}
+
+@keyframes garden-aperture {
+  0%,
+  100% {
+    clip-path: circle(0 at 50% 50%);
+  }
+  42%,
+  58% {
+    clip-path: circle(75% at 50% 50%);
+  }
+}
+
+@keyframes garden-star {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0) scale(0.5);
+  }
+  42%,
+  58% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) rotate(67.5deg) scale(1);
+  }
+}
+
+@keyframes shutter-left {
+  0%,
+  100% {
+    left: -51%;
+  }
+  42%,
+  58% {
+    left: 0;
+  }
+}
+
+@keyframes shutter-right {
+  0%,
+  100% {
+    right: -51%;
+  }
+  42%,
+  58% {
+    right: 0;
+  }
+}
+
+@keyframes cathedral-sigil {
+  36%,
+  64% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes future-field {
+  42%,
+  58% {
+    background: #070611;
+  }
+}
+
+@keyframes future-slice {
+  0%,
+  100% {
+    left: -110%;
+    right: 110%;
+  }
+  42%,
+  58% {
+    left: 0;
+    right: 0;
+  }
+}
+
+@keyframes future-orbit {
+  35%,
+  65% {
+    opacity: 0.7;
+    transform: rotate(12deg) scale(1.06);
+  }
+}
+
+/* Header: pavilion, facade, and instrument. */
+.header-ornament {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+html[data-mode="balanced"] .site-header {
+  border-bottom: 3px double rgba(16, 43, 99, 0.28);
+  background:
+    linear-gradient(rgba(251, 242, 220, 0.95), rgba(244, 234, 211, 0.9)),
+    url("/art/isfahan-garden.svg") center / 180px;
+  box-shadow: 0 7px 0 rgba(17, 123, 120, 0.08);
+}
+
+html[data-mode="balanced"] .header-inner {
+  min-height: 82px;
+}
+
+html[data-mode="balanced"] .brand-mark {
+  width: 43px;
+  height: 43px;
+  border: 0;
+  border-radius: 50%;
+  color: #f4ead3;
+  background:
+    radial-gradient(circle, #b02857 0 18%, transparent 19%),
+    conic-gradient(
+      from 22.5deg,
+      #102b63 0 12.5%,
+      #159d96 0 25%,
+      #102b63 0 37.5%,
+      #d29b32 0 50%,
+      #102b63 0 62.5%,
+      #159d96 0 75%,
+      #102b63 0 87.5%,
+      #d29b32 0
+    );
+  box-shadow:
+    0 0 0 3px #f4ead3,
+    0 0 0 4px #117b78;
+  font-family: "Space Grotesk Variable", sans-serif;
+}
+
+html[data-mode="balanced"] .brand-copy strong {
+  color: #102b63;
+  font-family: "Cormorant Garamond Variable", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+html[data-mode="balanced"] .mode-control-wrap {
+  border: 1px solid rgba(16, 43, 99, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 250, 232, 0.85);
+  box-shadow: inset 0 0 0 3px rgba(21, 157, 150, 0.06);
+}
+
+html[data-mode="balanced"] .mode-toggle {
+  border-radius: 999px !important;
+  font-family: "Cormorant Garamond Variable", Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+html[data-mode="balanced"] .mode-toggle[data-selected="true"] {
+  color: #f4ead3 !important;
+  background: #102b63 !important;
+  box-shadow: inset 0 0 0 1px #d29b32 !important;
+}
+
+html[data-mode="job"] .site-header {
+  border-bottom: 1px solid rgba(217, 201, 162, 0.35);
+  background: rgba(9, 7, 17, 0.93);
+  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.32);
+}
+
+html[data-mode="job"] .header-inner {
+  min-height: 126px;
+  grid-template-rows: 62px 54px;
+}
+
+html[data-mode="job"] .brand {
+  grid-row: 1;
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+html[data-mode="job"] .brand-mark {
+  width: 38px;
+  height: 48px;
+  border-radius: 50% 50% 2px 2px / 38% 38% 2px 2px;
+  color: #090711;
+  background: linear-gradient(160deg, #e7dfcd, #9e8f70);
+  box-shadow: 0 0 24px rgba(89, 216, 242, 0.2);
+  font-family: "Cinzel Variable", serif;
+}
+
+html[data-mode="job"] .brand-copy {
+  align-items: center;
+}
+
+html[data-mode="job"] .brand-copy strong {
+  font-family: "Cinzel Variable", serif;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+html[data-mode="job"] .mode-control-wrap {
+  grid-row: 2;
+  grid-column: 1;
+  justify-self: start;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+html[data-mode="job"] .mode-toggle {
+  border-bottom: 1px solid rgba(217, 201, 162, 0.24) !important;
+  border-radius: 0 !important;
+  font-family: "Cinzel Variable", serif;
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+html[data-mode="job"] .mode-toggle[data-selected="true"] {
+  color: #e7dfcd !important;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(89, 216, 242, 0.1)
+  ) !important;
+  box-shadow: inset 0 -2px #59d8f2 !important;
+}
+
+html[data-mode="job"] .desktop-nav {
+  grid-row: 2;
+  grid-column: 3;
+}
+
+html[data-mode="job"] .header-ornament::before,
+html[data-mode="job"] .header-ornament::after {
+  content: "";
+  position: absolute;
+  width: 36%;
+  height: 95px;
+  bottom: -65px;
+  border: 1px solid rgba(217, 201, 162, 0.15);
+  border-radius: 50% 50% 0 0;
+}
+
+html[data-mode="job"] .header-ornament::before {
+  left: 4%;
+}
+
+html[data-mode="job"] .header-ornament::after {
+  right: 4%;
+}
+
+html[data-mode="academic"] .site-header {
+  width: min(1420px, calc(100% - 32px));
+  top: 12px;
+  margin: 0 auto;
+  border: 1px solid rgba(87, 199, 255, 0.32);
+  background: rgba(10, 8, 25, 0.84);
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.38),
+    inset 0 0 40px rgba(154, 104, 255, 0.05);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 22px) 0,
+    100% 22px,
+    100% 100%,
+    22px 100%,
+    0 calc(100% - 22px)
+  );
+}
+
+html[data-mode="academic"] .header-inner {
+  width: 100%;
+  min-height: 68px;
+  padding: 0 18px;
+}
+
+html[data-mode="academic"] .brand-mark {
+  width: 42px;
+  border-radius: 0;
+  border-color: #78f6d1;
+  color: #78f6d1;
+  background:
+    linear-gradient(135deg, rgba(120, 246, 209, 0.16), transparent), #0d0b1d;
+  clip-path: polygon(0 0, 75% 0, 100% 25%, 100% 100%, 25% 100%, 0 75%);
+  font-family: "JetBrains Mono Variable", monospace;
+}
+
+html[data-mode="academic"] .brand-copy strong {
+  font-family: "Space Grotesk Variable", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.035em;
+}
+
+html[data-mode="academic"] .brand-copy small,
+html[data-mode="academic"] .eyebrow {
+  font-family: "JetBrains Mono Variable", monospace;
+}
+
+html[data-mode="academic"] .mode-control-wrap {
+  border-radius: 0;
+  border-color: rgba(120, 246, 209, 0.24);
+  background: rgba(13, 11, 29, 0.75);
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+html[data-mode="academic"] .mode-toggle {
+  border-radius: 0 !important;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+html[data-mode="academic"] .mode-toggle[data-selected="true"] {
+  color: #070611 !important;
+  background: #78f6d1 !important;
+  box-shadow: 0 0 22px rgba(120, 246, 209, 0.3) !important;
+}
+
+html[data-mode="academic"] .header-ornament span {
+  position: absolute;
+  height: 1px;
+  width: 15%;
+  top: 9px;
+  right: 30%;
+  background: linear-gradient(90deg, transparent, #57c7ff);
+}
+
+html[data-mode="academic"] .header-ornament span:nth-child(2) {
+  top: auto;
+  right: auto;
+  bottom: 9px;
+  left: 25%;
+  background: linear-gradient(90deg, #ff637d, transparent);
+}
+
+/* Type and stage: each world receives its own scale, alignment, and cadence. */
+html[data-mode="balanced"] .site-main {
+  width: min(1180px, calc(100% - 48px));
+  padding-top: 84px;
+}
+
+html[data-mode="balanced"]
+  :is(.hero-copy h1, .page-heading h1, .detail-hero h1, .not-found h1),
+html[data-mode="balanced"] :is(.section-intro h2, .archive-section h2) {
+  color: #102b63;
+  font-family: "Cormorant Garamond Variable", Georgia, serif;
+  font-weight: 560;
+  letter-spacing: -0.055em;
+}
+
+html[data-mode="balanced"] .eyebrow {
+  justify-content: center;
+  color: #b02857;
+  font-family: "Space Grotesk Variable", sans-serif;
+  letter-spacing: 0.2em;
+}
+
+html[data-mode="job"] .site-main {
+  width: min(1320px, calc(100% - 56px));
+  padding-top: 92px;
+}
+
+html[data-mode="job"]
+  :is(.hero-copy h1, .page-heading h1, .detail-hero h1, .not-found h1),
+html[data-mode="job"] :is(.section-intro h2, .archive-section h2),
+html[data-mode="job"]
+  :is(
+    .feature-card h3,
+    .project-card h3,
+    .education-card h3,
+    .teaching-card h3
+  ) {
+  font-family: "Cinzel Variable", serif;
+  font-weight: 520;
+}
+
+html[data-mode="job"] .eyebrow {
+  color: #d9c9a2;
+  font-family: "Cinzel Variable", serif;
+  letter-spacing: 0.21em;
+}
+
+html[data-mode="academic"] .site-main {
+  width: min(1420px, calc(100% - 48px));
+  padding-top: 104px;
+}
+
+html[data-mode="academic"]
+  :is(.hero-copy h1, .page-heading h1, .detail-hero h1, .not-found h1),
+html[data-mode="academic"] :is(.section-intro h2, .archive-section h2) {
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-weight: 520;
+}
+
+html[data-mode="academic"] .eyebrow {
+  color: #78f6d1;
+  font-family: "JetBrains Mono Variable", monospace;
+  letter-spacing: 0.16em;
+}
+
+/* Balanced hero — a quiet ceremonial courtyard with an iwan portrait. */
+.profile-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.profile-hero .action,
+.mode-toggle {
+  transition-property: transform !important;
+}
+
+.hero-ornament,
+.hero-ornament > div {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-ornament > div {
+  display: none;
+}
+
+html[data-mode="balanced"] .hero-ornament-garden,
+html[data-mode="job"] .hero-ornament-cathedral,
+html[data-mode="academic"] .hero-ornament-tomorrow {
+  display: block;
+}
+
+html[data-mode="balanced"] .profile-hero {
+  min-height: 790px;
+  grid-template-columns: 1fr;
+  align-content: start;
+  justify-items: center;
+  gap: 30px;
+  padding: 95px clamp(28px, 8vw, 112px) 72px;
+  border-inline: 1px solid rgba(16, 43, 99, 0.18);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(21, 157, 150, 0.05),
+      transparent 18% 82%,
+      rgba(21, 157, 150, 0.05)
+    ),
+    linear-gradient(rgba(255, 250, 232, 0.74), rgba(244, 234, 211, 0.38));
+}
+
+html[data-mode="balanced"] .profile-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: min(780px, 78%);
+  height: 470px;
+  top: 18px;
+  left: 50%;
+  border: 1px solid rgba(16, 43, 99, 0.22);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 38% 38% 0 0;
+  background:
+    linear-gradient(rgba(244, 234, 211, 0.9), rgba(244, 234, 211, 0.24)),
+    url("/art/isfahan-garden.svg") center 18% / 310px;
+  transform: translateX(-50%);
+  opacity: 0.72;
+}
+
+html[data-mode="balanced"] .profile-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: auto 4% 32px;
+  height: 120px;
+  border-block: 1px solid rgba(17, 123, 120, 0.22);
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(17, 123, 120, 0.2),
+      transparent 65%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 88px,
+      rgba(16, 43, 99, 0.08) 89px 90px
+    );
+}
+
+html[data-mode="balanced"] .profile-hero .profile-photo-wrap {
+  max-width: 250px;
+  z-index: 2;
+}
+
+html[data-mode="balanced"] .profile-hero .profile-photo-wrap::before {
+  inset: -24px -30px -35px;
+  border: 6px double #117b78;
+  border-bottom-color: #d29b32;
+  border-radius: 50% 50% 5px 5px / 32% 32% 5px 5px;
+  background:
+    linear-gradient(rgba(255, 250, 232, 0.38), rgba(255, 250, 232, 0.92)),
+    url("/art/isfahan-garden.svg") center / 170px;
+  transform: none;
+  box-shadow:
+    0 0 0 1px #102b63,
+    0 22px 45px rgba(54, 46, 24, 0.16);
+}
+
+html[data-mode="balanced"] .profile-hero .profile-photo {
+  aspect-ratio: 4 / 5;
+  border: 2px solid #102b63;
+  border-radius: 50% 50% 3px 3px / 29% 29% 3px 3px;
+  filter: saturate(0.82) sepia(0.05) contrast(1.04);
+}
+
+html[data-mode="balanced"] .profile-hero .profile-status {
+  right: 50%;
+  bottom: -28px;
+  border: 1px solid #d29b32;
+  border-radius: 2px;
+  color: #102f38;
+  background: #fff8e6;
+  box-shadow: 4px 4px 0 rgba(16, 43, 99, 0.12);
+  transform: translateX(50%);
+}
+
+html[data-mode="balanced"] .profile-hero .hero-copy {
+  z-index: 2;
+  max-width: 900px;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+html[data-mode="balanced"] .profile-hero .hero-copy h1 {
+  max-width: 980px;
+  margin: 23px 0 2px;
+  font-size: clamp(4.7rem, 9.5vw, 8.7rem);
+  line-height: 0.77;
+}
+
+html[data-mode="balanced"] .profile-hero .hero-name {
+  margin: 17px 0 18px;
+  color: #b02857;
+  font-family: "Cormorant Garamond Variable", serif;
+  font-size: clamp(1.45rem, 2.5vw, 2.05rem);
+  font-style: italic;
+  font-weight: 600;
+}
+
+html[data-mode="balanced"] .profile-hero .hero-summary {
+  max-width: 710px;
+  color: #4f6864;
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-size: 0.98rem;
+}
+
+html[data-mode="balanced"] .profile-hero :is(.hero-actions, .contact-row) {
+  justify-content: center;
+}
+
+html[data-mode="balanced"] .profile-hero .action {
+  border-radius: 2px;
+}
+
+html[data-mode="balanced"] .profile-hero .action-primary {
+  color: #fff8e6;
+  background: #102b63;
+  border-color: #102b63;
+  box-shadow: 4px 4px 0 #d29b32;
+}
+
+.garden-arch-line {
+  position: absolute;
+  width: 86px;
+  height: 310px;
+  top: 84px;
+  border: 1px solid rgba(16, 43, 99, 0.24);
+  border-radius: 50% 50% 0 0;
+}
+
+.garden-arch-line-one {
+  left: 4%;
+}
+.garden-arch-line-two {
+  right: 4%;
+}
+
+.garden-flower {
+  position: absolute;
+  width: 74px;
+  aspect-ratio: 1;
+  bottom: 52px;
+  background: url("/art/isfahan-garden.svg") center / cover;
+  mix-blend-mode: multiply;
+  opacity: 0.48;
+}
+
+.garden-flower-one {
+  left: 9%;
+  transform: rotate(14deg);
+}
+.garden-flower-two {
+  right: 9%;
+  transform: rotate(-14deg);
+}
+
+/* Job hero — monumental facade, typographic nave, portrait lancet. */
+html[data-mode="job"] .profile-hero {
+  min-height: 745px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(290px, 0.7fr);
+  align-items: end;
+  gap: clamp(45px, 8vw, 130px);
+  padding: 105px 5% 70px;
+  border-inline: 1px solid rgba(217, 201, 162, 0.15);
+  background:
+    linear-gradient(90deg, rgba(9, 7, 17, 0.94) 0 52%, transparent 78%),
+    linear-gradient(0deg, rgba(89, 216, 242, 0.06), transparent 55%);
+  overflow: hidden;
+}
+
+html[data-mode="job"] .profile-hero::before,
+html[data-mode="job"] .profile-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 46%;
+  height: 88%;
+  top: 7%;
+  border: 1px solid rgba(217, 201, 162, 0.15);
+  border-radius: 50% 50% 0 0 / 23% 23% 0 0;
+}
+
+html[data-mode="job"] .profile-hero::before {
+  left: -19%;
+}
+html[data-mode="job"] .profile-hero::after {
+  right: -19%;
+}
+
+html[data-mode="job"] .profile-hero .hero-copy {
+  position: relative;
+  z-index: 2;
+  grid-column: 1;
+  grid-row: 1;
+  padding-bottom: 34px;
+}
+
+html[data-mode="job"] .profile-hero .hero-copy h1 {
+  max-width: 840px;
+  margin: 28px 0 19px;
+  color: #eee7d8;
+  font-size: clamp(4.6rem, 8.7vw, 9.2rem);
+  line-height: 0.78;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+  text-shadow: 0 0 50px rgba(89, 216, 242, 0.09);
+}
+
+html[data-mode="job"] .profile-hero .hero-name {
+  margin-bottom: 18px;
+  color: #59d8f2;
+  font-family: "Cormorant Garamond Variable", serif;
+  font-size: clamp(1.45rem, 2.3vw, 2.2rem);
+  font-style: italic;
+  font-weight: 480;
+}
+
+html[data-mode="job"] .profile-hero .hero-summary {
+  max-width: 630px;
+  color: #b9afbd;
+  font-size: 1.05rem;
+}
+
+html[data-mode="job"] .profile-hero .profile-photo-wrap {
+  z-index: 2;
+  max-width: 345px;
+  align-self: stretch;
+  display: flex;
+  align-items: flex-end;
+}
+
+html[data-mode="job"] .profile-hero .profile-photo-wrap::before {
+  inset: 0 -24px -28px;
+  border: 1px solid #d9c9a2;
+  border-radius: 50% 50% 0 0 / 25% 25% 0 0;
+  background:
+    radial-gradient(
+      circle at 50% 17%,
+      rgba(89, 216, 242, 0.22),
+      transparent 23%
+    ),
+    url("/art/gothic-tracery.svg") center top / 118% auto no-repeat,
+    #0e0a17;
+  transform: none;
+  box-shadow: 0 0 80px rgba(89, 216, 242, 0.08);
+}
+
+html[data-mode="job"] .profile-hero .profile-photo {
+  aspect-ratio: 3 / 5;
+  border: 0;
+  border-radius: 50% 50% 0 0 / 22% 22% 0 0;
+  box-shadow: inset 0 -60px 70px #090711;
+  filter: saturate(0.64) contrast(1.13) brightness(0.78);
+}
+
+html[data-mode="job"] .profile-hero .profile-status {
+  right: auto;
+  left: -47px;
+  bottom: 20px;
+  border-radius: 0;
+  border-color: rgba(217, 201, 162, 0.5);
+  color: #d9c9a2;
+  background: #0c0913;
+  font-family: "Cinzel Variable", serif;
+  letter-spacing: 0.07em;
+}
+
+html[data-mode="job"] .profile-hero .hero-actions {
+  gap: 0;
+}
+
+html[data-mode="job"] .profile-hero .action {
+  min-height: 48px;
+  border-radius: 0;
+  font-family: "Cinzel Variable", serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+html[data-mode="job"] .profile-hero .action-primary {
+  color: #090711;
+  background: #d9c9a2;
+  border-color: #d9c9a2;
+}
+
+html[data-mode="job"] .profile-hero .action-secondary {
+  border-color: rgba(217, 201, 162, 0.42);
+  background: transparent;
+}
+
+.gothic-rib {
+  position: absolute;
+  width: 52%;
+  height: 74%;
+  top: 3%;
+  border-top: 1px solid rgba(217, 201, 162, 0.18);
+  border-radius: 50%;
+}
+
+.gothic-rib-one {
+  left: -4%;
+  transform: rotate(31deg);
+}
+.gothic-rib-two {
+  right: -4%;
+  transform: rotate(-31deg);
+}
+
+.gothic-rose {
+  position: absolute;
+  width: 270px;
+  aspect-ratio: 1;
+  top: 38px;
+  right: 19%;
+  background: url("/art/gothic-tracery.svg") center / cover;
+  opacity: 0.23;
+}
+
+/* Academic hero — a live research atlas with an orbital portrait specimen. */
+html[data-mode="academic"] .profile-hero {
+  min-height: 690px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.75fr);
+  align-items: center;
+  gap: 4vw;
+  padding: 62px 4% 35px;
+  background:
+    linear-gradient(90deg, rgba(120, 246, 209, 0.08) 1px, transparent 1px) 0 0 /
+      14.285% 100%,
+    linear-gradient(rgba(87, 199, 255, 0.06) 1px, transparent 1px) 0 0 / 100%
+      94px;
+  clip-path: polygon(0 0, 95% 0, 100% 8%, 100% 100%, 4% 100%, 0 94%);
+}
+
+html[data-mode="academic"] .profile-hero::before {
+  content: "01 / IDENTITY ATLAS";
+  position: absolute;
+  top: 30px;
+  right: 4%;
+  color: #57c7ff;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+}
+
+html[data-mode="academic"] .profile-hero::after {
+  content: "";
+  position: absolute;
+  width: 32%;
+  height: 1px;
+  right: 3%;
+  bottom: 36px;
+  background: linear-gradient(90deg, #ff637d, transparent);
+}
+
+html[data-mode="academic"] .profile-hero .hero-copy {
+  z-index: 3;
+  grid-column: 1;
+}
+
+html[data-mode="academic"] .profile-hero .hero-copy h1 {
+  max-width: 920px;
+  margin: 30px 0 8px;
+  font-size: clamp(4.2rem, 9vw, 9rem);
+  line-height: 0.76;
+  letter-spacing: -0.09em;
+  text-wrap: balance;
+}
+
+html[data-mode="academic"] .profile-hero .hero-name {
+  width: fit-content;
+  margin: 24px 0 18px;
+  padding: 6px 10px;
+  color: #070611;
+  background: #78f6d1;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+html[data-mode="academic"] .profile-hero .hero-summary {
+  max-width: 680px;
+  font-size: 1rem;
+}
+
+html[data-mode="academic"] .profile-hero .profile-photo-wrap {
+  z-index: 2;
+  max-width: 360px;
+}
+
+html[data-mode="academic"] .profile-hero .profile-photo-wrap::before {
+  inset: -60px;
+  border: 1px solid rgba(120, 246, 209, 0.44);
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 25deg,
+      transparent 0 10%,
+      #78f6d1 10% 10.4%,
+      transparent 10.4% 47%,
+      #ff637d 47% 47.5%,
+      transparent 47.5% 83%,
+      #57c7ff 83% 83.5%,
+      transparent 83.5%
+    ),
+    radial-gradient(circle, rgba(154, 104, 255, 0.13), transparent 62%);
+  transform: rotate(-8deg);
+  animation: academic-orbit 18s linear infinite;
+}
+
+html[data-mode="academic"] .profile-hero .profile-photo {
+  aspect-ratio: 1;
+  border: 1px solid #78f6d1;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 12px rgba(87, 199, 255, 0.04),
+    0 0 70px rgba(154, 104, 255, 0.24);
+  filter: grayscale(0.22) contrast(1.1) saturate(0.78);
+  clip-path: polygon(
+    9% 0,
+    91% 0,
+    100% 9%,
+    100% 91%,
+    91% 100%,
+    9% 100%,
+    0 91%,
+    0 9%
+  );
+}
+
+html[data-mode="academic"] .profile-hero .profile-status {
+  right: -10px;
+  bottom: -17px;
+  border-color: #57c7ff;
+  border-radius: 0;
+  color: #f4f1ff;
+  background: #0d0b1d;
+  font-family: "JetBrains Mono Variable", monospace;
+  clip-path: polygon(
+    9px 0,
+    100% 0,
+    100% calc(100% - 9px),
+    calc(100% - 9px) 100%,
+    0 100%,
+    0 9px
+  );
+}
+
+html[data-mode="academic"] .profile-hero .action {
+  border-radius: 0;
+  clip-path: polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.69rem;
+  text-transform: uppercase;
+}
+
+html[data-mode="academic"] .profile-hero .action-primary {
+  color: #070611;
+  background: #78f6d1;
+  border-color: #78f6d1;
+}
+
+html[data-mode="academic"] .profile-hero .contact-row a {
+  font-family: "JetBrains Mono Variable", monospace;
+  text-transform: uppercase;
+}
+
+.orbit-ring {
+  position: absolute;
+  border: 1px solid rgba(87, 199, 255, 0.28);
+  border-radius: 50%;
+}
+
+.orbit-ring-one {
+  width: 45vw;
+  height: 16vw;
+  min-height: 150px;
+  top: 28%;
+  right: -4%;
+  transform: rotate(-18deg);
+}
+
+.orbit-ring-two {
+  width: 26vw;
+  height: 50vw;
+  max-height: 650px;
+  top: 4%;
+  right: 8%;
+  transform: rotate(29deg);
+}
+
+.orbit-node {
+  position: absolute;
+  width: 10px;
+  aspect-ratio: 1;
+  background: #ff637d;
+  box-shadow: 0 0 25px #ff637d;
+}
+
+.orbit-node-one {
+  top: 21%;
+  right: 10%;
+}
+.orbit-node-two {
+  right: 38%;
+  bottom: 17%;
+  background: #78f6d1;
+  box-shadow: 0 0 25px #78f6d1;
+}
+
+.orbit-index {
+  position: absolute;
+  left: 2%;
+  bottom: 7%;
+  color: #aaa5c2;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.61rem;
+  letter-spacing: 0.15em;
+  writing-mode: vertical-rl;
+}
+
+@keyframes academic-orbit {
+  to {
+    transform: rotate(352deg);
+  }
+}
+
+/* Section navigation: ceramic cartouche, vertical nave, command constellation. */
+html[data-mode="balanced"] .resume-panel {
+  margin-top: 78px;
+}
+
+html[data-mode="balanced"] .tabs-scroll {
+  top: 88px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 52px;
+  padding: 7px 22px;
+  border: 3px double rgba(16, 43, 99, 0.48);
+  border-radius: 50%;
+  background:
+    linear-gradient(rgba(255, 248, 230, 0.96), rgba(237, 227, 199, 0.96)),
+    url("/art/isfahan-garden.svg") center / 160px;
+  box-shadow: 0 8px 0 rgba(17, 123, 120, 0.12);
+}
+
+html[data-mode="balanced"] .resume-tabs .tabs__tab {
+  min-width: 112px;
+  border-radius: 999px;
+  color: #576c67;
+  font-family: "Cormorant Garamond Variable", serif;
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+html[data-mode="balanced"] .resume-tabs .tabs__tab[data-selected="true"] {
+  color: #fff8e6;
+}
+
+html[data-mode="balanced"] .resume-tabs .tabs__indicator {
+  background: #102b63;
+  box-shadow: inset 0 0 0 1px #d29b32;
+}
+
+html[data-mode="job"] .resume-panel {
+  margin-top: 96px;
+}
+
+html[data-mode="job"] .resume-tabs-job {
+  display: grid !important;
+  grid-template-columns: 205px minmax(0, 1fr);
+  gap: clamp(36px, 6vw, 86px);
+  align-items: start;
+}
+
+html[data-mode="job"] .resume-tabs-job .tabs-scroll {
+  position: sticky;
+  top: 150px;
+  margin: 0;
+  padding: 42px 0 42px 23px;
+  border: 0;
+  border-left: 1px solid rgba(217, 201, 162, 0.45);
+  border-radius: 0;
+  background: linear-gradient(90deg, rgba(193, 58, 103, 0.07), transparent);
+  box-shadow: none;
+  overflow: visible;
+}
+
+html[data-mode="job"] .resume-tabs-job .tabs-scroll::before {
+  content: "NAVE INDEX";
+  display: block;
+  margin: 0 0 28px 13px;
+  color: #d9c9a2;
+  font-family: "Cinzel Variable", serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+}
+
+html[data-mode="job"] .resume-tabs-job .tabs__list {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+html[data-mode="job"] .resume-tabs-job .tabs__tab {
+  width: 100%;
+  min-width: 0;
+  min-height: 54px;
+  padding-inline: 16px;
+  justify-content: flex-start;
+  border-bottom: 1px solid rgba(217, 201, 162, 0.12);
+  border-radius: 0;
+  color: #83798c;
+  font-family: "Cinzel Variable", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+html[data-mode="job"] .resume-tabs-job .tabs__tab[data-selected="true"] {
+  color: #e7dfcd;
+}
+
+html[data-mode="job"] .resume-tabs-job .tabs__indicator {
+  left: -24px;
+  width: 3px;
+  border-radius: 0;
+  background: linear-gradient(#59d8f2, #c13a67);
+  box-shadow: 0 0 16px rgba(89, 216, 242, 0.55);
+}
+
+html[data-mode="job"] .resume-tabs-job > .tab-panel {
+  grid-column: 2;
+  min-width: 0;
+}
+
+html[data-mode="academic"] .resume-panel {
+  margin-top: 38px;
+}
+
+html[data-mode="academic"] .tabs-scroll {
+  top: 96px;
+  margin: 0 0 54px;
+  padding: 3px;
+  border: 1px solid rgba(87, 199, 255, 0.35);
+  border-radius: 0;
+  background: #0c0a1b;
+  box-shadow: 14px 14px 0 rgba(154, 104, 255, 0.08);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+}
+
+html[data-mode="academic"] .tabs-scroll::before {
+  content: "NAV / KNOWLEDGE CONSTELLATION";
+  position: sticky;
+  left: 0;
+  display: inline-flex;
+  height: 38px;
+  align-items: center;
+  padding: 0 16px;
+  color: #78f6d1;
+  border-right: 1px solid rgba(120, 246, 209, 0.24);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+}
+
+html[data-mode="academic"] .resume-tabs .tabs__list {
+  display: inline-flex;
+  min-width: max-content;
+  width: auto;
+}
+
+html[data-mode="academic"] .resume-tabs .tabs__tab {
+  min-width: 130px;
+  border-left: 1px solid rgba(87, 199, 255, 0.12);
+  border-radius: 0;
+  color: #aaa5c2;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+html[data-mode="academic"] .resume-tabs .tabs__tab::before {
+  content: "◌";
+  margin-right: 8px;
+  color: #57c7ff;
+}
+
+html[data-mode="academic"] .resume-tabs .tabs__tab[data-selected="true"] {
+  color: #070611;
+}
+
+html[data-mode="academic"]
+  .resume-tabs
+  .tabs__tab[data-selected="true"]::before {
+  content: "●";
+  color: #070611;
+}
+
+html[data-mode="academic"] .resume-tabs .tabs__indicator {
+  border-radius: 0;
+  background: #78f6d1;
+  box-shadow: 0 0 24px rgba(120, 246, 209, 0.26);
+}
+
+/* Shared section ingredients receive three entirely different material systems. */
+.section-intro {
+  width: 100%;
+}
+
+.section-stack {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.section-stack > * {
+  min-width: 0;
+}
+
+html[data-mode="balanced"] .section-stack {
+  gap: 38px;
+}
+
+html[data-mode="balanced"] .section-intro {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+html[data-mode="balanced"] .section-intro h2 {
+  margin-block: 13px;
+  font-size: clamp(2.7rem, 5.2vw, 5rem);
+}
+
+html[data-mode="balanced"] .section-intro > p:last-child {
+  color: #576c67;
+  font-family: "Space Grotesk Variable", sans-serif;
+}
+
+html[data-mode="balanced"]
+  :is(
+    .feature-card,
+    .project-card,
+    .education-card,
+    .detail-card,
+    .capability-card,
+    .live-page-card
+  ) {
+  border: 1px solid rgba(16, 43, 99, 0.26) !important;
+  border-radius: 2px !important;
+  background:
+    linear-gradient(rgba(255, 250, 232, 0.92), rgba(250, 241, 217, 0.93)),
+    url("/art/isfahan-garden.svg") center / 240px !important;
+  box-shadow: 7px 7px 0 rgba(17, 123, 120, 0.1);
+  backdrop-filter: none;
+}
+
+html[data-mode="balanced"] .highlight-grid {
+  position: relative;
+  grid-template-columns: 1fr 1.18fr 1fr;
+  gap: 28px;
+  align-items: center;
+  padding-block: 40px;
+}
+
+html[data-mode="balanced"] .highlight-grid::before,
+html[data-mode="balanced"] .highlight-grid::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 1px;
+  height: 110%;
+  top: -5%;
+  background: rgba(17, 123, 120, 0.24);
+}
+
+html[data-mode="balanced"] .highlight-grid::before {
+  left: 32.2%;
+}
+html[data-mode="balanced"] .highlight-grid::after {
+  right: 32.2%;
+}
+
+html[data-mode="balanced"] .feature-card {
+  min-height: 315px;
+  padding: 14px;
+  outline: 1px solid rgba(210, 155, 50, 0.35);
+  outline-offset: -9px;
+}
+
+html[data-mode="balanced"] .feature-card:nth-child(2) {
+  min-height: 380px;
+  transform: translateY(-18px);
+}
+
+html[data-mode="balanced"]
+  :is(.feature-card, .project-card, .education-card)
+  h3 {
+  color: #102b63;
+  font-family: "Cormorant Garamond Variable", serif;
+  font-size: 1.45rem;
+}
+
+html[data-mode="balanced"] .project-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+html[data-mode="balanced"] .project-card {
+  min-height: 330px;
+}
+
+html[data-mode="balanced"] .project-card:nth-child(3n + 2) {
+  transform: translateY(26px);
+}
+
+html[data-mode="balanced"] :is(.search-field, .teaching-card, .skill-block) {
+  border-radius: 2px;
+  border-color: rgba(16, 43, 99, 0.26);
+  background: rgba(255, 250, 232, 0.88);
+  box-shadow: 5px 5px 0 rgba(17, 123, 120, 0.08);
+}
+
+html[data-mode="balanced"] .search-field {
+  margin-inline: auto;
+}
+
+html[data-mode="balanced"] .timeline-list {
+  max-width: 960px;
+  margin-inline: auto;
+  padding: 40px 8%;
+  border-inline: 1px solid rgba(16, 43, 99, 0.18);
+  background: rgba(255, 250, 232, 0.46);
+}
+
+html[data-mode="balanced"] .timeline-content {
+  border-left-color: #117b78;
+}
+
+html[data-mode="balanced"] .timeline-dot {
+  border-radius: 0;
+  background: #b02857;
+  box-shadow:
+    0 0 0 4px #f4ead3,
+    0 0 0 5px #d29b32;
+  transform: rotate(45deg);
+}
+
+html[data-mode="balanced"] .education-grid {
+  gap: 24px;
+}
+html[data-mode="balanced"] .education-card {
+  min-height: 300px;
+}
+
+html[data-mode="balanced"] .teaching-grid {
+  gap: 18px;
+}
+
+html[data-mode="balanced"] .teaching-card:nth-child(odd) {
+  border-top: 4px solid #102b63;
+}
+
+html[data-mode="balanced"] .teaching-card:nth-child(even) {
+  border-top: 4px solid #b02857;
+}
+
+html[data-mode="balanced"] .skill-block {
+  padding: 28px;
+  outline: 1px solid rgba(210, 155, 50, 0.26);
+  outline-offset: -8px;
+}
+
+/* Job sections read as an ascending nave of portals and illuminated windows. */
+html[data-mode="job"] .section-stack {
+  gap: 46px;
+}
+
+html[data-mode="job"] .section-intro {
+  max-width: 860px;
+  padding: 0 0 28px 32px;
+  border-left: 1px solid #d9c9a2;
+}
+
+html[data-mode="job"] .section-intro h2 {
+  margin-block: 19px 14px;
+  font-size: clamp(3rem, 5.8vw, 6.7rem);
+  line-height: 0.85;
+  letter-spacing: -0.055em;
+}
+
+html[data-mode="job"]
+  :is(
+    .feature-card,
+    .project-card,
+    .education-card,
+    .detail-card,
+    .capability-card,
+    .live-page-card
+  ) {
+  border: 1px solid rgba(217, 201, 162, 0.24) !important;
+  border-radius: 50% 50% 0 0 / 14% 14% 0 0 !important;
+  background:
+    linear-gradient(160deg, rgba(35, 26, 48, 0.93), rgba(11, 8, 17, 0.97) 58%),
+    url("/art/gothic-tracery.svg") center top / 130% auto no-repeat !important;
+  box-shadow: inset 0 0 65px rgba(89, 216, 242, 0.025);
+  backdrop-filter: none;
+}
+
+html[data-mode="job"] .highlight-grid {
+  grid-template-columns: 0.82fr 1.22fr 0.82fr;
+  gap: 1px;
+  align-items: end;
+  background: rgba(217, 201, 162, 0.2);
+}
+
+html[data-mode="job"] .feature-card {
+  min-height: 390px;
+  padding-top: 72px;
+}
+
+html[data-mode="job"] .feature-card:nth-child(2) {
+  min-height: 485px;
+  padding-top: 115px;
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(89, 216, 242, 0.22),
+      transparent 21%
+    ),
+    linear-gradient(160deg, rgba(36, 25, 58, 0.98), #0b0811 62%) !important;
+}
+
+html[data-mode="job"] .feature-card:nth-child(3) {
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(193, 58, 103, 0.2),
+      transparent 21%
+    ),
+    linear-gradient(160deg, rgba(36, 22, 40, 0.98), #0b0811 62%) !important;
+}
+
+html[data-mode="job"] .feature-card h3 {
+  font-size: 1.32rem;
+}
+
+html[data-mode="job"] .timeline-list {
+  counter-reset: chapter;
+  border-top: 1px solid rgba(217, 201, 162, 0.22);
+}
+
+html[data-mode="job"] .timeline-item {
+  counter-increment: chapter;
+  grid-template-columns: 145px minmax(0, 1fr);
+  padding-top: 43px;
+}
+
+html[data-mode="job"] .timeline-date {
+  color: #d9c9a2;
+  font-family: "Cinzel Variable", serif;
+  letter-spacing: 0.07em;
+}
+
+html[data-mode="job"] .timeline-content {
+  min-height: 220px;
+  padding-left: 52px;
+  border-left-color: rgba(217, 201, 162, 0.45);
+}
+
+html[data-mode="job"] .timeline-content::before {
+  content: counter(chapter, upper-roman);
+  position: absolute;
+  right: 0;
+  top: -32px;
+  color: rgba(217, 201, 162, 0.08);
+  font-family: "Cinzel Variable", serif;
+  font-size: 6rem;
+}
+
+html[data-mode="job"] .timeline-dot {
+  left: -9px;
+  width: 17px;
+  height: 26px;
+  border: 1px solid #59d8f2;
+  border-radius: 50% 50% 0 0;
+  background: #090711;
+  box-shadow: 0 0 18px rgba(89, 216, 242, 0.42);
+}
+
+html[data-mode="job"] .timeline-content h3 {
+  font-family: "Cinzel Variable", serif;
+  font-size: 1.45rem;
+}
+
+html[data-mode="job"] .project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+html[data-mode="job"] .project-card {
+  min-height: 390px;
+  padding-top: 58px;
+  border-radius: 50% 50% 0 0 / 22% 22% 0 0 !important;
+}
+
+html[data-mode="job"] .project-card:nth-child(4n + 1) {
+  background:
+    linear-gradient(145deg, rgba(89, 216, 242, 0.13), transparent 35%), #100c19 !important;
+}
+
+html[data-mode="job"] .project-card:nth-child(4n + 2) {
+  background:
+    linear-gradient(215deg, rgba(193, 58, 103, 0.14), transparent 38%), #100c19 !important;
+}
+
+html[data-mode="job"] .project-card h3 {
+  font-size: 1.3rem;
+}
+
+html[data-mode="job"] :is(.search-field, .teaching-card, .skill-block) {
+  border-radius: 0;
+  border-color: rgba(217, 201, 162, 0.24);
+  background: linear-gradient(115deg, #15101f, #0d0a14);
+}
+
+html[data-mode="job"] .search-field {
+  border-left: 4px solid #c13a67;
+}
+
+html[data-mode="job"] .education-grid {
+  gap: 1px;
+  background: rgba(217, 201, 162, 0.2);
+}
+html[data-mode="job"] .education-card {
+  min-height: 360px;
+  padding-top: 75px;
+}
+
+html[data-mode="job"] .teaching-card {
+  position: relative;
+  padding: 26px 26px 26px 38px;
+  border-left: 1px solid #d9c9a2;
+}
+
+html[data-mode="job"] .teaching-card::before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 22px;
+  left: -5px;
+  top: 25px;
+  border: 1px solid #59d8f2;
+  border-radius: 50% 50% 0 0;
+  background: #090711;
+}
+
+html[data-mode="job"] .skill-block {
+  border-top: 3px double rgba(217, 201, 162, 0.44);
+  padding: 30px;
+}
+
+/* Academic sections are indexed artifacts: asymmetrical, precise, and kinetic. */
+html[data-mode="academic"] .section-stack {
+  gap: 40px;
+}
+
+html[data-mode="academic"] .section-intro {
+  position: relative;
+  max-width: 1040px;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(320px, 1.25fr);
+  gap: 38px;
+  align-items: end;
+  padding: 32px 4% 27px;
+  border-left: 1px solid #78f6d1;
+  background: linear-gradient(90deg, rgba(120, 246, 209, 0.05), transparent);
+}
+
+html[data-mode="academic"] .section-intro .eyebrow {
+  position: absolute;
+  top: 0;
+  left: 4%;
+}
+
+html[data-mode="academic"] .section-intro h2 {
+  margin: 0;
+  font-size: clamp(3rem, 6vw, 6.7rem);
+  line-height: 0.78;
+  letter-spacing: -0.09em;
+}
+
+html[data-mode="academic"] .section-intro > p:last-child {
+  border-top: 1px solid rgba(87, 199, 255, 0.25);
+  padding-top: 17px;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.75rem;
+}
+
+html[data-mode="academic"]
+  :is(
+    .feature-card,
+    .project-card,
+    .education-card,
+    .detail-card,
+    .capability-card,
+    .live-page-card
+  ) {
+  border: 1px solid rgba(87, 199, 255, 0.25) !important;
+  border-radius: 0 !important;
+  background: rgba(13, 11, 29, 0.92) !important;
+  box-shadow: none;
+  backdrop-filter: none;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 17px) 0,
+    100% 17px,
+    100% 100%,
+    17px 100%,
+    0 calc(100% - 17px)
+  );
+}
+
+html[data-mode="academic"] .highlight-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html[data-mode="academic"] .feature-card {
+  min-height: 300px;
+  position: relative;
+}
+
+html[data-mode="academic"] .feature-card::before,
+html[data-mode="academic"] .project-card::before,
+html[data-mode="academic"] .education-card::before {
+  position: absolute;
+  top: 11px;
+  right: 16px;
+  color: #57c7ff;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+}
+
+html[data-mode="academic"] .feature-card:nth-child(1) {
+  grid-column: 1 / span 5;
+}
+html[data-mode="academic"] .feature-card:nth-child(1)::before {
+  content: "ARTIFACT / 01";
+}
+html[data-mode="academic"] .feature-card:nth-child(2) {
+  grid-column: 6 / span 7;
+  min-height: 380px;
+  transform: translateY(45px);
+}
+html[data-mode="academic"] .feature-card:nth-child(2)::before {
+  content: "ARTIFACT / 02";
+}
+html[data-mode="academic"] .feature-card:nth-child(3) {
+  grid-column: 2 / span 6;
+}
+html[data-mode="academic"] .feature-card:nth-child(3)::before {
+  content: "SIGNAL / 03";
+}
+
+html[data-mode="academic"]
+  :is(.feature-card, .project-card, .education-card)
+  h3 {
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-size: 1.25rem;
+}
+
+html[data-mode="academic"] .timeline-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  counter-reset: knowledge;
+}
+
+html[data-mode="academic"] .timeline-item {
+  counter-increment: knowledge;
+  position: relative;
+  display: flex;
+  min-height: 310px;
+  flex-direction: column;
+  gap: 19px;
+  padding: 26px;
+  border: 1px solid rgba(87, 199, 255, 0.25);
+  background: rgba(13, 11, 29, 0.9);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+}
+
+html[data-mode="academic"] .timeline-item::before {
+  content: "0" counter(knowledge);
+  position: absolute;
+  right: 19px;
+  bottom: 3px;
+  color: rgba(120, 246, 209, 0.09);
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-size: 7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+html[data-mode="academic"] .timeline-date {
+  padding: 0 0 12px;
+  border-bottom: 1px solid rgba(120, 246, 209, 0.2);
+  color: #78f6d1;
+  font-family: "JetBrains Mono Variable", monospace;
+  text-align: left;
+}
+
+html[data-mode="academic"] .timeline-content {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+}
+
+html[data-mode="academic"] .timeline-dot {
+  display: none;
+}
+
+html[data-mode="academic"] .project-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html[data-mode="academic"] .project-card {
+  grid-column: span 4;
+  min-height: 330px;
+  position: relative;
+}
+
+html[data-mode="academic"] .project-card:nth-child(1),
+html[data-mode="academic"] .project-card:nth-child(6n) {
+  grid-column: span 7;
+  min-height: 390px;
+}
+
+html[data-mode="academic"] .project-card:nth-child(2),
+html[data-mode="academic"] .project-card:nth-child(6n + 1) {
+  grid-column: span 5;
+}
+
+html[data-mode="academic"] .project-card::before {
+  content: "EXPERIMENTAL OBJECT";
+}
+
+html[data-mode="academic"] :is(.search-field, .teaching-card, .skill-block) {
+  border-radius: 0;
+  border-color: rgba(87, 199, 255, 0.28);
+  background: rgba(13, 11, 29, 0.88);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+html[data-mode="academic"] .search-field {
+  width: min(760px, 100%);
+  margin-left: 8.33%;
+  border-left: 4px solid #ff637d;
+  font-family: "JetBrains Mono Variable", monospace;
+}
+
+html[data-mode="academic"] .education-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html[data-mode="academic"] .education-card {
+  grid-column: span 6;
+  min-height: 350px;
+  position: relative;
+}
+html[data-mode="academic"] .education-card::before {
+  content: "KNOWLEDGE STRATUM";
+}
+
+html[data-mode="academic"] .teaching-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html[data-mode="academic"] .teaching-card {
+  min-height: 230px;
+  padding: 24px;
+  border-top: 3px solid #78f6d1;
+}
+
+html[data-mode="academic"] .teaching-card:nth-child(3n + 2) {
+  border-top-color: #ff637d;
+  transform: translateY(24px);
+}
+
+html[data-mode="academic"] .teaching-card:nth-child(3n) {
+  border-top-color: #57c7ff;
+}
+
+html[data-mode="academic"] .skills-layout {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html[data-mode="academic"] .skill-block {
+  grid-column: span 5;
+  padding: 28px;
+}
+html[data-mode="academic"] .skill-block:nth-child(even) {
+  grid-column: span 7;
+}
+html[data-mode="academic"] .skill-block-wide {
+  grid-column: 1 / -1;
+}
+
+html[data-mode="academic"] :is(.chip, .button--outline) {
+  border-radius: 0 !important;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.65rem;
+}
+
+/* Utility and detail routes become chambers, chapels, and future archive rooms. */
+html[data-mode="balanced"] .page-heading,
+html[data-mode="balanced"] .detail-hero,
+html[data-mode="balanced"] .not-found {
+  max-width: 960px;
+  margin-inline: auto;
+  padding: 72px clamp(25px, 8vw, 90px);
+  border-inline: 1px solid rgba(16, 43, 99, 0.2);
+  background:
+    linear-gradient(rgba(255, 250, 232, 0.78), rgba(244, 234, 211, 0.36)),
+    url("/art/isfahan-garden.svg") center top / 320px;
+  text-align: center;
+}
+
+html[data-mode="balanced"] :is(.page-heading, .detail-hero) .eyebrow {
+  justify-content: center;
+}
+
+html[data-mode="balanced"] .page-heading h1,
+html[data-mode="balanced"] .detail-hero h1 {
+  margin-inline: auto;
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.82;
+}
+
+html[data-mode="balanced"] .page-heading > p:last-child,
+html[data-mode="balanced"] .detail-hero > p {
+  margin-inline: auto;
+}
+
+html[data-mode="balanced"] .live-pages-grid {
+  gap: 34px;
+  padding: 0 7%;
+}
+
+html[data-mode="balanced"] .live-page-card {
+  min-height: 430px;
+  margin-inline: auto;
+  padding: 30px;
+  outline: 1px solid rgba(210, 155, 50, 0.4);
+  outline-offset: -12px;
+}
+
+html[data-mode="balanced"] .live-page-card:nth-child(even) {
+  transform: translateX(4%);
+}
+html[data-mode="balanced"] .live-page-card:nth-child(odd) {
+  transform: translateX(-4%);
+}
+
+html[data-mode="balanced"] .live-page-card h2 {
+  color: #102b63;
+  font-family: "Cormorant Garamond Variable", serif;
+}
+
+html[data-mode="balanced"] .gallery-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 17px;
+  padding: 34px;
+  border: 1px solid rgba(16, 43, 99, 0.23);
+  background: rgba(255, 250, 232, 0.52);
+}
+
+html[data-mode="balanced"] .gallery-card {
+  grid-column: span 5;
+  border: 8px double rgba(17, 123, 120, 0.58);
+  border-radius: 1px;
+  background: #fbf2dc;
+  box-shadow: 8px 8px 0 rgba(16, 43, 99, 0.12);
+}
+
+html[data-mode="balanced"] .gallery-card:first-child {
+  grid-column: 1 / span 8;
+}
+html[data-mode="balanced"] .gallery-card:nth-child(2) {
+  grid-column: 8 / span 5;
+  transform: translateY(70px);
+}
+html[data-mode="balanced"] .gallery-card:nth-child(3n) {
+  grid-column: 2 / span 6;
+}
+
+html[data-mode="balanced"] :is(.current-resume, .archive-list li) {
+  border-radius: 2px;
+  border-color: rgba(16, 43, 99, 0.28);
+  background:
+    linear-gradient(rgba(255, 250, 232, 0.9), rgba(244, 234, 211, 0.85)),
+    url("/art/isfahan-garden.svg") center / 230px;
+  box-shadow: 7px 7px 0 rgba(17, 123, 120, 0.11);
+}
+
+html[data-mode="balanced"] .current-resume {
+  outline: 1px solid rgba(210, 155, 50, 0.36);
+  outline-offset: -10px;
+}
+
+html[data-mode="balanced"] .detail-stack {
+  max-width: 980px;
+  margin-inline: auto;
+  gap: 24px;
+}
+
+html[data-mode="balanced"] .detail-card {
+  outline: 1px solid rgba(210, 155, 50, 0.28);
+  outline-offset: -8px;
+}
+
+html[data-mode="balanced"] .semester-accordion {
+  border-radius: 2px;
+  border: 1px solid rgba(16, 43, 99, 0.26) !important;
+  background: #fbf2dc !important;
+  box-shadow: 6px 6px 0 rgba(17, 123, 120, 0.09);
+}
+
+html[data-mode="balanced"] .back-link {
+  color: #102b63;
+}
+
+html[data-mode="job"] .page-heading,
+html[data-mode="job"] .detail-hero,
+html[data-mode="job"] .not-found {
+  position: relative;
+  max-width: 1040px;
+  min-height: 520px;
+  margin-inline: auto;
+  padding: 112px 9% 70px;
+  border: 1px solid rgba(217, 201, 162, 0.27);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+  background:
+    radial-gradient(
+      circle at 50% 3%,
+      rgba(89, 216, 242, 0.18),
+      transparent 25%
+    ),
+    url("/art/gothic-tracery.svg") center top / min(620px, 80%) auto no-repeat,
+    linear-gradient(180deg, #120e1b, #090711);
+  text-align: center;
+  overflow: hidden;
+}
+
+html[data-mode="job"] :is(.page-heading, .detail-hero) .eyebrow {
+  justify-content: center;
+}
+
+html[data-mode="job"] .page-heading h1,
+html[data-mode="job"] .detail-hero h1 {
+  margin-inline: auto;
+  font-size: clamp(4rem, 8vw, 8.6rem);
+  line-height: 0.79;
+  text-transform: uppercase;
+}
+
+html[data-mode="job"] .page-heading > p:last-child,
+html[data-mode="job"] .detail-hero > p {
+  margin-inline: auto;
+}
+
+html[data-mode="job"] .live-pages-grid {
+  max-width: 1120px;
+  margin-inline: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(217, 201, 162, 0.2);
+}
+
+html[data-mode="job"] .live-page-card {
+  min-height: 610px;
+  padding-top: 115px;
+  border-radius: 50% 50% 0 0 / 16% 16% 0 0 !important;
+}
+
+html[data-mode="job"] .live-page-card h2 {
+  font-family: "Cinzel Variable", serif;
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+}
+
+html[data-mode="job"] .live-page-card::before {
+  width: 100%;
+  height: 38%;
+  top: 0;
+  right: 0;
+  border-radius: 50% 50% 0 0;
+  background: radial-gradient(
+    circle at 50% 35%,
+    var(--card-accent),
+    transparent 28%
+  );
+  filter: blur(18px);
+  opacity: 0.24;
+}
+
+html[data-mode="job"] .gallery-grid {
+  max-width: 1120px;
+  margin-inline: auto;
+  grid-template-columns: 1fr 1.34fr 1fr;
+  align-items: end;
+  gap: 1px;
+  background: rgba(217, 201, 162, 0.25);
+}
+
+html[data-mode="job"] .gallery-card,
+html[data-mode="job"] .gallery-card:first-child {
+  grid-column: auto;
+  border-radius: 50% 50% 0 0 / 13% 13% 0 0;
+  border-color: rgba(217, 201, 162, 0.3);
+  background: #100d18;
+  box-shadow: none;
+}
+
+html[data-mode="job"] .gallery-card:first-child {
+  transform: translateY(-58px);
+}
+html[data-mode="job"] .gallery-card img {
+  aspect-ratio: 3 / 4;
+  filter: saturate(0.7) contrast(1.1);
+}
+
+html[data-mode="job"] :is(.current-resume, .archive-list li) {
+  border-radius: 0;
+  border-color: rgba(217, 201, 162, 0.27);
+  background: linear-gradient(115deg, #161020, #0c0912);
+}
+
+html[data-mode="job"] .current-resume {
+  min-height: 420px;
+  padding-top: 95px;
+  border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+  background:
+    radial-gradient(
+      circle at 50% 8%,
+      rgba(89, 216, 242, 0.18),
+      transparent 27%
+    ),
+    url("/art/gothic-tracery.svg") center top / 500px auto no-repeat,
+    #0e0a16;
+}
+
+html[data-mode="job"] .detail-stack {
+  max-width: 1030px;
+  margin-inline: auto;
+  gap: 1px;
+  background: rgba(217, 201, 162, 0.2);
+}
+
+html[data-mode="job"] .detail-card {
+  min-height: 250px;
+  padding: 42px;
+  border-radius: 0 !important;
+}
+
+html[data-mode="job"] .detail-card:first-child {
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0 !important;
+  padding-top: 80px;
+}
+
+html[data-mode="job"] .semester-accordion {
+  border-radius: 0;
+  border-color: rgba(217, 201, 162, 0.27) !important;
+  background: #100d18 !important;
+}
+
+html[data-mode="job"] .semester-accordion .accordion__trigger {
+  font-family: "Cinzel Variable", serif;
+  letter-spacing: 0.04em;
+}
+
+html[data-mode="academic"] .page-heading,
+html[data-mode="academic"] .detail-hero,
+html[data-mode="academic"] .not-found {
+  position: relative;
+  max-width: 1180px;
+  min-height: 470px;
+  padding: 70px 6% 52px 12%;
+  border-left: 1px solid #78f6d1;
+  border-top: 1px solid rgba(87, 199, 255, 0.28);
+  background:
+    linear-gradient(90deg, rgba(120, 246, 209, 0.07) 1px, transparent 1px) 0 0 /
+      12.5% 100%,
+    linear-gradient(rgba(87, 199, 255, 0.06) 1px, transparent 1px) 0 0 / 100%
+      78px,
+    rgba(13, 11, 29, 0.74);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 34px) 0,
+    100% 34px,
+    100% 100%,
+    34px 100%,
+    0 calc(100% - 34px)
+  );
+}
+
+html[data-mode="academic"] .page-heading::before,
+html[data-mode="academic"] .detail-hero::before {
+  content: "ARCHIVE COORDINATE / 44.01";
+  position: absolute;
+  left: 2.5%;
+  bottom: 50px;
+  color: #57c7ff;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  writing-mode: vertical-rl;
+}
+
+html[data-mode="academic"] .page-heading h1,
+html[data-mode="academic"] .detail-hero h1 {
+  max-width: 1080px;
+  font-size: clamp(4.3rem, 9vw, 9.5rem);
+  line-height: 0.75;
+  letter-spacing: -0.1em;
+}
+
+html[data-mode="academic"] .page-heading > p:last-child,
+html[data-mode="academic"] .detail-hero > p {
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.79rem;
+}
+
+html[data-mode="academic"] .live-pages-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html[data-mode="academic"] .live-page-card {
+  grid-column: span 5;
+  min-height: 470px;
+}
+
+html[data-mode="academic"] .live-page-card:nth-child(2) {
+  grid-column: span 7;
+  transform: translateY(48px);
+}
+html[data-mode="academic"] .live-page-card:nth-child(3) {
+  grid-column: 3 / span 7;
+}
+
+html[data-mode="academic"] .live-page-card h2 {
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+}
+
+html[data-mode="academic"] .project-index {
+  font-family: "JetBrains Mono Variable", monospace;
+}
+
+html[data-mode="academic"] .gallery-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html[data-mode="academic"] .gallery-card {
+  grid-column: span 5;
+  border-radius: 0;
+  border-color: rgba(87, 199, 255, 0.32);
+  background: #0d0b1d;
+  box-shadow: none;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+}
+
+html[data-mode="academic"] .gallery-card:first-child {
+  grid-column: span 8;
+}
+html[data-mode="academic"] .gallery-card:nth-child(2) {
+  grid-column: span 4;
+  transform: translateY(52px);
+}
+html[data-mode="academic"] .gallery-card:nth-child(3n) {
+  grid-column: 2 / span 6;
+}
+html[data-mode="academic"] .gallery-card img {
+  filter: saturate(1.18) contrast(1.05);
+}
+html[data-mode="academic"] .gallery-card figcaption {
+  font-family: "JetBrains Mono Variable", monospace;
+}
+
+html[data-mode="academic"] :is(.current-resume, .archive-list li) {
+  border-radius: 0;
+  border-color: rgba(87, 199, 255, 0.3);
+  background: rgba(13, 11, 29, 0.92);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+}
+
+html[data-mode="academic"] .current-resume {
+  min-height: 360px;
+  position: relative;
+  border-left: 5px solid #78f6d1;
+}
+
+html[data-mode="academic"] .current-resume::after {
+  content: "CURRENT OBJECT / PDF";
+  position: absolute;
+  top: 21px;
+  right: 26px;
+  color: #ff637d;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+}
+
+html[data-mode="academic"] .detail-stack {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html[data-mode="academic"] .detail-card {
+  grid-column: span 6;
+}
+html[data-mode="academic"] .detail-card:nth-child(3n) {
+  grid-column: 2 / span 8;
+}
+
+html[data-mode="academic"] .detail-stack > .detail-section {
+  grid-column: 1 / -1;
+}
+
+html[data-mode="academic"] .semester-accordion {
+  border-radius: 0;
+  border-color: rgba(87, 199, 255, 0.3) !important;
+  background: #0d0b1d !important;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+}
+
+html[data-mode="academic"]
+  :is(.semester-accordion .accordion__trigger, .course-table) {
+  font-family: "JetBrains Mono Variable", monospace;
+}
+
+/* Footer changes voice with the scene. */
+html[data-mode="balanced"] .site-footer {
+  justify-content: center;
+  gap: 28px;
+  border-top: 3px double rgba(16, 43, 99, 0.3);
+  color: #576c67;
+  font-family: "Space Grotesk Variable", sans-serif;
+}
+
+html[data-mode="job"] .site-footer {
+  padding-block: 45px;
+  border-top: 1px solid rgba(217, 201, 162, 0.3);
+  color: #83798c;
+  font-family: "Cinzel Variable", serif;
+}
+
+html[data-mode="academic"] .site-footer {
+  border-top: 1px solid rgba(120, 246, 209, 0.28);
+  color: #aaa5c2;
+  font-family: "JetBrains Mono Variable", monospace;
+}
+
+html[data-mode="academic"] .site-footer span:first-child::before {
+  content: "END.LOG / ";
+  color: #78f6d1;
+}
+
+/* Responsive reinterpretations preserve each composition instead of collapsing to one template. */
+@media (max-width: 1100px) {
+  html[data-mode="job"] .profile-hero {
+    grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
+    gap: 45px;
+    padding-inline: 3%;
+  }
+
+  html[data-mode="academic"] .profile-hero {
+    grid-template-columns: minmax(0, 1.25fr) minmax(270px, 0.75fr);
+  }
+
+  html[data-mode="academic"] .teaching-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html[data-mode="academic"] .teaching-card:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  html[data-mode="job"] .live-pages-grid {
+    grid-template-columns: 1fr;
+    background: transparent;
+    gap: 20px;
+  }
+  html[data-mode="job"] .live-page-card {
+    min-height: 470px;
+  }
+}
+
+@media (max-width: 980px) {
+  html[data-mode="balanced"] .header-inner,
+  html[data-mode="academic"] .header-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  html[data-mode="job"] .site-header {
+    min-height: auto;
+  }
+
+  html[data-mode="job"] .header-inner {
+    min-height: 118px;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 63px 48px;
+  }
+
+  html[data-mode="job"] .brand {
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  html[data-mode="job"] .brand-copy {
+    align-items: flex-start;
+  }
+
+  html[data-mode="job"] .mobile-menu-trigger {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  html[data-mode="job"] .mode-control-wrap {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-bottom: 7px;
+  }
+
+  html[data-mode="job"] .resume-tabs-job {
+    display: block !important;
+  }
+
+  html[data-mode="job"] .resume-tabs-job .tabs-scroll {
+    top: 120px;
+    margin-bottom: 40px;
+    padding: 5px;
+    border: 1px solid rgba(217, 201, 162, 0.3);
+    background: rgba(9, 7, 17, 0.95);
+    overflow-x: auto;
+  }
+
+  html[data-mode="job"] .resume-tabs-job .tabs-scroll::before {
+    display: none;
+  }
+
+  html[data-mode="job"] .resume-tabs-job .tabs__list {
+    min-width: 100%;
+    width: max-content;
+    flex-direction: row;
+  }
+
+  html[data-mode="job"] .resume-tabs-job .tabs__tab {
+    width: auto;
+    min-width: 112px;
+    justify-content: center;
+  }
+
+  html[data-mode="job"] .resume-tabs-job .tabs__indicator {
+    left: auto;
+    width: auto;
+    background: rgba(89, 216, 242, 0.12);
+    box-shadow: inset 0 -2px #59d8f2;
+  }
+
+  html[data-mode="balanced"] .profile-hero {
+    padding-inline: 32px;
+  }
+  .garden-arch-line {
+    display: none;
+  }
+
+  html[data-mode="job"] .profile-hero {
+    min-height: 680px;
+    grid-template-columns: minmax(0, 1.25fr) minmax(230px, 0.75fr);
+  }
+
+  html[data-mode="job"] .profile-hero .hero-copy h1 {
+    font-size: clamp(4rem, 9vw, 7rem);
+  }
+
+  html[data-mode="academic"] .profile-hero {
+    min-height: 620px;
+    grid-template-columns: minmax(0, 1.25fr) minmax(230px, 0.75fr);
+  }
+
+  html[data-mode="academic"] .profile-hero .profile-photo-wrap::before {
+    inset: -35px;
+  }
+
+  html[data-mode="balanced"] .highlight-grid {
+    gap: 14px;
+  }
+  html[data-mode="balanced"] .feature-card:nth-child(2) {
+    transform: none;
+  }
+
+  html[data-mode="balanced"] .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html[data-mode="balanced"] .project-card:nth-child(3n + 2) {
+    transform: none;
+  }
+
+  html[data-mode="academic"] .project-card,
+  html[data-mode="academic"] .project-card:nth-child(1),
+  html[data-mode="academic"] .project-card:nth-child(2),
+  html[data-mode="academic"] .project-card:nth-child(6n),
+  html[data-mode="academic"] .project-card:nth-child(6n + 1) {
+    grid-column: span 6;
+    min-height: 330px;
+  }
+
+  html[data-mode="academic"] .live-page-card,
+  html[data-mode="academic"] .live-page-card:nth-child(2),
+  html[data-mode="academic"] .live-page-card:nth-child(3) {
+    grid-column: span 6;
+    transform: none;
+  }
+
+  html[data-mode="academic"] .live-page-card:nth-child(3) {
+    grid-column: 4 / span 6;
+  }
+
+  html[data-mode="job"] .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  html[data-mode="job"] .gallery-card:first-child {
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  html[data-mode="balanced"] .site-main,
+  html[data-mode="job"] .site-main,
+  html[data-mode="academic"] .site-main {
+    width: min(100% - 24px, 1240px);
+    padding-top: 48px;
+  }
+
+  html[data-mode="balanced"] .site-header {
+    background-size: auto, 120px;
+  }
+  html[data-mode="academic"] .site-header {
+    width: calc(100% - 16px);
+    top: 8px;
+  }
+
+  html[data-mode="academic"] .brand-copy small {
+    display: none;
+  }
+
+  html[data-mode="balanced"] .mode-control-wrap,
+  html[data-mode="academic"] .mode-control-wrap {
+    margin-bottom: 10px;
+  }
+
+  html[data-mode="balanced"] .mobile-nav {
+    border: 3px double rgba(16, 43, 99, 0.38);
+    border-radius: 2px;
+    background: #fbf2dc;
+    font-family: "Cormorant Garamond Variable", serif;
+  }
+
+  html[data-mode="job"] .mobile-nav {
+    border-radius: 0;
+    border-color: rgba(217, 201, 162, 0.35);
+    background: #100d18;
+    font-family: "Cinzel Variable", serif;
+  }
+
+  html[data-mode="academic"] .mobile-nav {
+    border-radius: 0;
+    border-color: rgba(87, 199, 255, 0.38);
+    background: #0d0b1d;
+    clip-path: polygon(
+      0 0,
+      calc(100% - 15px) 0,
+      100% 15px,
+      100% 100%,
+      15px 100%,
+      0 calc(100% - 15px)
+    );
+    font-family: "JetBrains Mono Variable", monospace;
+  }
+
+  html[data-mode="balanced"] .profile-hero {
+    min-height: 700px;
+    padding: 68px 15px 48px;
+    gap: 42px;
+  }
+
+  html[data-mode="balanced"] .profile-hero::before {
+    width: 96%;
+    height: 400px;
+    top: 8px;
+  }
+
+  html[data-mode="balanced"] .profile-hero::after {
+    inset-inline: 0;
+  }
+  html[data-mode="balanced"] .profile-hero .profile-photo-wrap {
+    max-width: 185px;
+    margin: 0;
+    justify-self: center;
+  }
+  html[data-mode="balanced"] .profile-hero .profile-photo-wrap::before {
+    inset: -17px -20px -28px;
+  }
+  html[data-mode="balanced"] .profile-hero .profile-status {
+    bottom: -24px;
+    font-size: 0.59rem;
+  }
+  html[data-mode="balanced"] .profile-hero .hero-copy h1 {
+    font-size: clamp(3.9rem, 20vw, 6rem);
+  }
+
+  html[data-mode="job"] .profile-hero {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 38px;
+    padding: 72px 18px 48px;
+    text-align: center;
+  }
+
+  html[data-mode="job"] .profile-hero .profile-photo-wrap {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 220px;
+    height: 390px;
+    margin: 0 auto;
+    justify-self: center;
+  }
+
+  html[data-mode="job"] .profile-hero .hero-copy {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0;
+  }
+  html[data-mode="job"] .profile-hero .eyebrow,
+  html[data-mode="job"] .profile-hero :is(.hero-actions, .contact-row) {
+    justify-content: center;
+  }
+  html[data-mode="job"] .profile-hero .hero-copy h1 {
+    margin-inline: auto;
+    font-size: clamp(3.5rem, 18vw, 6rem);
+  }
+  html[data-mode="job"] .profile-hero .hero-summary {
+    margin-inline: auto;
+  }
+  html[data-mode="job"] .profile-hero .profile-status {
+    left: 50%;
+    bottom: -17px;
+    transform: translateX(-50%);
+  }
+  .gothic-rose {
+    width: 190px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  html[data-mode="academic"] .profile-hero {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 72px;
+    padding: 70px 18px 48px;
+  }
+
+  html[data-mode="academic"] .profile-hero .profile-photo-wrap {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 220px;
+    margin: 18px auto 0;
+  }
+
+  html[data-mode="academic"] .profile-hero .hero-copy {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  html[data-mode="academic"] .profile-hero .hero-copy h1 {
+    font-size: clamp(3.7rem, 19vw, 6.3rem);
+  }
+  html[data-mode="academic"] .profile-hero .profile-status {
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 0.57rem;
+  }
+  .orbit-ring-one {
+    width: 90vw;
+    height: 34vw;
+    top: 15%;
+  }
+  .orbit-ring-two {
+    width: 65vw;
+    height: 88vw;
+    max-height: 450px;
+    right: 16%;
+  }
+  .orbit-index {
+    display: none;
+  }
+
+  html[data-mode="balanced"] .tabs-scroll,
+  html[data-mode="job"] .resume-tabs-job .tabs-scroll,
+  html[data-mode="academic"] .tabs-scroll {
+    top: 114px;
+  }
+
+  html[data-mode="balanced"] .tabs-scroll {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+  }
+
+  html[data-mode="academic"] .tabs-scroll::before {
+    display: none;
+  }
+
+  html[data-mode="balanced"] .highlight-grid,
+  html[data-mode="job"] .highlight-grid,
+  html[data-mode="academic"] .highlight-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 17px;
+    padding: 0;
+    background: transparent;
+  }
+
+  html[data-mode="balanced"] .highlight-grid::before,
+  html[data-mode="balanced"] .highlight-grid::after {
+    display: none;
+  }
+
+  html[data-mode="balanced"] .feature-card,
+  html[data-mode="job"] .feature-card,
+  html[data-mode="academic"] .feature-card,
+  html[data-mode="academic"] .feature-card:nth-child(1),
+  html[data-mode="academic"] .feature-card:nth-child(2),
+  html[data-mode="academic"] .feature-card:nth-child(3) {
+    grid-column: auto;
+    min-height: 270px;
+    transform: none;
+  }
+
+  html[data-mode="job"] .feature-card {
+    min-height: 345px;
+    padding-top: 62px;
+  }
+
+  html[data-mode="academic"] .section-intro {
+    grid-template-columns: 1fr;
+    gap: 23px;
+    padding: 36px 18px 24px;
+  }
+
+  html[data-mode="academic"] .section-intro h2 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  html[data-mode="job"] .section-intro {
+    padding-left: 18px;
+  }
+
+  html[data-mode="job"] .section-intro h2 {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+    line-height: 0.9;
+  }
+
+  html[data-mode="balanced"] .project-grid,
+  html[data-mode="job"] .project-grid,
+  html[data-mode="academic"] .project-grid,
+  html[data-mode="academic"] .education-grid,
+  html[data-mode="academic"] .teaching-grid,
+  html[data-mode="academic"] .skills-layout,
+  html[data-mode="academic"] .timeline-list {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-mode="academic"] .project-card,
+  html[data-mode="academic"] .project-card:nth-child(1),
+  html[data-mode="academic"] .project-card:nth-child(2),
+  html[data-mode="academic"] .project-card:nth-child(6n),
+  html[data-mode="academic"] .project-card:nth-child(6n + 1),
+  html[data-mode="academic"] .education-card,
+  html[data-mode="academic"] .skill-block,
+  html[data-mode="academic"] .skill-block:nth-child(even),
+  html[data-mode="academic"] .skill-block-wide {
+    grid-column: auto;
+  }
+
+  html[data-mode="academic"] .search-field {
+    margin-left: 0;
+  }
+
+  html[data-mode="balanced"] .timeline-list {
+    padding-inline: 18px;
+  }
+  html[data-mode="job"] .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+  html[data-mode="job"] .timeline-date {
+    text-align: left;
+  }
+  html[data-mode="job"] .timeline-content {
+    min-height: 190px;
+    margin-left: 5px;
+    padding-left: 33px;
+  }
+
+  html[data-mode="balanced"] .page-heading,
+  html[data-mode="balanced"] .detail-hero,
+  html[data-mode="job"] .page-heading,
+  html[data-mode="job"] .detail-hero,
+  html[data-mode="academic"] .page-heading,
+  html[data-mode="academic"] .detail-hero {
+    min-height: 0;
+    padding: 68px 19px 50px;
+  }
+
+  html[data-mode="balanced"] .page-heading h1,
+  html[data-mode="balanced"] .detail-hero h1,
+  html[data-mode="balanced"] .not-found h1 {
+    font-size: clamp(3.4rem, 18vw, 6.3rem);
+    overflow-wrap: anywhere;
+  }
+
+  html[data-mode="job"] .profile-hero .hero-copy h1,
+  html[data-mode="job"] :is(.page-heading, .detail-hero, .not-found) h1 {
+    font-size: clamp(2.2rem, 11vw, 5rem);
+    line-height: 0.86;
+    overflow-wrap: normal;
+  }
+
+  html[data-mode="academic"] :is(.page-heading, .detail-hero, .not-found) h1 {
+    font-size: clamp(2.75rem, 14vw, 6rem);
+    line-height: 0.82;
+    overflow-wrap: normal;
+  }
+
+  html[data-mode="balanced"] .live-page-card,
+  html[data-mode="balanced"] .live-page-card:nth-child(even),
+  html[data-mode="balanced"] .live-page-card:nth-child(odd) {
+    transform: none;
+  }
+
+  html[data-mode="academic"] .live-pages-grid,
+  html[data-mode="academic"] .gallery-grid,
+  html[data-mode="balanced"] .gallery-grid,
+  html[data-mode="job"] .gallery-grid {
+    grid-template-columns: 1fr;
+    padding: 0;
+    background: transparent;
+  }
+
+  html[data-mode="academic"] .live-page-card,
+  html[data-mode="academic"] .live-page-card:nth-child(2),
+  html[data-mode="academic"] .live-page-card:nth-child(3),
+  html[data-mode="balanced"] .gallery-card,
+  html[data-mode="balanced"] .gallery-card:first-child,
+  html[data-mode="balanced"] .gallery-card:nth-child(2),
+  html[data-mode="balanced"] .gallery-card:nth-child(3n),
+  html[data-mode="academic"] .gallery-card,
+  html[data-mode="academic"] .gallery-card:first-child,
+  html[data-mode="academic"] .gallery-card:nth-child(2),
+  html[data-mode="academic"] .gallery-card:nth-child(3n) {
+    grid-column: auto;
+    transform: none;
+  }
+
+  html[data-mode="job"] .gallery-card,
+  html[data-mode="job"] .gallery-card:first-child {
+    border-radius: 50% 50% 0 0 / 9% 9% 0 0;
+  }
+
+  html[data-mode="academic"] .detail-stack {
+    grid-template-columns: 1fr;
+  }
+  html[data-mode="academic"] .detail-card,
+  html[data-mode="academic"] .detail-card:nth-child(3n) {
+    grid-column: auto;
+  }
+
+  html[data-mode="job"] .detail-card {
+    padding: 28px 20px;
+  }
+  html[data-mode="job"] .detail-card:first-child {
+    padding-top: 55px;
+  }
+}
+
+@media (max-width: 420px) {
+  html[data-mode="balanced"] .brand-copy,
+  html[data-mode="job"] .brand-copy {
+    max-width: 145px;
+  }
+
+  html[data-mode="balanced"] .brand-copy strong,
+  html[data-mode="job"] .brand-copy strong {
+    font-size: 0.7rem;
+  }
+
+  html[data-mode="balanced"] .mode-toggle,
+  html[data-mode="job"] .mode-toggle,
+  html[data-mode="academic"] .mode-toggle {
+    min-width: 68px;
+    font-size: 0.58rem;
+  }
+
+  html[data-mode="balanced"] .profile-hero {
+    padding-inline: 9px;
+  }
+  html[data-mode="balanced"] .profile-hero .profile-status,
+  html[data-mode="job"] .profile-hero .profile-status,
+  html[data-mode="academic"] .profile-hero .profile-status {
+    max-width: 210px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  html[data-mode="job"] .profile-hero .hero-copy h1,
+  html[data-mode="academic"] .profile-hero .hero-copy h1 {
+    overflow-wrap: anywhere;
+  }
+
+  html[data-mode="academic"] .page-heading::before,
+  html[data-mode="academic"] .detail-hero::before {
+    display: none;
+  }
+
+  html[data-mode="academic"] .page-heading,
+  html[data-mode="academic"] .detail-hero {
+    padding-left: 18px;
+  }
+
+  html[data-mode="job"] .timeline-content::before {
+    font-size: 4.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-transition,
+  .transition-world {
+    display: none !important;
+  }
+
+  .tomorrow-orbit,
+  .tomorrow-scan,
+  html[data-mode="academic"] .profile-hero .profile-photo-wrap::before {
+    animation: none !important;
+  }
+}

@@ -3,6 +3,9 @@
     {
       "id": "balanced",
       "label": "Balanced",
+      "world": "garden",
+      "atmosphere": "light",
+      "themeColor": "#f4ead3",
       "eyebrow": "AI · systems · teaching",
       "headline": "Engineering across the stack.",
       "summary": "I connect intelligent software with the systems it runs on—from embedded devices and industrial automation to machine learning, agents, and dependable applications.",
@@ -19,6 +22,9 @@
     {
       "id": "job",
       "label": "Job",
+      "world": "cathedral",
+      "atmosphere": "dark",
+      "themeColor": "#090711",
       "eyebrow": "AI engineer · workflow automation",
       "headline": "Intelligence built for real systems.",
       "summary": "I build AI agents, retrieval and automation workflows, computer-vision systems, and production-minded tools with an engineering perspective shaped by embedded and industrial work.",
@@ -28,6 +34,9 @@
     {
       "id": "academic",
       "label": "Academic",
+      "world": "tomorrow",
+      "atmosphere": "dark",
+      "themeColor": "#070611",
       "eyebrow": "Computer engineering · learning · teaching",
       "headline": "Learning deeply, then sharing it.",
       "summary": "My academic work spans intelligent systems, computer architecture, embedded computing, and machine learning, reinforced by extensive teaching and project-based exploration.",

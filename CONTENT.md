@@ -2,6 +2,12 @@
 
 All paths below are relative to the repository root. Run `docker compose run --rm test` after editing content.
 
+## Edit a mode
+
+The three records in `src/data/modes.json` control hero copy, section order, and the default section. Their visual identities are intentionally fixed: Balanced uses `garden` with a light atmosphere, Job uses `cathedral` with a dark atmosphere, and Academic uses `tomorrow` with a dark atmosphere. The matching `themeColor` is used by the browser chrome during the scene change.
+
+Changing copy or section order requires no component changes. A new artistic world does require a layout and transition implementation because modes are full experiences rather than palette presets.
+
 ## Add a live page
 
 Append an object to `src/data/pages.json`:

@@ -2,6 +2,7 @@
 import SiteHeader from "../components/SiteHeader";
 import { content } from "../content/data";
 import "../styles/global.css";
+import "../styles/worlds.css";
 
 interface Props {
   title?: string;
@@ -28,11 +29,11 @@ const personSchema = {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark" data-mode="balanced" class="dark">
+<html lang="en" data-theme="light" data-mode="balanced" data-world="garden">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#07110d" />
+    <meta name="theme-color" content="#f4ead3" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -56,14 +57,38 @@ const personSchema = {
             : validModes.includes(storedMode)
               ? storedMode
               : "balanced";
-          const theme =
-            localStorage.getItem("resume-theme") === "light" ? "light" : "dark";
+          const atmospheres = {
+            balanced: {
+              theme: "light",
+              world: "garden",
+              themeColor: "#f4ead3",
+            },
+            job: {
+              theme: "dark",
+              world: "cathedral",
+              themeColor: "#090711",
+            },
+            academic: {
+              theme: "dark",
+              world: "tomorrow",
+              themeColor: "#070611",
+            },
+          };
+          const atmosphere = atmospheres[mode];
           document.documentElement.dataset.mode = mode;
-          document.documentElement.dataset.theme = theme;
-          document.documentElement.classList.toggle("dark", theme === "dark");
+          document.documentElement.dataset.theme = atmosphere.theme;
+          document.documentElement.dataset.world = atmosphere.world;
+          document.documentElement.classList.toggle(
+            "dark",
+            atmosphere.theme === "dark",
+          );
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute("content", atmosphere.themeColor);
         } catch {
           document.documentElement.dataset.mode = "balanced";
-          document.documentElement.dataset.theme = "dark";
+          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.world = "garden";
         }
       })();
     </script>
@@ -75,9 +100,37 @@ const personSchema = {
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="ambient-grid" aria-hidden="true"></div>
-    <div class="aurora aurora-one" aria-hidden="true"></div>
-    <div class="aurora aurora-two" aria-hidden="true"></div>
+    <div class="world-canvas" aria-hidden="true">
+      <div class="world-art world-art-garden">
+        <div class="garden-vault"></div>
+        <div class="garden-axis"></div>
+        <div class="garden-rosette garden-rosette-one"></div>
+        <div class="garden-rosette garden-rosette-two"></div>
+      </div>
+      <div class="world-art world-art-cathedral">
+        <div class="cathedral-window"></div>
+        <div class="cathedral-piers"></div>
+        <div class="cathedral-light cathedral-light-one"></div>
+        <div class="cathedral-light cathedral-light-two"></div>
+      </div>
+      <div class="world-art world-art-tomorrow">
+        <div class="tomorrow-orbit"></div>
+        <div class="tomorrow-grid"></div>
+        <div class="tomorrow-scan"></div>
+      </div>
+    </div>
+    <div class="scene-transition" aria-hidden="true">
+      <div class="transition-world transition-garden">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="transition-world transition-cathedral">
+        <span></span><span></span>
+      </div>
+      <div class="transition-world transition-tomorrow">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <p id="mode-announcer" class="sr-only" aria-live="polite"></p>
     <SiteHeader
       client:load
       modes={content.modes}

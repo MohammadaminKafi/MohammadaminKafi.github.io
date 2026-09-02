@@ -49,6 +49,7 @@ function summaryFrom(sections: GenericSection[]): string {
 export default function ResumeExplorer({ content }: Props) {
   const [mode, setMode] = useState<ModeId>("balanced");
   const [section, setSection] = useState<SectionId>("overview");
+  const [desktopLayout, setDesktopLayout] = useState(false);
 
   useEffect(() => {
     const selectedMode = resolveMode(
@@ -89,6 +90,14 @@ export default function ResumeExplorer({ content }: Props) {
     return () => window.removeEventListener(MODE_CHANGE_EVENT, onMode);
   }, [content.modes]);
 
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 981px)");
+    const sync = () => setDesktopLayout(query.matches);
+    queueMicrotask(sync);
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
   const config =
     content.modes.find((item) => item.id === mode) ?? content.modes[0];
   const currentResume =
@@ -104,7 +113,12 @@ export default function ResumeExplorer({ content }: Props) {
 
   return (
     <>
-      <section className="profile-hero" aria-labelledby="profile-title">
+      <section
+        className={`profile-hero profile-hero-${mode}`}
+        data-art-world={mode}
+        aria-labelledby="profile-title"
+      >
+        <HeroOrnament />
         <div className="profile-photo-wrap">
           <img
             className="profile-photo"
@@ -152,7 +166,10 @@ export default function ResumeExplorer({ content }: Props) {
               changeSection(String(key) as SectionId);
           }}
           variant="secondary"
-          className="resume-tabs"
+          orientation={
+            mode === "job" && desktopLayout ? "vertical" : "horizontal"
+          }
+          className={`resume-tabs resume-tabs-${mode}`}
         >
           <div
             className="tabs-scroll"
@@ -171,7 +188,7 @@ export default function ResumeExplorer({ content }: Props) {
           </div>
 
           {config.sections.map((id) => (
-            <Tabs.Panel key={id} id={id} className="tab-panel">
+            <Tabs.Panel key={id} id={id} className={`tab-panel panel-${id}`}>
               {id === "overview" && <Overview content={content} mode={mode} />}
               {id === "experience" && (
                 <ExperienceSection content={content} mode={mode} />
@@ -191,6 +208,31 @@ export default function ResumeExplorer({ content }: Props) {
         </Tabs>
       </section>
     </>
+  );
+}
+
+function HeroOrnament() {
+  return (
+    <div className="hero-ornament" aria-hidden="true">
+      <div className="hero-ornament-garden">
+        <span className="garden-arch-line garden-arch-line-one" />
+        <span className="garden-arch-line garden-arch-line-two" />
+        <span className="garden-flower garden-flower-one" />
+        <span className="garden-flower garden-flower-two" />
+      </div>
+      <div className="hero-ornament-cathedral">
+        <span className="gothic-rib gothic-rib-one" />
+        <span className="gothic-rib gothic-rib-two" />
+        <span className="gothic-rose" />
+      </div>
+      <div className="hero-ornament-tomorrow">
+        <span className="orbit-ring orbit-ring-one" />
+        <span className="orbit-ring orbit-ring-two" />
+        <span className="orbit-node orbit-node-one" />
+        <span className="orbit-node orbit-node-two" />
+        <span className="orbit-index">MK / KNOWLEDGE OBJECT 01</span>
+      </div>
+    </div>
   );
 }
 

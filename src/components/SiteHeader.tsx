@@ -6,19 +6,19 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@heroui/react";
-import { ChevronDown, ExternalLink, Menu, Moon, Sun, X } from "lucide-react";
+import { ChevronDown, ExternalLink, Menu, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import type { LivePage, Mode, ModeId } from "../content/schema";
 import {
   applyMode,
-  applyTheme,
+  applyAtmosphere,
   hrefWithMode,
   isModeId,
   MODE_CHANGE_EVENT,
   MODE_STORAGE_KEY,
   resolveMode,
-  THEME_STORAGE_KEY,
+  transitionToMode,
 } from "../lib/mode";
 
 interface Props {
@@ -29,7 +29,6 @@ interface Props {
 
 export default function SiteHeader({ modes, pages, currentPath }: Props) {
   const [mode, setMode] = useState<ModeId>("balanced");
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -37,14 +36,10 @@ export default function SiteHeader({ modes, pages, currentPath }: Props) {
       window.location.search,
       localStorage.getItem(MODE_STORAGE_KEY),
     );
-    const initialTheme =
-      localStorage.getItem(THEME_STORAGE_KEY) === "light" ? "light" : "dark";
     queueMicrotask(() => {
       setMode(initialMode);
-      setTheme(initialTheme);
     });
     applyMode(initialMode, undefined, "replace");
-    applyTheme(initialTheme);
 
     const onMode = (event: Event) => {
       const next = (event as CustomEvent<{ mode: ModeId }>).detail?.mode;
@@ -56,6 +51,7 @@ export default function SiteHeader({ modes, pages, currentPath }: Props) {
         localStorage.getItem(MODE_STORAGE_KEY),
       );
       document.documentElement.dataset.mode = next;
+      applyAtmosphere(next);
       setMode(next);
       window.dispatchEvent(
         new CustomEvent(MODE_CHANGE_EVENT, { detail: { mode: next } }),
@@ -73,11 +69,10 @@ export default function SiteHeader({ modes, pages, currentPath }: Props) {
   const internalHref = (pathname: string) => hrefWithMode(pathname, mode);
   const currentMode = modes.find((item) => item.id === mode) ?? modes[0];
 
-  function selectMode(next: ModeId) {
+  async function selectMode(next: ModeId) {
     const config = modes.find((item) => item.id === next);
     if (!config) return;
-    setMode(next);
-    applyMode(next, config.defaultSection);
+    await transitionToMode(next, config.defaultSection);
   }
 
   function openPage(key: React.Key) {
@@ -90,7 +85,15 @@ export default function SiteHeader({ modes, pages, currentPath }: Props) {
   }
 
   return (
-    <header className="site-header">
+    <header
+      className={`site-header site-header-${mode}`}
+      data-header-world={currentMode.world}
+    >
+      <div className="header-ornament" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
       <div className="header-inner">
         <a
           className="brand"
@@ -162,19 +165,6 @@ export default function SiteHeader({ modes, pages, currentPath }: Props) {
           >
             Gallery
           </a>
-          <Button
-            isIconOnly
-            variant="ghost"
-            size="sm"
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-            onPress={() => {
-              const next = theme === "dark" ? "light" : "dark";
-              setTheme(next);
-              applyTheme(next);
-            }}
-          >
-            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
-          </Button>
         </nav>
 
         <Button
@@ -201,17 +191,6 @@ export default function SiteHeader({ modes, pages, currentPath }: Props) {
           ))}
           <a href={internalHref("/gallery/")}>Gallery</a>
           <a href={internalHref("/resume/")}>Resume history</a>
-          <button
-            type="button"
-            onClick={() => {
-              const next = theme === "dark" ? "light" : "dark";
-              setTheme(next);
-              applyTheme(next);
-            }}
-          >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}{" "}
-            {theme === "dark" ? "Light" : "Dark"} theme
-          </button>
         </nav>
       )}
     </header>

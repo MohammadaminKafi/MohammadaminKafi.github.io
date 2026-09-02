@@ -22,6 +22,9 @@ const localAsset = nonEmpty.refine(
 export const ModeSchema = z.object({
   id: z.enum(modeIds),
   label: nonEmpty,
+  world: z.enum(["garden", "cathedral", "tomorrow"]),
+  atmosphere: z.enum(["light", "dark"]),
+  themeColor: z.string().regex(/^#[0-9a-fA-F]{6}$/),
   eyebrow: nonEmpty,
   headline: nonEmpty,
   summary: nonEmpty,
