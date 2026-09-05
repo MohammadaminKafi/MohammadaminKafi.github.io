@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" fill="none">
+  <defs>
+    <radialGradient id="glass" cx="0" cy="0" r="1" gradientTransform="translate(450 340) rotate(90) scale(360)">
+      <stop stop-color="#55d6ff" stop-opacity=".2"/>
+      <stop offset=".38" stop-color="#4a43bd" stop-opacity=".16"/>
+      <stop offset=".72" stop-color="#a52e59" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#090711" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="450" cy="340" r="246" fill="url(#glass)" stroke="#d9c9a2" stroke-opacity=".3" stroke-width="3"/>
+  <circle cx="450" cy="340" r="190" stroke="#55d6ff" stroke-opacity=".32" stroke-width="2"/>
+  <circle cx="450" cy="340" r="79" stroke="#d2a855" stroke-opacity=".5" stroke-width="2"/>
+  <g stroke-linecap="round">
+    <path d="M450 94v492M204 340h492M276 166l348 348M624 166 276 514" stroke="#d9c9a2" stroke-opacity=".27" stroke-width="2"/>
+    <path d="M450 150c60 55 91 118 91 190s-31 135-91 190c-60-55-91-118-91-190s31-135 91-190Z" stroke="#55d6ff" stroke-opacity=".43" stroke-width="2"/>
+    <path d="M260 340c55-60 118-91 190-91s135 31 190 91c-55 60-118 91-190 91s-135-31-190-91Z" stroke="#9357cc" stroke-opacity=".42" stroke-width="2"/>
+    <path d="m316 206 268 268M584 206 316 474" stroke="#a52e59" stroke-opacity=".34" stroke-width="12"/>
+  </g>
+  <path d="M124 820V374C124 176 270 35 450 35s326 141 326 339v446" stroke="#d9c9a2" stroke-opacity=".22" stroke-width="4"/>
+  <path d="M198 820V406c0-155 111-278 252-325 141 47 252 170 252 325v414" stroke="#55d6ff" stroke-opacity=".16" stroke-width="2"/>
+  <path d="M82 820h736M158 744h584M198 672h504" stroke="#d9c9a2" stroke-opacity=".16" stroke-width="2"/>
+</svg>

@@ -1,114 +1,55 @@
 # Mohammadamin Kafi — Resume Website
 
-A modern, interactive resume built with **Astro**, **React**, and **Tailwind CSS**.  
-Features inline pages, dark/light theme toggle, timelines, skill trees, search & filter, and JSON-driven data for easy updates.
+A static, responsive resume and portfolio built with Astro, React, HeroUI v3, TypeScript, and Tailwind CSS 4. It contains three independent artistic worlds—an Isfahan-inspired garden, a Gothic-inspired professional cathedral, and a speculative knowledge atlas—plus live-project pages, resume history, gallery artwork, and detailed experience and education routes.
 
-🚀 **Live Site**: [https://mohammadaminkafi.github.io](https://mohammadaminkafi.github.io)
+## Run with Docker
 
----
-
-## ✨ Features
-
-- **Personalized Hero** section with photo, name, title, and contact links
-- **Dark/Light Theme** toggle (dark by default)
-- **Gallery** page with Home/Gallery switch
-- **Aurora Background** effect in both themes
-- **Professional Summary** with quick resume download
-- **Inline Pages**:
-  - Education (timeline)
-  - Job Experience (timeline)
-  - Teaching Experience (assistants & instructors, searchable & filterable)
-  - Projects (searchable & filterable by tags)
-  - Skills (soft, hard, programming languages, multi-level dropdowns)
-  - Languages (proficiency bars)
-  - Awards & Achievements
-  - Research Interests
-- Data stored in separate `.json` files for easy editing
-- Fully responsive design
-
----
-
-## 📂 Project Structure
-
-```
-
-.
-├── public/               # Static assets (images, resume.pdf)
-├── src/
-│   ├── components/       # React & Astro UI components
-│   ├── data/             # JSON files for each resume section
-│   ├── layouts/          # Base layout files
-│   ├── pages/            # Main & gallery pages
-│   └── styles/           # Global styles
-├── astro.config.mjs      # Astro configuration
-├── docker-compose.yml    # Local dev with Docker
-├── Dockerfile            # Container setup
-├── tailwind.config.cjs   # Tailwind config
-└── README.md
-
-````
-
----
-
-## 🛠 Local Development
-
-### **Option 1: Node.js**
-```bash
-npm install
-npm run dev
-````
-
-Site will be available at:
-[http://localhost:4321](http://localhost:4321)
-
----
-
-### **Option 2: Docker**
+Docker is the supported local toolchain; Node.js is not required on the host.
 
 ```bash
-docker compose up --build
+# Development with hot reload
+docker compose up app
+# http://localhost:4321
+
+# Format, lint, type-check, validate content, unit tests, and production build
+docker compose run --rm test
+
+# Production-like Nginx preview
+docker compose up preview
+# http://localhost:8080
+
+# Browser and accessibility tests against the preview
+docker compose run --rm e2e
 ```
 
-Visit: [http://localhost:4321](http://localhost:4321)
+With Node 22.23.2 or newer, the equivalent commands are `npm ci`, `npm run dev`, `npm run check`, and `npm run test:e2e`.
 
----
+## Routes
 
-## 🚢 Deployment to GitHub Pages
+- `/` — mode-aware resume with HeroUI tabs
+- `/pages/` — JSON-driven live projects
+- `/gallery/` — generated aurora studies
+- `/resume/` — current resume and archive
+- `/jobs/[slug]/` — experience detail
+- `/education/[slug]/` — education and coursework detail
 
-1. Create a public repository named:
+Mode and section state are shareable, for example `/?mode=academic&section=teaching`. The URL takes priority over the saved preference; first-time visits use the luminous Balanced world. Each mode owns its atmosphere, composition, navigation, type system, and responsive behavior; there is intentionally no global light/dark switch.
 
-   ```
-   mohammadaminkafi.github.io
-   ```
-2. Commit and push your project:
+## Content editing
 
-   ```bash
-   git init
-   git branch -M main
-   git remote add origin git@github.com:mohammadaminkafi/mohammadaminkafi.github.io.git
-   git add .
-   git commit -m "Initial commit"
-   git push -u origin main
-   ```
-3. Add `.github/workflows/deploy.yml` (GitHub Actions workflow) to build & deploy Astro site.
-4. In **Settings → Pages**, set source to **GitHub Actions**.
-5. Push to `main`. Your site will be live at:
-   **[https://mohammadaminkafi.github.io](https://mohammadaminkafi.github.io)**
+Content lives in `src/data/` and is checked before every build. Invalid URLs, duplicate IDs or slugs, missing files, zero-byte PDFs, and an invalid current-resume count fail with a readable error.
 
----
+- `personal.json` — identity, contact links, profile image, and baseline summary
+- `modes.json` — artistic identity, fixed atmosphere, hero copy, default tab, and tab order
+- `jobs-details.json` — the single source for job summaries and detail pages
+- `education-details.json` — the single source for education summaries and details
+- `projects.json`, `teaching.json`, and skill JSON files — resume sections
+- `pages.json` — live applications shown in the header and Pages hub
+- `resumes.json` — current and archived PDFs
+- `gallery.json` — gallery image metadata
 
-## 🗂 Editing Content
+See [CONTENT.md](./CONTENT.md) for copy-ready examples.
 
-All main content is in `src/data/`:
+## GitHub Pages
 
-* `personal.json` — Name, title, summary, contact info
-* `education.json` — Timeline of degrees
-* `jobs.json` — Work experience
-* `teaching.json` — Assistantships & instructing experience
-* `projects.json` — Projects with tags & filters
-* `skills-soft.json`, `skills-hard.json`, `skills-languages.json` — Skills & proficiency
-* `languages.json` — Language proficiency
-* `awards.json` — Awards & achievements
-* `research.json` — Research interests
-
-Update the JSON, restart the dev server, and changes will appear.
+The site is statically rendered for `https://mohammadaminkafi.github.io`. Pull requests run all checks; successful pushes to `main` build and deploy through the official Astro GitHub Pages action. The lockfile is committed and CI uses `npm ci`.

@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": "rv-tomasulo-sim",
+      "title": "RISC-V & Tomasulo Simulator",
+      "tagline": "Explore processor execution cycle by cycle.",
+      "description": "A browser-based teaching simulator for classic five-stage pipelines, Tomasulo scheduling, and speculative execution. Write or load RISC-V assembly, step through state changes, and inspect stalls, hazards, and performance metrics.",
+      "url": "https://mohammadaminkafi.github.io/rv-tomasulo-sim/",
+      "sourceUrl": "https://github.com/MohammadaminKafi/rv-tomasulo-sim",
+      "tags": ["RISC-V", "Computer Architecture", "TypeScript"],
+      "accent": "cyan"
+    },
+    {
+      "id": "ultimate-tic-tac-toe",
+      "title": "Ultimate Tic-Tac-Toe",
+      "tagline": "A minimax arena for a strategic classic.",
+      "description": "A browser-native Ultimate Tic-Tac-Toe experience with human-versus-AI, local, and AI-versus-AI play; depth-limited minimax with alpha-beta pruning; saved replays; and guided lessons.",
+      "url": "https://mohammadaminkafi.github.io/ultimate-tic-tac-toe/",
+      "sourceUrl": "https://github.com/MohammadaminKafi/ultimate-tic-tac-toe/tree/web_app",
+      "tags": ["Game AI", "Minimax", "HeroUI"],
+      "accent": "green"
+    },
+    {
+      "id": "cessa-vault",
+      "title": "CESSA Vault",
+      "tagline": "University course material, made easier to explore.",
+      "description": "A searchable, department-based library for browsing and downloading university course resources, including lecture material, assignments, exams, and project archives.",
+      "url": "https://mohammadaminkafi.github.io/cessa-vault/",
+      "sourceUrl": "https://github.com/MohammadaminKafi/cessa-vault",
+      "tags": ["Education", "Resource Browser", "Astro"],
+      "accent": "violet"
+    }
+  ]
+}

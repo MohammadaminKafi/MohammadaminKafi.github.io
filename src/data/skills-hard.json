@@ -73,9 +73,7 @@
         {
           "name": "IoT Systems",
           "level": 70,
-          "subskills": [
-            { "name": "IoT Protocol Integration", "level": 80 }
-          ]
+          "subskills": [{ "name": "IoT Protocol Integration", "level": 80 }]
         }
       ]
     },

@@ -1,0 +1,7 @@
+dist
+.astro
+node_modules
+playwright-report
+test-results
+package-lock.json
+public/Resume_MohammadaminKafi.pdf

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" fill="none">
+  <defs>
+    <pattern id="tiles" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M60 4 74 39l38-7-23 31 27 27-38-3-18 34-18-34-38 3 27-27L8 32l38 7L60 4Z" stroke="#116a72" stroke-width="1.5"/>
+      <path d="M60 22 69 47l27-1-21 17 9 25-24-14-24 14 9-25-21-17 27 1 9-25Z" fill="#159d96" fill-opacity=".13" stroke="#159d96"/>
+      <circle cx="60" cy="60" r="9" fill="#b02857" fill-opacity=".16" stroke="#b02857"/>
+      <path d="M0 60h24M96 60h24M60 0v22M60 98v22" stroke="#d29b32" stroke-width="1.2"/>
+      <path d="M0 0 24 24M120 0 96 24M0 120l24-24M120 120 96 96" stroke="#183f77" stroke-width="1.2"/>
+      <path d="M60 47c8 5 8 21 0 27-8-6-8-22 0-27ZM47 60c5-8 21-8 27 0-6 8-22 8-27 0Z" fill="#f4ead3" fill-opacity=".55"/>
+    </pattern>
+    <radialGradient id="wash" cx="0" cy="0" r="1" gradientTransform="translate(240 240) rotate(90) scale(240)">
+      <stop stop-color="#f7f0dd" stop-opacity=".1"/>
+      <stop offset=".7" stop-color="#159d96" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#102b63" stop-opacity=".2"/>
+    </radialGradient>
+  </defs>
+  <rect width="480" height="480" fill="url(#tiles)"/>
+  <rect width="480" height="480" fill="url(#wash)"/>
+  <path d="M240 46c54 45 91 104 91 166v180H149V212c0-62 37-121 91-166Z" stroke="#d29b32" stroke-width="2" opacity=".6"/>
+  <path d="M240 76c41 37 68 84 68 134v159H172V210c0-50 27-97 68-134Z" stroke="#159d96" stroke-width="1.5" opacity=".7"/>
+</svg>

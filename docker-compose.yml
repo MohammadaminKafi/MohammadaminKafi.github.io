@@ -1,5 +1,5 @@
 services:
-  web:
+  app:
     build:
       context: .
       target: dev
@@ -7,15 +7,32 @@ services:
       - "4321:4321"
     volumes:
       - .:/app
-      - /app/node_modules
+      - resume_node_modules:/app/node_modules
     environment:
       CHOKIDAR_USEPOLLING: "true"
-      WATCHPACK_POLLING: "true"
-    command: npm run dev
 
-  prod:
+  preview:
     build:
       context: .
-      target: prod
+      target: preview
     ports:
       - "8080:80"
+
+  test:
+    build:
+      context: .
+      target: test
+    command: npm run check
+
+  e2e:
+    build:
+      context: .
+      target: e2e
+    depends_on:
+      - preview
+    environment:
+      PLAYWRIGHT_BASE_URL: http://preview:80
+    command: npm run test:e2e
+
+volumes:
+  resume_node_modules:

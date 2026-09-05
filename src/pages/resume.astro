@@ -1,0 +1,77 @@
+---
+import { content } from "../content/data";
+import Layout from "../layouts/Layout.astro";
+
+const current = content.resumes.find((item) => item.current)!;
+const archive = content.resumes
+  .filter((item) => !item.current)
+  .sort((a, b) => b.published.localeCompare(a.published));
+const formatDate = (value: string) =>
+  new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(new Date(`${value}T00:00:00Z`));
+---
+
+<Layout
+  title="Resume History — Mohammadamin Kafi"
+  description="Download the current resume and browse archived resume versions from Mohammadamin Kafi."
+>
+  <header class="page-heading">
+    <p class="eyebrow">Resume history</p>
+    <h1>A record that can evolve.</h1>
+    <p>
+      The current resume stays one click away. Older public versions will remain
+      available here as the archive grows.
+    </p>
+  </header>
+
+  <section class="current-resume" aria-labelledby="current-resume-title">
+    <div>
+      <span class="status-pill"><i></i> Current</span>
+      <h2 id="current-resume-title">{current.label}</h2>
+      <p>{current.notes}</p>
+      <small>Published {formatDate(current.published)}</small>
+    </div>
+    <a class="action action-primary" href={current.file} download
+      >Download PDF</a
+    >
+  </section>
+
+  <section class="archive-section" aria-labelledby="archive-title">
+    <div class="section-intro">
+      <p class="eyebrow">Archive</p><h2 id="archive-title">
+        Previous versions
+      </h2>
+    </div>
+    {
+      archive.length ? (
+        <ol class="archive-list">
+          {archive.map((item) => (
+            <li>
+              <div>
+                <strong>{item.label}</strong>
+                <span>{formatDate(item.published)}</span>
+                {item.notes && <p>{item.notes}</p>}
+              </div>
+              <a href={item.file} download>
+                Download
+              </a>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <div class="empty-state archive-empty">
+          <>
+            <p>No historical versions have been published yet.</p>
+            <span>
+              Future PDFs can be added through{" "}
+              <code>src/data/resumes.json</code>.
+            </span>
+          </>
+        </div>
+      )
+    }
+  </section>
+</Layout>
